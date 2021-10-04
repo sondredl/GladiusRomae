@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,14 +13,18 @@ public class PauseMenu : MonoBehaviour
 
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
+            Debug.Log("escape is pressed");
+
             if(GameIsPaused)
             {
                 Resume();
+                Debug.Log("game is not paused");
             } else
             {
                 Pause();
+                Debug.Log("game is paused");
             }
         }
     }
@@ -39,12 +44,15 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("menu_main");
         Debug.Log("Loading menu...");
     }
 
     public void QuitGame()
     {
         Debug.Log("Quitting game...");
+        Application.Quit();
     }
 
 
