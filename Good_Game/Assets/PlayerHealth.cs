@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
 
-	public bool isAlive;
+	public static bool isAlive = true;
 	public int maxHealth = 100;
 	public static int currentHealth;
 	public HealthBar healthBar;
@@ -42,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
             if (fallTime > 1)
             {
             Debug.Log("has fallen");
+            Debug.Log(fallTime);
             TakeDamage(30);
             }
             // Reset fall measurements

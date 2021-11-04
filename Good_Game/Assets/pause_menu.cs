@@ -15,9 +15,14 @@ public class pause_menu : MonoBehaviour
     void Update()
     {
         // kill player statement
-        if (PlayerHealth.currentHealth <= 0) 
-        { 
+        //if (PlayerHealth.currentHealth <= 0) 
+        //{ 
+        //    Pause();
+        //}
+        if (PlayerHealth.isAlive == false)
+        {
             Pause();
+            Debug.Log("you died!");
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
