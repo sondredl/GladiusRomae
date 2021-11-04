@@ -14,6 +14,10 @@ public class PlayerHealth : MonoBehaviour
 
 	public HealthBar healthBar;
 
+//	public pause_menu.pause();
+//	GameObject pause_menu.pauseMenuUI.SetActive();
+//	pause_menu.GameIsPaused isPaused;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +40,10 @@ public class PlayerHealth : MonoBehaviour
 		currentHealth -= damage;
 		if(currentHealth <= 0 ) {
 			isAlive = false;
+
+//			pauseMenuUI.SetActive(true);
+//			Time.timeScale = 0f;
+//			isPaused = true;
 		}
 		healthBar.SetHealth(currentHealth);
 	}
