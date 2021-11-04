@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,11 @@ public class pause_menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // kill player statement
+        if (PlayerHealth.currentHealth <= 0) 
+        { 
+            Pause();
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)

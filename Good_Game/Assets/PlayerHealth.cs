@@ -10,13 +10,11 @@ public class PlayerHealth : MonoBehaviour
 
 	public bool isAlive;
 	public int maxHealth = 100;
-	public int currentHealth;
-
+	public static int currentHealth;
 	public HealthBar healthBar;
 
-//	public pause_menu.pause();
-//	GameObject pause_menu.pauseMenuUI.SetActive();
-//	pause_menu.GameIsPaused isPaused;
+	float fallTime = 0;
+	bool hasFallen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,21 +27,34 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			TakeDamage(20);
-		}
-    }
+		//if (Input.GetKeyDown(KeyCode.Space))
+		//{
+		//	TakeDamage(20);
+		//}
+        if (GetComponent<Rigidbody>().velocity.y < 1)
+        {
+            fallTime += Time.deltaTime;
+//            Debug.Log(fallTime);
+            hasFallen = true;
+        }
+        else if (hasFallen)
+        {
+            if (fallTime > 1)
+            {
+            Debug.Log("has fallen");
+            TakeDamage(30);
+            }
+            // Reset fall measurements
+            hasFallen = false;
+            fallTime = 0;
+        }
+	}
 
 	void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
 		if(currentHealth <= 0 ) {
 			isAlive = false;
-
-//			pauseMenuUI.SetActive(true);
-//			Time.timeScale = 0f;
-//			isPaused = true;
 		}
 		healthBar.SetHealth(currentHealth);
 	}
