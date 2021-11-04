@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class Player : MonoBehaviour
@@ -15,7 +16,7 @@ public class Player : MonoBehaviour
     void Start()
     {
 		currentHealth = maxHealth;
-		healthBar.SetMaxHealth(maxHealth);
+		healthBar.SetMaxHealth(currentHealth);
     }
 
     // Update is called once per frame
