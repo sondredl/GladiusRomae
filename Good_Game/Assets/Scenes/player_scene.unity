@@ -2403,24 +2403,6 @@ AimConstraint:
   m_Sources:
   - sourceTransform: {fileID: 1216909283}
     weight: 1
---- !u!1 &531652856 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 91537696499171573, guid: 8526fc62d267e704aabe14dd3ca9d7ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 1237986765}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &531652858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 531652856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8c1afb95ed7dde45b603932b4f0e41a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &584716698
 GameObject:
   m_ObjectHideFlags: 0
@@ -6508,12 +6490,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811128017}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a49264c30673494dad9f70cfe46a18e, type: 3}
+  m_Script: {fileID: 11500000, guid: eebc519fd91409e4ab5da4857730b047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 0
+  playerHealth: {fileID: 0}
+  currentHealth: {fileID: 0}
 --- !u!1 &1818471475
 GameObject:
   m_ObjectHideFlags: 0
