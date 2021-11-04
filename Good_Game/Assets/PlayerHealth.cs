@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
 
+	public bool isAlive;
 	public int maxHealth = 100;
 	public int currentHealth;
 
@@ -16,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
 		currentHealth = maxHealth;
+		isAlive = true;
 		healthBar.SetMaxHealth(currentHealth);
     }
 
@@ -31,7 +34,9 @@ public class PlayerHealth : MonoBehaviour
 	void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
-
+		if(currentHealth <= 0 ) {
+			isAlive = false;
+		}
 		healthBar.SetHealth(currentHealth);
 	}
 }
