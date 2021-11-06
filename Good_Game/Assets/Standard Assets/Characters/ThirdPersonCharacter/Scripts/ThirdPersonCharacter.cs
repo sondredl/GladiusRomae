@@ -1,4 +1,9 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using System;
+using UnityEngine.SceneManagement;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -29,6 +34,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+	public static bool isAlive = true;
+	public int maxHealth = 100;
+	public static int currentHealth;
+	public HealthBar healthBar;
+
+	float fallTime = 0;
+	bool hasFallen = false;
+    int damage = 10;
+
 
 		void Start()
 		{
@@ -40,6 +54,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
+
+		currentHealth = maxHealth;
+			Debug.Log("current health is");
+			Debug.Log(currentHealth);
+		isAlive = true;
+//		healthBar.SetMaxHealth(currentHealth);
 		}
 
 
@@ -150,6 +170,24 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				// don't use that while airborne
 				m_Animator.speed = 1;
 			}
+    //        if (GetComponent<Rigidbody>().velocity.y < 1)
+    //        {
+    //            fallTime += Time.deltaTime;
+    //            hasFallen = true;
+    ////            Debug.Log(fallTime);
+    //        }
+    //        else if (hasFallen)
+    //        {
+    //            if (fallTime > 1)
+    //            {
+    //            Debug.Log("has fallen");
+    //            Debug.Log(fallTime);
+    //            TakeDamage(30);
+    //            }
+    //            // Reset fall measurements
+    //            hasFallen = false;
+    //            fallTime = 0;
+    //        }
 		}
 
 
@@ -221,5 +259,27 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Animator.applyRootMotion = false;
 			}
 		}
+	public void TakeDamage(int damage)
+	{
+		currentHealth -= damage;
+		if(currentHealth <= 0 ) {
+			isAlive = false;
+		}
+//		healthBar.SetHealth(currentHealth);
+	}
+
+    void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log("collision has occured");
+        if(collision.gameObject.tag == "Untagged")
+        {
+            TakeDamage(damage);
+            //Debug.Log(damage);
+            //Debug.Log("collision caused by an Untagged game object");
+            //Debug.Log(currentHealth);
+            //currentHealth -= 20;
+            //playerHealth.TakeDamage(damage);
+        }
+    }
 	}
 }
