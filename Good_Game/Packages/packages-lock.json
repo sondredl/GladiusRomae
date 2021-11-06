@@ -20,9 +20,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.cinemachine": {
-
-      "version": "2.6.11",
-
+      "version": "2.6.10",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -70,12 +68,10 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
-
       "version": "1.0.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
-
       "url": "https://packages.unity.com"
     },
     "com.unity.mathematics": {
