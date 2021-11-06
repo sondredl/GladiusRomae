@@ -7,7 +7,7 @@ public class rigidbody : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.tag = "attacker";
+        gameObject.tag = "Untagged";
         
     }
 

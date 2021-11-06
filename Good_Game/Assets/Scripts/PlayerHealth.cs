@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 using System;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
 
-	public static bool isAlive = true;
+	public static bool isAlive;
 	public int maxHealth = 100;
+    public bool alive;
 	public static int currentHealth;
 	public HealthBar healthBar;
 
@@ -28,10 +29,11 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		//if (Input.GetKeyDown(KeyCode.Space))
-		//{
-		//	TakeDamage(20);
-		//}
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //	TakeDamage(20);
+        //}
+        alive = isAlive;
         if (GetComponent<Rigidbody>().velocity.y < 1)
         {
             fallTime += Time.deltaTime;
