@@ -15,11 +15,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
 		[SerializeField] float m_JumpPower = 12f;
-		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
+		//[SerializeField] bool m_OnGround = true;
+		[SerializeField] bool m_Crouch = false;
+		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
@@ -37,7 +39,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	public static bool isAlive = true;
 	public int maxHealth = 100;
 	public static int currentHealth;
-	public HealthBar healthBar;
+	// public HealthBar healthBar;
 
 	float fallTime = 0;
 	bool hasFallen = false;
@@ -55,11 +57,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 
-		currentHealth = maxHealth;
+            currentHealth = maxHealth;
 			Debug.Log("current health is");
 			Debug.Log(currentHealth);
-		isAlive = true;
-//		healthBar.SetMaxHealth(currentHealth);
+            isAlive = true;
+    //		healthBar.SetMaxHealth(currentHealth);
 		}
 
 
@@ -140,8 +142,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// update the animator parameters
 			m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
 			m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
-			m_Animator.SetBool("Crouch", m_Crouching);
-			m_Animator.SetBool("OnGround", m_IsGrounded);
+			//m_Animator.SetBool("Crouch", m_Crouching);
+			//m_Animator.SetBool("OnGround", m_IsGrounded);
 			if (!m_IsGrounded)
 			{
 				m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
