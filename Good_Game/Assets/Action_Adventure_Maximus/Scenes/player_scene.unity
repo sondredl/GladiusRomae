@@ -1597,6 +1597,7 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   attack: 0
+  block: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -1619,12 +1620,20 @@ MonoBehaviour:
   JumpHeight: 1.2
   Gravity: -15
   JumpTimeout: 0.5
+  FallTimeout: 0.15
+  Grounded: 1
+  GroundedOffset: -0.14
+  GroundedRadius: 0.28
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 0
   AttackTimeOut: 3.7
   CinemachineCameraTarget: {fileID: 0}
   TopClamp: 70
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 1
+  blocking: 0
   attacking: 0
   jump: 0
 --- !u!114 &1179004954
@@ -1827,7 +1836,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1271957219}
   - component: {fileID: 1271957218}
-  - component: {fileID: 1271957221}
   - component: {fileID: 1271957217}
   - component: {fileID: 1271957220}
   m_Layer: 0
@@ -1852,6 +1860,7 @@ MonoBehaviour:
   cam: {fileID: 1146480667}
   moveSpeed: 7.5
   backwardSpeed: 5
+  turnSpeed: 150
 --- !u!143 &1271957218
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1900,22 +1909,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitRate: 1
   damage: 10
---- !u!114 &1271957221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1271957216}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b236c9d711003a449e0a3d40f1306ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 1271957218}
-  cam: {fileID: 1146480667}
-  speed: 6
-  turnSmoothTime: 0.1
 --- !u!1 &1357122693
 GameObject:
   m_ObjectHideFlags: 0
