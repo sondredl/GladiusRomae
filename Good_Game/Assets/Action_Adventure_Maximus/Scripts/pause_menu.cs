@@ -22,6 +22,7 @@ public class pause_menu : MonoBehaviour
         if (PlayerHealth.isAlive == false)
         {
             Pause();
+            PlayerMovement.animator.SetTrigger("Die");
             Debug.Log("you died!");
         }
         if (Input.GetKeyDown(KeyCode.Escape))

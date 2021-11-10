@@ -6,12 +6,15 @@ public class Sword : MonoBehaviour
 {
 
     [SerializeField]
-    [Range(0.5f, 1.5f)]
+    // [Range(0.5f, 1.5f)]
     private float hitRate = 1;
 
     [SerializeField]
-    [Range(1, 100)]
+    // [Range(1, 100)]
     private int damage = 10;
+
+    [SerializeField] private Transform hitPoint;
+
 
     void Start()
     {
@@ -20,6 +23,7 @@ public class Sword : MonoBehaviour
     // [SerializeField]
     // private Transform hitPoint;
     private float timer;
+
     void Update()
     {
         timer += Time.deltaTime;
@@ -37,19 +41,27 @@ public class Sword : MonoBehaviour
         // muzzleParticle.Play();
         // gunFireSource.Play();
 
-        Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 2f);
-        // Ray ray = new Ray(hitPoint.position, hitPoint.forward);
-        // RayCastHit hitInfo;
+        // Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
+        // Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 2f);
 
-        // if (Physics.Raycast(ray, out hitInfo, 100))
-        // {
-        //     // var health = hitInfo.collider.GetComponent<health>();
-        //     // if (health != null)
-        //     // {
-        //     //     health.TakeDamage(damage);
-        //     // }
-        // }
 
+        Ray ray = new Ray(hitPoint.position, hitPoint.forward);
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(ray, out hitInfo, 100))
+        {
+            var health = hitInfo.collider.GetComponent<PlayerHealth>();
+            if (health != null)
+            {
+                PlayerHealth.TakeDamage(damage);
+            }
+        }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            PlayerHealth.TakeDamage(damage);
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.SceneManagement;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealthBackup : MonoBehaviour
 {
 
     public static bool isAlive;

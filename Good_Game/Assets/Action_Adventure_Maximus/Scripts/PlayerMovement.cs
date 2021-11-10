@@ -2,21 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+// namespace UnityStandardAssets.Characters.ThirdPerson
+// {
+// [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
 
-    private CharacterController characterController;
     public Transform cam;
-    private Animator animator;
+    public static Animator animator;
+    private CharacterController characterController;
     private bool isGrounded;
+    // Rigidbody rigidbody;
 
+    [SerializeField] public float jumpPower = 10;
+    [SerializeField] public float gravity = 9.81f;
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float backwardSpeed = 5f;
     [SerializeField] private float turnSpeed = 150;
-    // [SerializeField] bool m_Crouch = false;
-    // public float turnSmoothTime = 0.1f;
-    [SerializeField] public float gravity = 9.81f;
+    [SerializeField] bool m_Crouch = false;
+    public float turnSmoothTime = 0.1f;
 
     private void Awake()
     {
@@ -63,6 +67,12 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Attack2");
             Debug.Log("attack 2 trigger engaged");
         }
+        if (Input.GetKeyDown("Space"))
+        {
+            // rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, characterController.velocity.z);
+            animator.SetTrigger("Jump");
+            Debug.Log("attack 2 trigger engaged");
+        }
 
         // animator.SetTrigger("Jump");
         // transform.Rotate(Vector3.up, horizontal * turnSpeed * Time.deltaTime);
@@ -93,3 +103,4 @@ public class PlayerMovement : MonoBehaviour
         // }
     }
 }
+// }
