@@ -29,11 +29,11 @@ public class Sword : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= hitRate)
         {
-            if (Input.GetButton("Fire1"))
-            {
-                timer = 0f;
-                SwardHit();
-            }
+            // if (Input.GetButton("Fire1"))
+            // {
+            //     timer = 0f;
+            //     SwardHit();
+            // }
         }
     }
     private void SwardHit()
@@ -61,6 +61,7 @@ public class Sword : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            // Debug.Log("player conact");
             PlayerHealth.TakeDamage(damage);
         }
     }

@@ -58,6 +58,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log(currentHealth);
         currentHealth -= damage;
+        // animator.SetTrigger("isDead");
         if (currentHealth <= 0)
         {
             Debug.Log("player died");
