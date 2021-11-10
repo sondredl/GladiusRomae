@@ -11,7 +11,7 @@ public class NewInput : MonoBehaviour
     public bool jump;
     public bool sprint;
     public bool attack;
-
+    public bool block;
     [Header("Movement Settings")]
     public bool analogMovement;
 
@@ -49,6 +49,12 @@ public class NewInput : MonoBehaviour
         attackInput(value.isPressed);
     }
 
+    public void OnBlock(InputValue value)
+    {
+        blockInput(value.isPressed);
+    }
+
+
 
     public void MoveInput(Vector2 newMoveDirection)
     {
@@ -73,5 +79,11 @@ public class NewInput : MonoBehaviour
     public void attackInput(bool newAttackState)
     {
         attack = newAttackState;
+    }
+    
+    public void blockInput(bool newBlockState)
+    {
+        block = newBlockState;
+
     }
 }
