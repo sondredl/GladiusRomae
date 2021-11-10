@@ -9,12 +9,14 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     public Transform cam;
     private Animator animator;
+    private bool isGrounded;
 
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float backwardSpeed = 5f;
     [SerializeField] private float turnSpeed = 150;
     // [SerializeField] bool m_Crouch = false;
     // public float turnSmoothTime = 0.1f;
+    [SerializeField] public float gravity = 9.81f;
 
     private void Awake()
     {
@@ -25,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
-        var movement = new Vector3(horizontal, 0, vertical).normalized;
+        var movement = new Vector3(horizontal, gravity, vertical).normalized;
 
         // forward run animation
         animator.SetFloat("Speed", vertical);
@@ -33,8 +35,22 @@ public class PlayerMovement : MonoBehaviour
 
         if (vertical != 0)
         {
+            // characterController.SimpleMove(transform.forward * moveSpeed * vertical * gravity);
             characterController.SimpleMove(transform.forward * moveSpeed * vertical);
         }
+        if (!characterController.isGrounded) movement -= new Vector3(0, gravity * Time.deltaTime, 0);
+        characterController.SimpleMove(Physics.gravity);
+
+        // ############################################
+        // Vector3 foward = Input.GetAxis("Vertical") * transform.TransformDirection(Vector3.forward) * MoveSpeed;
+        // transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal") * RotationSpeed * Time.deltaTime, 0));
+        // cc.Move(foward * Time.deltaTime);
+
+        // currentMovement = new Vector3(0, currentMovement.y, Input.GetAxis("Vertical") * MoveSpeed);
+        // currentMovement = transform.rotation * currentMovement;
+        // if (!cc.isGrounded) currentMovement -= new Vector3(0, gravity * Time.deltaTime, 0);
+        //cc.SimpleMove(Physics.gravity);
+        // ############################################
 
         // left and right mouse click attack
         if (Input.GetMouseButtonDown(0))
