@@ -85,6 +85,9 @@ public class NewController : MonoBehaviour
 	private float _attackTimeOutDelta;
 	private float _fallTimeoutDelta;
 
+	[Tooltip("player is blocking")]
+	public bool blocking = false;
+
 	[Tooltip("player is attacking")]
 	public bool attacking = false;
 
@@ -134,7 +137,7 @@ public class NewController : MonoBehaviour
 		JumpAndGravity();
 		//groundCheck();
 
-		Taunt();
+		animationAction();
 		Move();
 	}
 
@@ -145,7 +148,7 @@ public class NewController : MonoBehaviour
 		CameraRotation();
 	}
 
-	private void Taunt()
+	private void animationAction()
 	{
 
 
@@ -156,6 +159,14 @@ public class NewController : MonoBehaviour
 				animator.SetTrigger("Attack");
 				attacking = true;
 
+			}
+		}
+		if (!blocking)
+		{
+			if (input.block)
+			{
+				animator.SetTrigger("Block");
+				blocking = true;
 			}
 		}
 
@@ -179,6 +190,9 @@ public class NewController : MonoBehaviour
 			_attackTimeOutDelta = AttackTimeOut;
 			attacking = false;
 		}
+		
+
+		
 
 		//input.attack = false;
 
