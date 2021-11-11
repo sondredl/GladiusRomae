@@ -86,10 +86,10 @@ public class NewController : MonoBehaviour
 	private float _fallTimeoutDelta;
 
 	//Animations added
-
 	private int _animIDGrounded;
 	private int _animIDJump;
 	private int _animIDFreeFall;
+
 
 	[Tooltip("player is blocking")]
 	public bool blocking = false;
@@ -130,6 +130,7 @@ public class NewController : MonoBehaviour
 		controller = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
 
+		annimationID();
 
 		// reset our timeouts on start
 		_attackTimeOutDelta = AttackTimeOut;
@@ -143,7 +144,6 @@ public class NewController : MonoBehaviour
 		JumpAndGravity();
 		GroundCheck();
 
-		animationAction();
 		Move();
 	}
 
@@ -313,13 +313,13 @@ public class NewController : MonoBehaviour
 			_fallTimeoutDelta = FallTimeout;
 
 			// update animator if using character
-			/*
+			
 			if (hasAnimator)
 			{
-				animator.SetBool(animIDJump, false);
-				_animator.SetBool(_animIDFreeFall, false);
+				animator.SetBool(_animIDJump, false);
+				animator.SetBool(_animIDFreeFall, false);
 			}
-			*/
+			
 
 			// stop our velocity dropping infinitely when grounded
 			if (_verticalVelocity < 0.0f)
@@ -333,8 +333,13 @@ public class NewController : MonoBehaviour
 			// the square root of H * -2 * G = how much velocity needed to reach desired height
 			_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
-		}
+                if (hasAnimator)
+                {
+					animator.SetBool(_animIDJump, true);
+                }
 
+		}
+		
 				// jump timeout
 				if (_jumpTimeoutDelta >= 0.0f)
 				{
@@ -352,6 +357,14 @@ public class NewController : MonoBehaviour
 				{
 					_fallTimeoutDelta -= Time.deltaTime;
 				}
+            else
+            {
+				if(hasAnimator)
+                {
+					animator.SetBool(_animIDFreeFall, true);
+
+                }
+            }
         
 				// if we are not grounded, do not jump
 				input.jump = false;
