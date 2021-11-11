@@ -7,6 +7,21 @@ using UnityEngine;
 // [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+//     [Header("Character Input Values")]
+//     public Vector2 move;
+//     public Vector2 look;
+//     public bool jump;
+//     public bool sprint;
+//     public bool attack;
+//     public bool block;
+//     [Header("Movement Settings")]
+//     public bool analogMovement;
+
+// #if !UNITY_IOS || !UNITY_ANDROID
+//     [Header("Mouse Cursor Settings")]
+//     public bool cursorLocked = true;
+//     public bool cursorInputForLook = true;
+// #endif
 
     public Transform cam;
     public static Animator animator;
@@ -21,6 +36,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnSpeed = 150;
     [SerializeField] bool m_Crouch = false;
     public float turnSmoothTime = 0.1f;
+
+    // public void OnLook(InputValue value)
+    // {
+    //     if (cursorInputForLook)
+    //     {
+    //         LookInput(value.Get<Vector2>());
+    //     }
+    // }
 
     private void Awake()
     {
