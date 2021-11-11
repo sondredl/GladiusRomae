@@ -85,6 +85,12 @@ public class NewController : MonoBehaviour
 	private float _attackTimeOutDelta;
 	private float _fallTimeoutDelta;
 
+	//Animations added
+
+	private int _animIDGrounded;
+	private int _animIDJump;
+	private int _animIDFreeFall;
+
 	[Tooltip("player is blocking")]
 	public bool blocking = false;
 
@@ -135,7 +141,7 @@ public class NewController : MonoBehaviour
 	{
 		hasAnimator = TryGetComponent(out animator);
 		JumpAndGravity();
-		//groundCheck();
+		GroundCheck();
 
 		animationAction();
 		Move();
@@ -147,6 +153,8 @@ public class NewController : MonoBehaviour
 	{
 		CameraRotation();
 	}
+
+	
 
 	private void animationAction()
 	{
@@ -197,6 +205,25 @@ public class NewController : MonoBehaviour
 		//input.attack = false;
 
 	}
+	private void annimationID() 
+	{
+		_animIDGrounded = Animator.StringToHash("Grounded");
+		_animIDJump = Animator.StringToHash("Jump");
+		_animIDFreeFall = Animator.StringToHash("FreeFall");
+	}
+
+	private void GroundCheck()
+    {
+		Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+		Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+
+		// update animator if using character
+		if (hasAnimator)
+		{
+			animator.SetBool(_animIDGrounded, Grounded);
+		}
+	}
+
 
 	private void Move()
 	{
