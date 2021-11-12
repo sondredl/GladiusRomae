@@ -13,7 +13,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 #endif
 //[RequireComponent(typeof(Rigidbody))]
-public class MeleeController : MonoBehaviour
+public class OpponentController : MonoBehaviour
 {
 	[Header("Player")]
 	[Tooltip("Move speed of the character in m/s")]
@@ -81,7 +81,7 @@ public class MeleeController : MonoBehaviour
 	// playerHealth
     public static bool isAlive;
     public int maxHealth = 100;
-    private static int currentHealth;
+    private static int currenOpponentHealth;
     public static HealthBar healthBar;
 
 	// timeout deltatime
@@ -94,8 +94,8 @@ public class MeleeController : MonoBehaviour
 	[Tooltip("player is jumping")] public bool jump = false;
 
 
-	private Animator animator;
-	private CharacterController controller;
+	private Animator animatorOpponent;
+	private CharacterController opponentController;
 	private NewInput input;
 	private GameObject mainCamera;
 	private const float threshold = 0.01f;
@@ -113,13 +113,13 @@ public class MeleeController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		hasAnimator = TryGetComponent(out animator);
-		controller = GetComponent<CharacterController>();
+		hasAnimator = TryGetComponent(out animatorOpponent);
+		opponentController = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
 		//playerHealth
-        currentHealth = maxHealth;
+        currenOpponentHealth = maxHealth;
         isAlive = true;
-        healthBar.SetMaxHealth(currentHealth);
+        // healthBar.SetMaxHealth(currenOpponentHealth);
 
 		// reset our timeouts on start
 		_attackTimeOutDelta = AttackTimeOut;
@@ -129,7 +129,7 @@ public class MeleeController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		hasAnimator = TryGetComponent(out animator);
+		hasAnimator = TryGetComponent(out animatorOpponent);
 		JumpAndGravity();
 		input = GetComponent<NewInput>();
 		animationAction();
@@ -147,7 +147,7 @@ public class MeleeController : MonoBehaviour
 		{
 			if (input.attack)
 			{
-				animator.SetTrigger("Attack");
+				animatorOpponent.SetTrigger("Attack");
 				input.attack = false;
 			}
 		}
@@ -155,7 +155,7 @@ public class MeleeController : MonoBehaviour
 		{
 			if (input.block)
 			{
-				animator.SetTrigger("Attack2");
+				animatorOpponent.SetTrigger("Attack2");
 				input.block = false;
 			}
 		}
@@ -163,7 +163,7 @@ public class MeleeController : MonoBehaviour
 		{
 			if (input.jump)
 			{
-				animator.SetTrigger("Jump");
+				animatorOpponent.SetTrigger("Jump");
 				input.jump = false;
 			}
 		}
@@ -191,7 +191,7 @@ public class MeleeController : MonoBehaviour
 		if (input.move == Vector2.zero) targetSpeed = 0.0f;
 
 		// a reference to the players current horizontal velocity
-		float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
+		float currentHorizontalSpeed = new Vector3(opponentController.velocity.x, 0.0f, opponentController.velocity.z).magnitude;
 
 		float speedOffset = 0.1f;
 		float inputMagnitude = input.analogMovement ? input.move.magnitude : 1f;
@@ -230,12 +230,12 @@ public class MeleeController : MonoBehaviour
 		Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
 		// move the player
-		controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+		opponentController.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
 		// update animator if using character
 		if (hasAnimator)
 		{
-			animator.SetFloat("Speed", _animationBlend);
+			animatorOpponent.SetFloat("Speed", _animationBlend);
 			/*animator.SetFloat("MoveSpeed",animIDMotionSpeed, inputMagnitude);*/
 		}
 	}
@@ -262,7 +262,7 @@ public class MeleeController : MonoBehaviour
 	{
 		if (Grounded)
 		{
-			Debug.Log("is grounded");
+			Debug.Log("opponent is grounded");
 			// reset the fall timeout timer
 			_fallTimeoutDelta = FallTimeout;
 
@@ -332,17 +332,17 @@ public class MeleeController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        // Debug.Log(currentHealth);
-        Debug.Log("TakeDamage() " + currentHealth);
-        animator.SetTrigger("takeDamage");
-        if (currentHealth <= 0)
+        currenOpponentHealth -= damage;
+        // Debug.Log(currenOpponentHealth);
+        Debug.Log("TakeDamage() " + currenOpponentHealth);
+        animatorOpponent.SetTrigger("takeDamage");
+        if (currenOpponentHealth <= 0)
         {
             Debug.Log("player died");
             isAlive = false;
-       	 	animator.SetTrigger("Die");
+       	 	animatorOpponent.SetTrigger("Die");
         }
-        healthBar.SetHealth(currentHealth);
+        healthBar.SetHealth(currenOpponentHealth);
     }
 
     void OnCollisionEnter(Collision collision)

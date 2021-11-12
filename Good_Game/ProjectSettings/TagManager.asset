@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Cinemachine
+  - PaladinCam
+  - Damage_10
+  - CinemachineTarget
+  - Opponent
+  - OpponentSword
+  - MySward
   layers:
   - Default
   - TransparentFX
@@ -13,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - Player
+  - 
   - 
   - 
   - 

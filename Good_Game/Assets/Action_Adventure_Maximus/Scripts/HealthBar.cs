@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    private static Animator animator;
+    // private static Animator animator;
 
     public Slider slider;
     public Gradient gradient;
@@ -20,6 +20,7 @@ public class HealthBar : MonoBehaviour
     public void SetHealth(int health)
     {
         slider.value = health;
-        animator.SetTrigger("Die");
+        Debug.Log("SetHealth");
+        // animator.SetTrigger("Die");
     }
 }

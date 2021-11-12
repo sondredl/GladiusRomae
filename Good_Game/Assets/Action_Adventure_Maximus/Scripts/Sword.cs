@@ -16,6 +16,7 @@ public class Sword : MonoBehaviour
     [SerializeField] private Transform hitPoint;
 
 
+	private Animator animator;
     void Start()
     {
     }
@@ -35,6 +36,7 @@ public class Sword : MonoBehaviour
             //     SwardHit();
             // }
         }
+        // OnCollisionEnter();
     }
     private void SwardHit()
     {
@@ -53,7 +55,7 @@ public class Sword : MonoBehaviour
             var health = hitInfo.collider.GetComponent<PlayerHealth>();
             if (health != null)
             {
-                PlayerHealth.TakeDamage(damage);
+                // PlayerHealth.TakeDamage(damage);
             }
         }
     }
@@ -61,8 +63,8 @@ public class Sword : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            // Debug.Log("player conact");
-            PlayerHealth.TakeDamage(damage);
+            Debug.Log("sward collision");
+            // PlayerHealth.TakeDamage(damage);
         }
     }
 }
