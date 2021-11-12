@@ -66,8 +66,6 @@ public class MeleeController : MonoBehaviour
 	[Tooltip("For locking the camera position on all axis")]
 	public bool LockCameraPosition = false;
 
-
-
 	// cinemachine
 	private float _cinemachineTargetYaw;
 	private float _cinemachineTargetPitch;
@@ -87,28 +85,20 @@ public class MeleeController : MonoBehaviour
     public static HealthBar healthBar;
 
 	// timeout deltatime
-
 	private float _jumpTimeoutDelta;
 	private float _attackTimeOutDelta;
 	private float _fallTimeoutDelta;
 
-	[Tooltip("player is blocking")]
-	public bool blocking = false;
-
-	[Tooltip("player is attacking")]
-	public bool attacking = false;
-
-	[Tooltip("player is jumping")]
-	public bool jump = false;
+	[Tooltip("player is blocking")] public bool blocking = false;
+	[Tooltip("player is attacking")] public bool attacking = false;
+	[Tooltip("player is jumping")] public bool jump = false;
 
 
 	private Animator animator;
 	private CharacterController controller;
 	private NewInput input;
 	private GameObject mainCamera;
-
 	private const float threshold = 0.01f;
-
 	private bool hasAnimator;
 
 	private void Awake()
@@ -120,13 +110,9 @@ public class MeleeController : MonoBehaviour
 		}
 	}
 
-
-
-
 	// Start is called before the first frame update
 	void Start()
 	{
-
 		hasAnimator = TryGetComponent(out animator);
 		controller = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
@@ -134,7 +120,6 @@ public class MeleeController : MonoBehaviour
         currentHealth = maxHealth;
         isAlive = true;
         healthBar.SetMaxHealth(currentHealth);
-
 
 		// reset our timeouts on start
 		_attackTimeOutDelta = AttackTimeOut;
@@ -146,86 +131,42 @@ public class MeleeController : MonoBehaviour
 	{
 		hasAnimator = TryGetComponent(out animator);
 		JumpAndGravity();
-		//groundCheck();
 		input = GetComponent<NewInput>();
-		// input.update();
-
 		animationAction();
 		Move();
-
-		// playerhealth
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage(21);
-            // animator.SetTrigger("Die");
-        }
 	}
-
-
 
 	private void LateUpdate()
 	{
 		CameraRotation();
 	}
 
-    public void TakeDamage(int damage)
-    {
-        Debug.Log(currentHealth);
-        currentHealth -= damage;
-        Debug.Log("TakeDamage()");
-        animator.SetTrigger("takeDamage");
-        if (currentHealth <= 0)
-        {
-            Debug.Log("player died");
-            isAlive = false;
-        animator.SetTrigger("Die");
-            // animator.SetTrigger("Die");
-        }
-        // animator.SetTrigger("takeDamage");
-        healthBar.SetHealth(currentHealth);
-    }
-
 	private void animationAction()
 	{
-
-
 		if (!attacking)
 		{
 			if (input.attack)
 			{
-				// Debug.Log("meeleController.animationAction(!attack)");
-				Debug.Log(input.attack);
 				animator.SetTrigger("Attack");
-				// attacking = true;
 				input.attack = false;
-
 			}
 		}
-				// attacking = false;
-				// input.attack = false;
 		if (!blocking)
 		{
 			if (input.block)
 			{
 				animator.SetTrigger("Attack2");
 				input.block = false;
-				// blocking = true;
 			}
 		}
-
 		if (!jump)
 		{
 			if (input.jump)
 			{
 				animator.SetTrigger("Jump");
-				jump = true;
-
+				input.jump = false;
 			}
 		}
-		if (input.takeDamage) {
-			animator.SetTrigger("takeDamage");
-		}
-
 		else
 		{
 			_attackTimeOutDelta -= Time.deltaTime;
@@ -236,12 +177,6 @@ public class MeleeController : MonoBehaviour
 			_attackTimeOutDelta = AttackTimeOut;
 			attacking = false;
 		}
-		
-
-		
-
-		//input.attack = false;
-
 	}
 
 	private void Move()
@@ -323,7 +258,6 @@ public class MeleeController : MonoBehaviour
 		CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
 	}
 
-
 	private void JumpAndGravity()
 	{
 		if (Grounded)
@@ -352,26 +286,28 @@ public class MeleeController : MonoBehaviour
 			{
 				// the square root of H * -2 * G = how much velocity needed to reach desired height
 				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+				Debug.Log("input jump");
+				// TakeDamage(24);
 				input.jump = false;
-
 			}
 
 			// jump timeout
 			if (_jumpTimeoutDelta >= 0.0f)
 			{
+				Debug.Log("jump timeout delta");
 				_jumpTimeoutDelta -= Time.deltaTime;
 			}
 		}
 
 		else
 		{
-				Debug.Log("is not grounded");
 			// reset the jump timeout timer
 			_jumpTimeoutDelta = JumpTimeout;
 
 			// fall timeout
 			if (_fallTimeoutDelta >= 0.0f)
 			{
+				Debug.Log("is not grounded");
 				_fallTimeoutDelta -= Time.deltaTime;
 			}
 	
@@ -393,5 +329,31 @@ public class MeleeController : MonoBehaviour
 		if (lfAngle > 360f) lfAngle -= 360f;
 		return Mathf.Clamp(lfAngle, lfMin, lfMax);
 	}
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        Debug.Log(currentHealth);
+        Debug.Log("TakeDamage()");
+        animator.SetTrigger("takeDamage");
+        if (currentHealth <= 0)
+        {
+            Debug.Log("player died");
+            isAlive = false;
+       	 	animator.SetTrigger("Die");
+        }
+        healthBar.SetHealth(currentHealth);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+			Debug.Log("collision with untagged");
+        if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
+        {
+			int damage = 26;
+			Debug.Log("collision with untagged");
+            Debug.Log(damage);
+        }
+    }
 }
 

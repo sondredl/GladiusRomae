@@ -54,27 +54,27 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    // public static void TakeDamage(int damage)
-    // {
-    //     Debug.Log(currentHealth);
-    //     currentHealth -= damage;
-    //     Debug.Log("takeDamage()");
-    //     // animator.SetTrigger("takeDamage");
-    //     if (currentHealth <= 0)
-    //     {
-    //         Debug.Log("player died");
-    //         isAlive = false;
-    //         // animator.SetTrigger("Die");
-    //     }
-    //     animator.SetTrigger("takeDamage");
-    //     healthBar.SetHealth(currentHealth);
-    // }
+    public static void TakeDamage(int damage)
+    {
+        Debug.Log(currentHealth);
+        currentHealth -= damage;
+        Debug.Log("takeDamage()");
+        // animator.SetTrigger("takeDamage");
+        if (currentHealth <= 0)
+        {
+            Debug.Log("player died");
+            isAlive = false;
+            // animator.SetTrigger("Die");
+        }
+        animator.SetTrigger("takeDamage");
+        healthBar.SetHealth(currentHealth);
+    }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
         {
-            // TakeDamage(damage);
+            TakeDamage(damage);
             Debug.Log(damage);
             //Debug.Log("collision caused by an Untagged game object");
             //Debug.Log(currentHealth);

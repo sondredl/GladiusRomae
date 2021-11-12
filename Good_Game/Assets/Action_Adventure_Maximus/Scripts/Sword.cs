@@ -35,6 +35,7 @@ public class Sword : MonoBehaviour
             //     SwardHit();
             // }
         }
+        // OnCollisionEnter();
     }
     private void SwardHit()
     {
@@ -59,9 +60,9 @@ public class Sword : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
+            Debug.Log("player conact");
         if (collision.gameObject.tag == "Player")
         {
-            // Debug.Log("player conact");
             // PlayerHealth.TakeDamage(damage);
         }
     }
