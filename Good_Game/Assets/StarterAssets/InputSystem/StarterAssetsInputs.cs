@@ -1,8 +1,6 @@
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-
 using UnityEngine.InputSystem;
-
 #endif
 
 namespace StarterAssets

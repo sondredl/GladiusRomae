@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 // namespace UnityStandardAssets.Characters.ThirdPerson
 // {
@@ -44,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
     //         LookInput(value.Get<Vector2>());
     //     }
     // }
+    // void Start () {
+    //     animator = GetComponent<Animator>();
+    //     animator.Play("motion");
+    // }
 
     private void Awake()
     {
@@ -82,7 +87,8 @@ public class PlayerMovement : MonoBehaviour
         // left and right mouse click attack
         if (Input.GetMouseButtonDown(0))
         {
-            animator.SetTrigger("Attack");
+            // animator.SetTrigger("Attack");
+            animator.Play("Attack2");
             Debug.Log("attack trigger engaged");
         }
         if (Input.GetMouseButtonDown(1))
