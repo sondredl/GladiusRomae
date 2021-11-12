@@ -12,6 +12,7 @@ public class MeleeInput : MonoBehaviour
     public bool sprint;
     public bool attack;
     public bool block;
+    public bool takeDamage;
     [Header("Movement Settings")]
     public bool analogMovement;
 

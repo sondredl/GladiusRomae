@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
-#endif
+// #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+// using UnityEngine.InputSystem;
+// #endif
 
 [RequireComponent(typeof(CharacterController))]
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -16,9 +17,9 @@ public class MeleeController : MonoBehaviour
 {
 	[Header("Player")]
 	[Tooltip("Move speed of the character in m/s")]
-	public float MoveSpeed = 2.0f;
+	public float MoveSpeed = 6.0f;
 	[Tooltip("Sprint speed of the character in m/s")]
-	public float SprintSpeed = 5.335f;
+	public float SprintSpeed = 3.0f;
 	[Tooltip("How fast the character turns to face movement direction")]
 	[Range(0.0f, 0.3f)]
 	public float RotationSmoothTime = 0.12f;
@@ -51,7 +52,7 @@ public class MeleeController : MonoBehaviour
 
 	[Space(10)]
 	[Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
-	public float AttackTimeOut = 3.7f;
+	public float AttackTimeOut = 1f;
 
 	[Header("Cinemachine")]
 	[Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
@@ -78,6 +79,12 @@ public class MeleeController : MonoBehaviour
 	private float _rotationVelocity;
 	private float _verticalVelocity;
 	private float _terminalVelocity = 53.0f;
+
+	// playerHealth
+    public static bool isAlive;
+    public int maxHealth = 100;
+    private static int currentHealth;
+    public static HealthBar healthBar;
 
 	// timeout deltatime
 
@@ -123,6 +130,10 @@ public class MeleeController : MonoBehaviour
 		hasAnimator = TryGetComponent(out animator);
 		controller = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
+		//playerHealth
+        currentHealth = maxHealth;
+        isAlive = true;
+        healthBar.SetMaxHealth(currentHealth);
 
 
 		// reset our timeouts on start
@@ -136,9 +147,18 @@ public class MeleeController : MonoBehaviour
 		hasAnimator = TryGetComponent(out animator);
 		JumpAndGravity();
 		//groundCheck();
+		input = GetComponent<NewInput>();
+		// input.update();
 
 		animationAction();
 		Move();
+
+		// playerhealth
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            TakeDamage(21);
+            // animator.SetTrigger("Die");
+        }
 	}
 
 
@@ -148,6 +168,23 @@ public class MeleeController : MonoBehaviour
 		CameraRotation();
 	}
 
+    public void TakeDamage(int damage)
+    {
+        Debug.Log(currentHealth);
+        currentHealth -= damage;
+        Debug.Log("TakeDamage()");
+        animator.SetTrigger("takeDamage");
+        if (currentHealth <= 0)
+        {
+            Debug.Log("player died");
+            isAlive = false;
+        animator.SetTrigger("Die");
+            // animator.SetTrigger("Die");
+        }
+        // animator.SetTrigger("takeDamage");
+        healthBar.SetHealth(currentHealth);
+    }
+
 	private void animationAction()
 	{
 
@@ -156,17 +193,23 @@ public class MeleeController : MonoBehaviour
 		{
 			if (input.attack)
 			{
+				// Debug.Log("meeleController.animationAction(!attack)");
+				Debug.Log(input.attack);
 				animator.SetTrigger("Attack");
-				attacking = true;
+				// attacking = true;
+				input.attack = false;
 
 			}
 		}
+				// attacking = false;
+				// input.attack = false;
 		if (!blocking)
 		{
 			if (input.block)
 			{
-				animator.SetTrigger("Block");
-				blocking = true;
+				animator.SetTrigger("Attack2");
+				input.block = false;
+				// blocking = true;
 			}
 		}
 
@@ -178,6 +221,9 @@ public class MeleeController : MonoBehaviour
 				jump = true;
 
 			}
+		}
+		if (input.takeDamage) {
+			animator.SetTrigger("takeDamage");
 		}
 
 		else
@@ -282,6 +328,7 @@ public class MeleeController : MonoBehaviour
 	{
 		if (Grounded)
 		{
+			Debug.Log("is grounded");
 			// reset the fall timeout timer
 			_fallTimeoutDelta = FallTimeout;
 
@@ -297,52 +344,54 @@ public class MeleeController : MonoBehaviour
 			// stop our velocity dropping infinitely when grounded
 			if (_verticalVelocity < 0.0f)
 			{
-				_verticalVelocity = -2f;
+				_verticalVelocity = -9f;
 			}
 
-		// Jump
-		if (input.jump && _jumpTimeoutDelta <= 0.0f)
-		{
-			// the square root of H * -2 * G = how much velocity needed to reach desired height
-			_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
-		}
-
-				// jump timeout
-				if (_jumpTimeoutDelta >= 0.0f)
-				{
-					_jumpTimeoutDelta -= Time.deltaTime;
-				}
-			}
-
-			else
+			// Jump
+			if (input.jump && _jumpTimeoutDelta <= 0.0f)
 			{
-				// reset the jump timeout timer
-				_jumpTimeoutDelta = JumpTimeout;
-
-				// fall timeout
-				if (_fallTimeoutDelta >= 0.0f)
-				{
-					_fallTimeoutDelta -= Time.deltaTime;
-				}
-        
-				// if we are not grounded, do not jump
+				// the square root of H * -2 * G = how much velocity needed to reach desired height
+				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 				input.jump = false;
+
 			}
 
-			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-			if (_verticalVelocity < _terminalVelocity)
+			// jump timeout
+			if (_jumpTimeoutDelta >= 0.0f)
 			{
-				_verticalVelocity += Gravity * Time.deltaTime;
+				_jumpTimeoutDelta -= Time.deltaTime;
 			}
 		}
 
-
-		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+		else
 		{
-			if (lfAngle < -360f) lfAngle += 360f;
-			if (lfAngle > 360f) lfAngle -= 360f;
-			return Mathf.Clamp(lfAngle, lfMin, lfMax);
+				Debug.Log("is not grounded");
+			// reset the jump timeout timer
+			_jumpTimeoutDelta = JumpTimeout;
+
+			// fall timeout
+			if (_fallTimeoutDelta >= 0.0f)
+			{
+				_fallTimeoutDelta -= Time.deltaTime;
+			}
+	
+			// if we are not grounded, do not jump
+			input.jump = false;
+		}
+
+		// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+		if (_verticalVelocity < _terminalVelocity)
+		{
+			_verticalVelocity += Gravity * Time.deltaTime;
 		}
 	}
+
+
+	private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+	{
+		if (lfAngle < -360f) lfAngle += 360f;
+		if (lfAngle > 360f) lfAngle -= 360f;
+		return Mathf.Clamp(lfAngle, lfMin, lfMax);
+	}
+}
 

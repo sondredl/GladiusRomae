@@ -29,9 +29,9 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            TakeDamage(21);
+            // TakeDamage(21);
             // animator.SetTrigger("Die");
         }
         if (GetComponent<Rigidbody>().velocity.y < 1)
@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 Debug.Log("has fallen");
                 Debug.Log(fallTime);
-                TakeDamage(30);
+                // TakeDamage(30);
             }
             // Reset fall measurements
             hasFallen = false;
@@ -54,25 +54,27 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public static void TakeDamage(int damage)
-    {
-        Debug.Log(currentHealth);
-        currentHealth -= damage;
-        // animator.SetTrigger("isDead");
-        if (currentHealth <= 0)
-        {
-            Debug.Log("player died");
-            isAlive = false;
-            // animator.SetTrigger("Die");
-        }
-        healthBar.SetHealth(currentHealth);
-    }
+    // public static void TakeDamage(int damage)
+    // {
+    //     Debug.Log(currentHealth);
+    //     currentHealth -= damage;
+    //     Debug.Log("takeDamage()");
+    //     // animator.SetTrigger("takeDamage");
+    //     if (currentHealth <= 0)
+    //     {
+    //         Debug.Log("player died");
+    //         isAlive = false;
+    //         // animator.SetTrigger("Die");
+    //     }
+    //     animator.SetTrigger("takeDamage");
+    //     healthBar.SetHealth(currentHealth);
+    // }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
         {
-            TakeDamage(damage);
+            // TakeDamage(damage);
             Debug.Log(damage);
             //Debug.Log("collision caused by an Untagged game object");
             //Debug.Log(currentHealth);

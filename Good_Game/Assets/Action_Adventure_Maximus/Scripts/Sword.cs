@@ -53,7 +53,7 @@ public class Sword : MonoBehaviour
             var health = hitInfo.collider.GetComponent<PlayerHealth>();
             if (health != null)
             {
-                PlayerHealth.TakeDamage(damage);
+                // PlayerHealth.TakeDamage(damage);
             }
         }
     }
@@ -62,7 +62,7 @@ public class Sword : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             // Debug.Log("player conact");
-            PlayerHealth.TakeDamage(damage);
+            // PlayerHealth.TakeDamage(damage);
         }
     }
 }

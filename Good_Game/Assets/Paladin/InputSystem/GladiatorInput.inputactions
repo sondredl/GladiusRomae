@@ -46,9 +46,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Block",
+                    "name": "Attack2",
                     "type": "Button",
                     "id": "ea1638c4-7feb-4a3a-b1c2-bb87a666853c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "takeDamage",
+                    "type": "Button",
+                    "id": "acc0c2a6-5508-4bc6-ba19-7944bf82307c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -249,7 +257,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Block",
+                    "action": "Attack2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6227b311-0426-4a1e-9143-dfab5b1651c5",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "takeDamage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
