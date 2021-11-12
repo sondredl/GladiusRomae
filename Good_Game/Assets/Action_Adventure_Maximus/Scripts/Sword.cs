@@ -16,6 +16,7 @@ public class Sword : MonoBehaviour
     [SerializeField] private Transform hitPoint;
 
 
+	private Animator animator;
     void Start()
     {
     }
@@ -60,9 +61,9 @@ public class Sword : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-            Debug.Log("player conact");
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("sward collision");
             // PlayerHealth.TakeDamage(damage);
         }
     }

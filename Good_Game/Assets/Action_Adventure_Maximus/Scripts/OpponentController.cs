@@ -13,7 +13,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 #endif
 //[RequireComponent(typeof(Rigidbody))]
-public class MeleeController : MonoBehaviour
+public class OpponentController : MonoBehaviour
 {
 	[Header("Player")]
 	[Tooltip("Move speed of the character in m/s")]

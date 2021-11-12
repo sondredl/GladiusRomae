@@ -5,25 +5,25 @@ using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
 
-public class PlayerHealth : MonoBehaviour
+public class OpponentHealth : MonoBehaviour
 {
 
     private static Animator animator;
     public static bool isAlive;
     public int maxHealth = 100;
-    private static int currentHealth;
+    private static int currentOpponentHealth;
     public static HealthBar healthBar;
 
     float fallTime = 0;
     bool hasFallen = false;
-    int damage = 10;
+    int damage = 55;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        currentOpponentHealth = 100;
         isAlive = true;
-        healthBar.SetMaxHealth(currentHealth);
+        // healthBar.SetMaxHealth(currentHealth);
     }
 
     // Update is called once per frame
@@ -31,8 +31,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            // TakeDamage(21);
-            // animator.SetTrigger("Die");
+            OpponentTakeDamage(damage);
+            animator.SetTrigger("opponentDead");
         }
         if (GetComponent<Rigidbody>().velocity.y < 1)
         {
@@ -54,28 +54,30 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public static void TakeDamage(int damage)
+    public static void OpponentTakeDamage(int damage)
     {
-        Debug.Log(currentHealth);
-        currentHealth -= damage;
-        Debug.Log("takeDamage()");
+        Debug.Log(currentOpponentHealth);
+        currentOpponentHealth -= damage;
+        Debug.Log("opponentTakeDamage()" + currentOpponentHealth);
         // animator.SetTrigger("takeDamage");
-        if (currentHealth <= 0)
+        animator.SetTrigger("opponentDamage");
+        if (currentOpponentHealth <= 0)
         {
-            Debug.Log("player died");
+            Debug.Log("opponent died");
             isAlive = false;
-            // animator.SetTrigger("Die");
+            animator.SetTrigger("Die");
         }
         animator.SetTrigger("opponentDamage");
-        healthBar.SetHealth(currentHealth);
+        // healthBar.SetHealth(currentHealth);
     }
 
     void OnCollisionEnter(Collision collision)
     {
+            Debug.Log("your opponent is detecting collision " + damage);
         if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
         {
 
-            TakeDamage(damage);
+            OpponentTakeDamage(damage);
             Debug.Log("your opponent took a hit of: " + damage);
             //Debug.Log("collision caused by an Untagged game object");
             //Debug.Log(currentHealth);
