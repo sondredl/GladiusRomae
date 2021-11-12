@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class OpponentHealth : MonoBehaviour
 {
 
-    private static Animator animator;
+    private static Animator animatorOpponent;
     public static bool isAlive;
     public int maxHealth = 100;
     private static int currentOpponentHealth;
@@ -32,7 +32,7 @@ public class OpponentHealth : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             OpponentTakeDamage(damage);
-            animator.SetTrigger("opponentDead");
+            animatorOpponent.SetTrigger("opponentDead");
         }
         if (GetComponent<Rigidbody>().velocity.y < 1)
         {
@@ -60,14 +60,14 @@ public class OpponentHealth : MonoBehaviour
         currentOpponentHealth -= damage;
         Debug.Log("opponentTakeDamage()" + currentOpponentHealth);
         // animator.SetTrigger("takeDamage");
-        animator.SetTrigger("opponentDamage");
         if (currentOpponentHealth <= 0)
         {
             Debug.Log("opponent died");
             isAlive = false;
-            animator.SetTrigger("Die");
+            animatorOpponent.SetTrigger("Die");
         }
-        animator.SetTrigger("opponentDamage");
+        animatorOpponent.SetTrigger("opponentDamage");
+        animatorOpponent.SetTrigger("opponentDamage");
         // healthBar.SetHealth(currentHealth);
     }
 
