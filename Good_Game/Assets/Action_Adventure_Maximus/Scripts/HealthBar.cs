@@ -34,7 +34,7 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealth(int health)
     {
-        Debug.Log("(healthBar)SetHealth");
+        Debug.Log("(healthBar)SetHealth" + health);
         slider.value = health;
         // animator.SetTrigger("Die");
     }
