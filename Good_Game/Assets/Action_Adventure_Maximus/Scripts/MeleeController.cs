@@ -135,7 +135,7 @@ public class MeleeController : MonoBehaviour
 		animationAction();
 		Move();
 
-        meleeHealthBar.SetNewHealth(currentHealth);
+        // meleeHealthBar.SetNewHealth(currentHealth);
 		// healthBar.slider;
 	}
 
@@ -147,9 +147,7 @@ public class MeleeController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        // Debug.Log(currentHealth);
-        Debug.Log("(meleeController) TakeDamage() " + currentHealth);
-        meleeAnimator.SetTrigger("takeDamage");
+        meleeHealthBar.SetNewHealth(currentHealth);
         if (currentHealth <= 0)
         {
             Debug.Log("(meleeController) player died");
@@ -157,7 +155,8 @@ public class MeleeController : MonoBehaviour
 			// pause_menu.Pause();
        	 	meleeAnimator.SetTrigger("Die");
         }
-        meleeHealthBar.SetNewHealth(currentHealth);
+        Debug.Log("(meleeController) TakeDamage() " + currentHealth);
+        meleeAnimator.SetTrigger("takeDamage");
     }
 
     void OnCollisionEnter(Collision collision)
