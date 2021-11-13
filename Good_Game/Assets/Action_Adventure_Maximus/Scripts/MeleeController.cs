@@ -92,7 +92,7 @@ public class MeleeController : MonoBehaviour
     public static bool isAlive;
     public int maxHealth = 30;
     private static int currentHealth;
-    public static HealthBar healthBar;
+    public MeleeHealthBar meleeHealthBar;
 
 	private static Animator meleeAnimator;
 	private CharacterController controller;
@@ -119,7 +119,7 @@ public class MeleeController : MonoBehaviour
 		//playerHealth
         currentHealth = maxHealth;
         isAlive = true;
-        HealthBar.SetNewMaxHealth(currentHealth);
+        meleeHealthBar.SetNewMaxHealth(currentHealth);
 
 		// reset our timeouts on start
 		_attackTimeOutDelta = AttackTimeOut;
@@ -135,7 +135,7 @@ public class MeleeController : MonoBehaviour
 		animationAction();
 		Move();
 
-        HealthBar.SetNewHealth(currentHealth);
+        meleeHealthBar.SetNewHealth(currentHealth);
 		// healthBar.slider;
 	}
 
@@ -144,7 +144,7 @@ public class MeleeController : MonoBehaviour
 		CameraRotation();
 	}
 
-    public static void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         // Debug.Log(currentHealth);
@@ -157,7 +157,7 @@ public class MeleeController : MonoBehaviour
 			// pause_menu.Pause();
        	 	meleeAnimator.SetTrigger("Die");
         }
-        HealthBar.SetNewHealth(currentHealth);
+        meleeHealthBar.SetNewHealth(currentHealth);
     }
 
     void OnCollisionEnter(Collision collision)

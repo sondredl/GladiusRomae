@@ -8,11 +8,11 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
 
-    private static Animator animator;
+    // private static Animator animator;
     public static bool isAlive;
     public int maxHealth = 50;
     private static int currentHealth;
-    public static HealthBar healthBar;
+    public HealthBar healthBar;
 
     float fallTime = 0;
     bool hasFallen = false;
@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             // TakeDamage(21);
-            animator.SetTrigger("Die");
+            // animator.SetTrigger("Die");
         }
         if (GetComponent<Rigidbody>().velocity.y < 1)
         {
@@ -54,20 +54,20 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public static void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        Debug.Log("(playerhealth): " + currentHealth);
+        // Debug.Log("(playerhealth): " + currentHealth);
         currentHealth -= damage;
-        Debug.Log("(PlayerHealth) takin damage " + damage);
+        // Debug.Log("(PlayerHealth) takin damage " + damage);
         // animator.SetTrigger("takeDamage");
         if (currentHealth <= 0)
         {
-            Debug.Log("(PlayerHealth) player died");
+            // Debug.Log("(PlayerHealth) player died");
             isAlive = false;
-            animator.SetTrigger("Die");
+            // animator.SetTrigger("Die");
         }
         // animator.SetTrigger("opponentDamage");
-        animator.SetTrigger("takeDamage");
+        // animator.SetTrigger("takeDamage");
         healthBar.SetHealth(currentHealth);
     }
 

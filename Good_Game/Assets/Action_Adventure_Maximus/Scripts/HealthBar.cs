@@ -7,23 +7,23 @@ public class HealthBar : MonoBehaviour
 {
     // private static Animator animator;
 
-    public static Slider slider;
+    public Slider slider;
     public Gradient gradient;
     public Image fill;
 
-    public static void SetNewMaxHealth(int health)
-    {
-        Debug.Log("(healthBar)SetNewMaxHealth: " + health);
-        slider.maxValue = health;
-        slider.value = health;
-    }
+    // public static void SetNewMaxHealth(int health)
+    // {
+    //     Debug.Log("(healthBar)SetNewMaxHealth: " + health);
+    //     slider.maxValue = health;
+    //     slider.value = health;
+    // }
 
-    public static void SetNewHealth(int health)
-    {
-        Debug.Log("(healthBar)SetNewHealth: " + health);
-        slider.value = health;
-        // animator.SetTrigger("Die");
-    }
+    // public static void SetNewHealth(int health)
+    // {
+    //     Debug.Log("(healthBar)SetNewHealth: " + health);
+    //     slider.value = health;
+    //     // animator.SetTrigger("Die");
+    // }
     public void SetMaxHealth(int health)
     {
         Debug.Log("(healthBar)SetMaxHealth: " + health);

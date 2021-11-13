@@ -343,6 +343,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1030641166}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &179685994 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6427884013481644376, guid: e533b44858367e149bc5eee2ee127234,
+    type: 3}
+  m_PrefabInstance: {fileID: 1030641166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &182964213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 91537696499146005, guid: 8526fc62d267e704aabe14dd3ca9d7ed,
@@ -1428,7 +1440,7 @@ PrefabInstance:
     - target: {fileID: 6427884014571440136, guid: e533b44858367e149bc5eee2ee127234,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6427884014571440137, guid: e533b44858367e149bc5eee2ee127234,
         type: 3}
@@ -1887,7 +1899,8 @@ MonoBehaviour:
   blocking: 0
   attacking: 0
   jump: 0
-  maxHealth: 55
+  maxHealth: 100
+  meleeHealthBar: {fileID: 623646886}
 --- !u!114 &586490652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2112,9 +2125,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 623646884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f53d6f105a83049893d9510fa08363, type: 3}
+  m_Script: {fileID: 11500000, guid: de01e02fbc5f44e4790ebb0be28f2800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 683907057}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2144,7 +2158,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  fill: {fileID: 0}
+  fill: {fileID: 179685994}
 --- !u!1 &666209698 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1996994620884324626, guid: 89525f7fd6749ad4a95787c18936ecef,
@@ -2297,12 +2311,25 @@ MonoBehaviour:
   attacking: 0
   jump: 0
   maxHealth: 100
+  meleeHealthBar: {fileID: 0}
 --- !u!1 &683907056 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6427884012792495404, guid: e533b44858367e149bc5eee2ee127234,
     type: 3}
   m_PrefabInstance: {fileID: 1030641166}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &683907057 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6427884012792495403, guid: e533b44858367e149bc5eee2ee127234,
+    type: 3}
+  m_PrefabInstance: {fileID: 1030641166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683907056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &683907059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2315,6 +2342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f53d6f105a83049893d9510fa08363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 0}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -3030,7 +3058,7 @@ PrefabInstance:
     - target: {fileID: 6427884014571440134, guid: e533b44858367e149bc5eee2ee127234,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6427884014571440136, guid: e533b44858367e149bc5eee2ee127234,
         type: 3}
@@ -3797,6 +3825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  healthBar: {fileID: 683907059}
 --- !u!54 &1271957223
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5275,6 +5304,7 @@ MonoBehaviour:
   attacking: 0
   jump: 0
   maxHealth: 100
+  meleeHealthBar: {fileID: 0}
 --- !u!114 &2084731085
 MonoBehaviour:
   m_ObjectHideFlags: 0
