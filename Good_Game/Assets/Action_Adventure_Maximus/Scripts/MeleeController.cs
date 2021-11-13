@@ -78,11 +78,6 @@ public class MeleeController : MonoBehaviour
 	private float _verticalVelocity;
 	private float _terminalVelocity = 53.0f;
 
-	// playerHealth
-    public static bool isAlive;
-    public int maxHealth = 100;
-    private static int currentHealth;
-    public static HealthBar healthBar;
 
 	// timeout deltatime
 	private float _jumpTimeoutDelta;
@@ -93,8 +88,13 @@ public class MeleeController : MonoBehaviour
 	[Tooltip("player is attacking")] public bool attacking = false;
 	[Tooltip("player is jumping")] public bool jump = false;
 
+	// playerHealth
+    public static bool isAlive;
+    public int maxHealth = 100;
+    private static int currentHealth;
+    public static HealthBar healthBar;
 
-	private Animator animator;
+	private static Animator meleeAnimator;
 	private CharacterController controller;
 	private NewInput input;
 	private GameObject mainCamera;
@@ -113,7 +113,7 @@ public class MeleeController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		hasAnimator = TryGetComponent(out animator);
+		hasAnimator = TryGetComponent(out meleeAnimator);
 		controller = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
 		//playerHealth
@@ -129,7 +129,7 @@ public class MeleeController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		hasAnimator = TryGetComponent(out animator);
+		hasAnimator = TryGetComponent(out meleeAnimator);
 		JumpAndGravity();
 		input = GetComponent<NewInput>();
 		animationAction();
@@ -147,7 +147,7 @@ public class MeleeController : MonoBehaviour
 		{
 			if (input.attack)
 			{
-				animator.SetTrigger("Attack");
+				meleeAnimator.SetTrigger("Attack");
 				input.attack = false;
 			}
 		}
@@ -155,7 +155,7 @@ public class MeleeController : MonoBehaviour
 		{
 			if (input.block)
 			{
-				animator.SetTrigger("Attack2");
+				meleeAnimator.SetTrigger("Attack2");
 				input.block = false;
 			}
 		}
@@ -163,7 +163,7 @@ public class MeleeController : MonoBehaviour
 		{
 			if (input.jump)
 			{
-				animator.SetTrigger("Jump");
+				meleeAnimator.SetTrigger("Jump");
 				input.jump = false;
 			}
 		}
@@ -235,7 +235,7 @@ public class MeleeController : MonoBehaviour
 		// update animator if using character
 		if (hasAnimator)
 		{
-			animator.SetFloat("Speed", _animationBlend);
+			meleeAnimator.SetFloat("Speed", _animationBlend);
 			/*animator.SetFloat("MoveSpeed",animIDMotionSpeed, inputMagnitude);*/
 		}
 	}
@@ -330,17 +330,18 @@ public class MeleeController : MonoBehaviour
 		return Mathf.Clamp(lfAngle, lfMin, lfMax);
 	}
 
-    public void TakeDamage(int damage)
+    public static void TakeDamage(int damage)
     {
         currentHealth -= damage;
         // Debug.Log(currentHealth);
-        Debug.Log("TakeDamage() " + currentHealth);
-        animator.SetTrigger("takeDamage");
+        Debug.Log("(meleeController) TakeDamage() " + currentHealth);
+        meleeAnimator.SetTrigger("takeDamage");
         if (currentHealth <= 0)
         {
-            Debug.Log("player died");
+            Debug.Log("(meleeController) player died");
             isAlive = false;
-       	 	animator.SetTrigger("Die");
+			// pause_menu.Pause();
+       	 	meleeAnimator.SetTrigger("Die");
         }
         healthBar.SetHealth(currentHealth);
     }

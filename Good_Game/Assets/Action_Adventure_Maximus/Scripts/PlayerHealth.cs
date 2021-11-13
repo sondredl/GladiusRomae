@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
 
     float fallTime = 0;
     bool hasFallen = false;
-    int damage = 10;
+    int damage = 55;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             // TakeDamage(21);
-            // animator.SetTrigger("Die");
+            animator.SetTrigger("Die");
         }
         if (GetComponent<Rigidbody>().velocity.y < 1)
         {
@@ -56,17 +56,18 @@ public class PlayerHealth : MonoBehaviour
 
     public static void TakeDamage(int damage)
     {
-        Debug.Log(currentHealth);
+        Debug.Log("(playerhealth): " + currentHealth);
         currentHealth -= damage;
-        Debug.Log("takeDamage()");
+        Debug.Log("(PlayerHealth) takin damage " + damage);
         // animator.SetTrigger("takeDamage");
         if (currentHealth <= 0)
         {
-            Debug.Log("player died");
+            Debug.Log("(PlayerHealth) player died");
             isAlive = false;
-            // animator.SetTrigger("Die");
+            animator.SetTrigger("Die");
         }
-        animator.SetTrigger("opponentDamage");
+        // animator.SetTrigger("opponentDamage");
+        animator.SetTrigger("takeDamage");
         healthBar.SetHealth(currentHealth);
     }
 
@@ -76,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
         {
 
             TakeDamage(damage);
-            Debug.Log("your opponent took a hit of: " + damage);
+            Debug.Log("(player_health) you took a hit of: " + damage);
             //Debug.Log("collision caused by an Untagged game object");
             //Debug.Log(currentHealth);
             //currentHealth -= 20;

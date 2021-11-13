@@ -19,12 +19,18 @@ public class pause_menu : MonoBehaviour
         //{ 
         //    Pause();
         //}
-        if (PlayerHealth.isAlive == false)
+        if (MeleeController.isAlive == false)
         {
+            // PlayerMovement.animator.SetTrigger("Die");
+            Debug.Log("pause_menu you died! in");
             Pause();
-            PlayerMovement.animator.SetTrigger("Die");
-            Debug.Log("you died!");
         }
+        // if (PlayerHealth.isAlive == false)
+        // {
+        //     PlayerMovement.animator.SetTrigger("Die");
+        //     Debug.Log("pause_menu you died! in");
+        //     Pause();
+        // }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
@@ -48,7 +54,7 @@ public class pause_menu : MonoBehaviour
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
         GameIsPaused = true;
     }
 
