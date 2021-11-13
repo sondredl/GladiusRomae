@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
 
     private static Animator animator;
     public static bool isAlive;
-    public int maxHealth = 100;
+    public int maxHealth = 50;
     private static int currentHealth;
     public static HealthBar healthBar;
 

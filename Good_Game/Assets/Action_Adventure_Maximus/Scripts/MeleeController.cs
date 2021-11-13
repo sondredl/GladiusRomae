@@ -90,7 +90,7 @@ public class MeleeController : MonoBehaviour
 
 	// playerHealth
     public static bool isAlive;
-    public int maxHealth = 100;
+    public int maxHealth = 30;
     private static int currentHealth;
     public static HealthBar healthBar;
 
@@ -119,7 +119,7 @@ public class MeleeController : MonoBehaviour
 		//playerHealth
         currentHealth = maxHealth;
         isAlive = true;
-        healthBar.SetMaxHealth(currentHealth);
+        HealthBar.SetNewMaxHealth(currentHealth);
 
 		// reset our timeouts on start
 		_attackTimeOutDelta = AttackTimeOut;
@@ -134,12 +134,47 @@ public class MeleeController : MonoBehaviour
 		input = GetComponent<NewInput>();
 		animationAction();
 		Move();
+
+        HealthBar.SetNewHealth(currentHealth);
+		// healthBar.slider;
 	}
 
 	private void LateUpdate()
 	{
 		CameraRotation();
 	}
+
+    public static void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        // Debug.Log(currentHealth);
+        Debug.Log("(meleeController) TakeDamage() " + currentHealth);
+        meleeAnimator.SetTrigger("takeDamage");
+        if (currentHealth <= 0)
+        {
+            Debug.Log("(meleeController) player died");
+            isAlive = false;
+			// pause_menu.Pause();
+       	 	meleeAnimator.SetTrigger("Die");
+        }
+        HealthBar.SetNewHealth(currentHealth);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+			// Debug.Log("collision with untagged");
+        if (collision.gameObject.tag == "OpponentSword")
+        // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
+        {
+			int damage = 26;
+			TakeDamage(damage);
+			Debug.Log("collision with untagged");
+            // Debug.Log(damage);
+        }
+        if (collision.gameObject.tag == "mySword") {
+			OpponentHealth.OpponentTakeDamage(34);
+		}
+    }
 
 	private void animationAction()
 	{
@@ -330,36 +365,5 @@ public class MeleeController : MonoBehaviour
 		return Mathf.Clamp(lfAngle, lfMin, lfMax);
 	}
 
-    public static void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        // Debug.Log(currentHealth);
-        Debug.Log("(meleeController) TakeDamage() " + currentHealth);
-        meleeAnimator.SetTrigger("takeDamage");
-        if (currentHealth <= 0)
-        {
-            Debug.Log("(meleeController) player died");
-            isAlive = false;
-			// pause_menu.Pause();
-       	 	meleeAnimator.SetTrigger("Die");
-        }
-        healthBar.SetHealth(currentHealth);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-			// Debug.Log("collision with untagged");
-        if (collision.gameObject.tag == "OpponentSword")
-        // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
-        {
-			int damage = 26;
-			TakeDamage(damage);
-			Debug.Log("collision with untagged");
-            // Debug.Log(damage);
-        }
-        if (collision.gameObject.tag == "mySword") {
-			OpponentHealth.OpponentTakeDamage(34);
-		}
-    }
 }
 

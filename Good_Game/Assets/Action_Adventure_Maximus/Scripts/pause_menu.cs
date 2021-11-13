@@ -14,14 +14,8 @@ public class pause_menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // kill player statement
-        //if (PlayerHealth.currentHealth <= 0) 
-        //{ 
-        //    Pause();
-        //}
         if (MeleeController.isAlive == false)
         {
-            // PlayerMovement.animator.SetTrigger("Die");
             Debug.Log("pause_menu you died! in");
             Pause();
         }
