@@ -91,7 +91,7 @@ public class MeleeController : MonoBehaviour
 	// playerHealth
     public static bool isAlive;
     public int maxHealth = 30;
-    private static int currentHealth;
+    public static int currentHealth;
     public MeleeHealthBar meleeHealthBar;
 
 	private static Animator meleeAnimator;
@@ -150,12 +150,12 @@ public class MeleeController : MonoBehaviour
         meleeHealthBar.SetNewHealth(currentHealth);
         if (currentHealth <= 0)
         {
-            Debug.Log("(meleeController) player died");
+            Debug.Log("(smeleeController) player died");
             isAlive = false;
 			// pause_menu.Pause();
        	 	meleeAnimator.SetTrigger("Die");
         }
-        Debug.Log("(meleeController) TakeDamage() " + currentHealth);
+        // Debug.Log("(meleeController) TakeDamage() " + currentHealth);
         meleeAnimator.SetTrigger("takeDamage");
     }
 
@@ -296,7 +296,7 @@ public class MeleeController : MonoBehaviour
 	{
 		if (Grounded)
 		{
-			Debug.Log("is grounded");
+			// Debug.Log("is grounded");
 			// reset the fall timeout timer
 			_fallTimeoutDelta = FallTimeout;
 

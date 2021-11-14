@@ -7,19 +7,33 @@ public class MeleeHealthBar : MonoBehaviour
 {
     public Slider slider;
     public Gradient gradient;
-    public Image fill;
+    public Image HealthBar;
+    MeleeController Player;
+
+    private void Start () {
+        HealthBar = GetComponent<Image>();
+        Player = FindObjectOfType<MeleeController>();
+    }
+    private void Update() {
+        // SetNewHealth(MeleeController.currentHealth);
+        // slider.value = MeleeController.currentHealth;
+        // HealthBar.slider = MeleeController.currentHealth;
+        SetNewHealth(MeleeController.currentHealth);
+
+    }
 
     public void SetNewMaxHealth(int health)
     {
-        Debug.Log("(meleeHealthBar)SetNewMaxHealth: " + health);
         slider.maxValue = health;
         slider.value = health;
+        Debug.Log("(meleeHealthBar)SetNewMaxHealth: " + health);
     }
 
     public void SetNewHealth(int health)
     {
-        Debug.Log("(meleeHealthBar)SetNewHealth: " + health);
         slider.value = health;
+        // MeleeHealthBar.slider = health;
+        Debug.Log("(meleeHealthBar)SetNewHealth: " + health);
         // animator.SetTrigger("Die");
     }
     // public void SetMaxHealth(int health)
