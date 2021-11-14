@@ -46,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Attack2",
+                    "name": "Block",
                     "type": "Button",
                     "id": "ea1638c4-7feb-4a3a-b1c2-bb87a666853c",
                     "expectedControlType": "Button",
@@ -257,7 +257,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Attack2",
+                    "action": "Block",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

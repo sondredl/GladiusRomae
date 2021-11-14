@@ -90,7 +90,7 @@ public class MeleeController : MonoBehaviour
 
 	// playerHealth
     public static bool isAlive;
-    public int maxHealth = 30;
+    public int maxHealth = 100;
     public static int currentHealth;
     public MeleeHealthBar meleeHealthBar;
 
@@ -161,17 +161,24 @@ public class MeleeController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+		Debug.Log(collision.gameObject.tag);
 			// Debug.Log("collision with untagged");
         if (collision.gameObject.tag == "OpponentSword")
         // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
         {
 			int damage = 26;
 			TakeDamage(damage);
-			Debug.Log("collision with untagged");
+			Debug.Log("collision with OpponentSword");
             // Debug.Log(damage);
         }
         if (collision.gameObject.tag == "mySword") {
+			Debug.Log("collision with mySword");
 			OpponentHealth.OpponentTakeDamage(34);
+		}
+        if (collision.gameObject.tag == "getHealth") {
+			Debug.Log("if(true) => getting max health");
+			currentHealth = maxHealth;
+        	meleeHealthBar.SetNewHealth(currentHealth);
 		}
     }
 
@@ -182,6 +189,7 @@ public class MeleeController : MonoBehaviour
 			if (input.attack)
 			{
 				meleeAnimator.SetTrigger("Attack");
+				// Debug.Log("meleeController => input.attack");
 				input.attack = false;
 			}
 		}
@@ -189,7 +197,8 @@ public class MeleeController : MonoBehaviour
 		{
 			if (input.block)
 			{
-				meleeAnimator.SetTrigger("Attack2");
+				meleeAnimator.SetTrigger("Block");
+				// Debug.Log("meleeController => input.block");
 				input.block = false;
 			}
 		}
@@ -328,7 +337,7 @@ public class MeleeController : MonoBehaviour
 			// jump timeout
 			if (_jumpTimeoutDelta >= 0.0f)
 			{
-				Debug.Log("jump timeout delta");
+				// Debug.Log("jump timeout delta");
 				_jumpTimeoutDelta -= Time.deltaTime;
 			}
 		}

@@ -48,11 +48,13 @@ public class NewInput : MonoBehaviour
     public void OnAttack(InputValue value)
     {
         attackInput(value.isPressed);
+        // Debug.Log("newInput => OnAttack");
     }
 
     public void OnBlock(InputValue value)
     {
         blockInput(value.isPressed);
+        // Debug.Log("newInput => OnBlock");
     }
 
 
@@ -80,11 +82,13 @@ public class NewInput : MonoBehaviour
     public void attackInput(bool newAttackState)
     {
         attack = newAttackState;
+        Debug.Log("NewInput => attackInput");
     }
     
     public void blockInput(bool newBlockState)
     {
         block = newBlockState;
+        Debug.Log("NewInput => blockInput");
 
     }
 }
