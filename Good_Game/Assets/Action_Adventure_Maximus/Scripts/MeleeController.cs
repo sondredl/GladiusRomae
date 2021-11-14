@@ -154,9 +154,11 @@ public class MeleeController : MonoBehaviour
             isAlive = false;
 			// pause_menu.Pause();
        	 	meleeAnimator.SetTrigger("Die");
+       	 	meleeAnimator.Play("PlayerDeath");
         }
         // Debug.Log("(meleeController) TakeDamage() " + currentHealth);
-        meleeAnimator.SetTrigger("takeDamage");
+        meleeAnimator.Play("TakeDamage");
+        // meleeAnimator.SetTrigger("takeDamage");
     }
 
     void OnCollisionEnter(Collision collision)
@@ -188,7 +190,8 @@ public class MeleeController : MonoBehaviour
 		{
 			if (input.attack)
 			{
-				meleeAnimator.SetTrigger("Attack");
+				// meleeAnimator.SetTrigger("Attack");
+				meleeAnimator.Play("Attack");
 				// Debug.Log("meleeController => input.attack");
 				input.attack = false;
 			}
@@ -198,6 +201,7 @@ public class MeleeController : MonoBehaviour
 			if (input.block)
 			{
 				meleeAnimator.SetTrigger("Block");
+				meleeAnimator.Play("Attack2");
 				// Debug.Log("meleeController => input.block");
 				input.block = false;
 			}
@@ -206,7 +210,7 @@ public class MeleeController : MonoBehaviour
 		{
 			if (input.jump)
 			{
-				meleeAnimator.SetTrigger("Jump");
+				// meleeAnimator.SetTrigger("Jump");
 				input.jump = false;
 			}
 		}
@@ -330,10 +334,13 @@ public class MeleeController : MonoBehaviour
 				// the square root of H * -2 * G = how much velocity needed to reach desired height
 				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 				Debug.Log("input jump");
-				meleeAnimator.SetTrigger("Jump");
+				// meleeAnimator.SetTrigger("Jump");
+				// meleeAnimator.Play("Jump");
+				meleeAnimator.Play("Jump1");
 				// TakeDamage(24);
 				input.jump = false;
 			}
+				// meleeAnimator.Play("motion");
 
 			// jump timeout
 			if (_jumpTimeoutDelta >= 0.0f)
