@@ -330,6 +330,7 @@ public class MeleeController : MonoBehaviour
 				// the square root of H * -2 * G = how much velocity needed to reach desired height
 				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 				Debug.Log("input jump");
+				meleeAnimator.SetTrigger("Jump");
 				// TakeDamage(24);
 				input.jump = false;
 			}
