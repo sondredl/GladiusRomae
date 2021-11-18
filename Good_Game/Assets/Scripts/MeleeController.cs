@@ -200,7 +200,7 @@ public class MeleeController : MonoBehaviour
 		{
 			if (input.block)
 			{
-				meleeAnimator.SetTrigger("Block");
+				// meleeAnimator.SetTrigger("Block");
 				meleeAnimator.Play("Attack2");
 				// Debug.Log("meleeController => input.block");
 				input.block = false;
