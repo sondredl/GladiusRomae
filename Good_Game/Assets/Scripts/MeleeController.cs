@@ -19,7 +19,7 @@ public class MeleeController : MonoBehaviour
 	[Tooltip("Move speed of the character in m/s")]
 	public float MoveSpeed = 6.0f;
 	[Tooltip("Sprint speed of the character in m/s")]
-	public float SprintSpeed = 3.0f;
+	public float SprintSpeed = 6.0f;
 	[Tooltip("How fast the character turns to face movement direction")]
 	[Range(0.0f, 0.3f)]
 	public float RotationSmoothTime = 0.12f;
@@ -71,7 +71,7 @@ public class MeleeController : MonoBehaviour
 	private float _cinemachineTargetPitch;
 
 	// player
-	private float _speed;
+	private float _speed = 6;
 	private float _animationBlend;
 	private float _targetRotation = 0.0f;
 	private float _rotationVelocity;
