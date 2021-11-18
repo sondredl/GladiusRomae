@@ -6,6 +6,11 @@ TagManager:
   tags:
   - PaladinCam
   - Damage_10
+  - CinemachineTarget
+  - Opponent
+  - OpponentSword
+  - MySward
+  - getHealth
   layers:
   - Default
   - TransparentFX
