@@ -3154,12 +3154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b236c9d711003a449e0a3d40f1306ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 420351067}
-  cam: {fileID: 1357122694}
-  animator: {fileID: 0}
-  speed: 400
-  turnSmoothTime: 0.1
-  turnSmoothVelocity: 0
 --- !u!143 &420351067
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7682,12 +7676,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b236c9d711003a449e0a3d40f1306ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 794975024}
-  cam: {fileID: 1966623960}
-  animator: {fileID: 0}
-  speed: 6
-  turnSmoothTime: 0.1
-  turnSmoothVelocity: 0
 --- !u!143 &794975024
 CharacterController:
   m_ObjectHideFlags: 0
