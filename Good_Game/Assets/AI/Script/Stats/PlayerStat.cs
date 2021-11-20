@@ -34,5 +34,6 @@ public class PlayerStat : CharacterStats
 	{
 		base.Die();
 		GameMang.instance.KillPlayer();
+
 	}
 }
