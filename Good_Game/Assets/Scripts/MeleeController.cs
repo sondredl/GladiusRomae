@@ -241,8 +241,8 @@ public class MeleeController : MonoBehaviour
 		float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
 
 		// float speedOffset = 1f;
-		float speedOffset = 5f;
-		float inputMagnitude = input.analogMovement ? input.move.magnitude : 6f;
+		float speedOffset = 9f;
+		float inputMagnitude = input.analogMovement ? input.move.magnitude : 9f;
 
 		// accelerate or decelerate to target speed
 		if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)

@@ -14,10 +14,11 @@ public class MeleeEnemyController : MonoBehaviour
     void Start()
     {
         target = MeleePlayerManager.instance.player.transform;
+        agent = GetComponent<NavMeshAgent>();
+
         Debug.Log("MeleeEnemyController.start()");
         Debug.Log("target: " + target);
         Debug.Log("agent: " + agent);
-        agent = GetComponent<NavMeshAgent>();
 
         // slow
         // GameObject.FindGameObjectWithTag("tagName");
@@ -35,6 +36,7 @@ public class MeleeEnemyController : MonoBehaviour
             // Debug.Log("MeleeEnemyController.update() if ()");
 
             agent.SetDestination(target.position);
+            Debug.Log("target position: " + target.position);
             FaceTarget();
 
             if (distance <= agent.stoppingDistance) {
