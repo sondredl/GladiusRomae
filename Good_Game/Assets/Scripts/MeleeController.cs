@@ -163,7 +163,7 @@ public class MeleeController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-		Debug.Log(collision.gameObject.tag);
+		// Debug.Log(collision.gameObject.tag);
 			// Debug.Log("collision with untagged");
         if (collision.gameObject.tag == "OpponentSword")
         // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
@@ -241,7 +241,7 @@ public class MeleeController : MonoBehaviour
 		float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
 
 		// float speedOffset = 1f;
-		float speedOffset = 1f;
+		float speedOffset = 5f;
 		float inputMagnitude = input.analogMovement ? input.move.magnitude : 6f;
 
 		// accelerate or decelerate to target speed
