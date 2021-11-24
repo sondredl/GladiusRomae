@@ -9,6 +9,9 @@ public class MeleeEnemyController : MonoBehaviour
 
     Transform target;
     NavMeshAgent agent;
+	private CharacterController controller;
+    Animator enemyAnimator; 
+	private bool hasAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -16,9 +19,13 @@ public class MeleeEnemyController : MonoBehaviour
         target = MeleePlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
 
-        Debug.Log("MeleeEnemyController.start()");
-        Debug.Log("target: " + target);
-        Debug.Log("agent: " + agent);
+		controller = GetComponent<CharacterController>();
+		hasAnimator = TryGetComponent(out enemyAnimator);
+
+        // Debug.Log("MeleeEnemyController.start()");
+        // Debug.Log("target: " + target);
+        // Debug.Log("agent: " + agent);
+        // enemyAnimator.Play("Jump1");
 
         // slow
         // GameObject.FindGameObjectWithTag("tagName");
@@ -30,20 +37,21 @@ public class MeleeEnemyController : MonoBehaviour
         float distance  = Vector3.Distance(target.position, transform.position);
 
         if (distance <= lookRadius) {
-            Debug.Log("update() target: " + target);
-            Debug.Log("update()  agent: " + agent);
+            // Debug.Log("update() target: " + target);
+            // Debug.Log("update()  agent: " + agent);
             // Debug.Log("meleeEnemyController.update() if() target: " + target);
             // Debug.Log("MeleeEnemyController.update() if ()");
 
             agent.SetDestination(target.position);
-            Debug.Log("target position: " + target.position);
+            // Debug.Log("target position: " + target.position);
             FaceTarget();
 
             if (distance <= agent.stoppingDistance) {
                 // attack the target
                 // face the target
-                Debug.Log("enemy-player distance: " + distance);
+                // Debug.Log("enemy-player distance: " + distance);
                 FaceTarget();
+                enemyAnimator.Play("Attack");
             }
         }
     }

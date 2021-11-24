@@ -71,7 +71,7 @@ public class MeleeController : MonoBehaviour
 	private float _cinemachineTargetPitch;
 
 	// player
-	private float _speed = 6;
+	private float _speed = 10;
 	private float _animationBlend;
 	private float _targetRotation = 0.0f;
 	private float _rotationVelocity;
