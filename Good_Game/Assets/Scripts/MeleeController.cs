@@ -17,9 +17,9 @@ public class MeleeController : MonoBehaviour
 {
 	[Header("Player")]
 	[Tooltip("Move speed of the character in m/s")]
-	public float MoveSpeed = 6.0f;
+	public float MoveSpeed;
 	[Tooltip("Sprint speed of the character in m/s")]
-	public float SprintSpeed = 3.0f;
+	public float SprintSpeed = 6.0f;
 	[Tooltip("How fast the character turns to face movement direction")]
 	[Range(0.0f, 0.3f)]
 	public float RotationSmoothTime = 0.12f;
@@ -71,7 +71,7 @@ public class MeleeController : MonoBehaviour
 	private float _cinemachineTargetPitch;
 
 	// player
-	private float _speed;
+	private float _speed = 10;
 	private float _animationBlend;
 	private float _targetRotation = 0.0f;
 	private float _rotationVelocity;
@@ -163,7 +163,7 @@ public class MeleeController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-		Debug.Log(collision.gameObject.tag);
+		// Debug.Log(collision.gameObject.tag);
 			// Debug.Log("collision with untagged");
         if (collision.gameObject.tag == "OpponentSword")
         // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
@@ -240,8 +240,9 @@ public class MeleeController : MonoBehaviour
 		// a reference to the players current horizontal velocity
 		float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
 
-		float speedOffset = 0.1f;
-		float inputMagnitude = input.analogMovement ? input.move.magnitude : 1f;
+		// float speedOffset = 1f;
+		float speedOffset = 9f;
+		float inputMagnitude = input.analogMovement ? input.move.magnitude : 9f;
 
 		// accelerate or decelerate to target speed
 		if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
@@ -283,7 +284,7 @@ public class MeleeController : MonoBehaviour
 		if (hasAnimator)
 		{
 			meleeAnimator.SetFloat("Speed", _animationBlend);
-			/*animator.SetFloat("MoveSpeed",animIDMotionSpeed, inputMagnitude);*/
+			// animator.SetFloat("MoveSpeed",animIDMotionSpeed, inputMagnitude);
 		}
 	}
 
