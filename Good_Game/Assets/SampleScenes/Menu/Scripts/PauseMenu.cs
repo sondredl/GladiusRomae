@@ -18,6 +18,7 @@ public class PauseMenu : MonoBehaviour
 
     private void MenuOn ()
     {
+        Debug.Log("pauseMenu onMenuStatusChange --> menuOn()");
         m_TimeScaleRef = Time.timeScale;
         Time.timeScale = 0f;
 
