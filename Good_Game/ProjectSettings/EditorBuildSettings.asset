@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/menu_main.unity
     guid: 608d8811f215bba45b25ef157d1ce28f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/player_scene.unity
     guid: e610affac131b3047a86f70a7d790bb5
+  - enabled: 1
+    path: Assets/Scenes/PlayerScene.unity
+    guid: 3782c826eedb82349a71eac0411f415e
   - enabled: 1
     path: Assets/Scenes/PettersMap.unity
     guid: 09a9410fbe533de46a88be718042bf62
