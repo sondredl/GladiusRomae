@@ -7,6 +7,11 @@ public class MeleeEnemyController : MonoBehaviour
 {
     public float lookRadius = 10f;
 
+    public static bool isAlive;
+    public int maxHealth = 100;
+    public static int currentEnemyHealth;
+    public MeleeHealthBar enemyHealthBar;
+
     Transform target;
     NavMeshAgent agent;
 	private CharacterController controller;
@@ -22,6 +27,9 @@ public class MeleeEnemyController : MonoBehaviour
 		controller = GetComponent<CharacterController>();
 		hasAnimator = TryGetComponent(out enemyAnimator);
 
+        currentEnemyHealth = maxHealth;
+        isAlive = true;
+        enemyHealthBar.SetNewMaxHealth(currentEnemyHealth);
         // Debug.Log("MeleeEnemyController.start()");
         // Debug.Log("target: " + target);
         // Debug.Log("agent: " + agent);
@@ -54,6 +62,23 @@ public class MeleeEnemyController : MonoBehaviour
                 enemyAnimator.Play("Attack");
             }
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentEnemyHealth -= damage;
+        enemyHealthBar.SetNewHealth(currentEnemyHealth);
+        if (currentEnemyHealth <= 0)
+        {
+            Debug.Log("(smeleeController) player died");
+            isAlive = false;
+			// pause_menu.Pause();
+       	 	// meleeAnimator.SetTrigger("Die");
+       	 	// meleeAnimator.Play("PlayerDeath");
+        }
+        // Debug.Log("(meleeController) TakeDamage() " + currentHealth);
+        enemyAnimator.Play("TakeDamage");
+        // meleeAnimator.SetTrigger("takeDamage");
     }
 
     void FaceTarget () {
