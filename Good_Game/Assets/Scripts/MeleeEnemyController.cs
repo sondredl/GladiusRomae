@@ -89,6 +89,7 @@ public class MeleeEnemyController : MonoBehaviour
 		// Debug.Log("meleeEnemyController.onCollision() with: " + collision.gameObject.tag);
 		// Debug.Log(collision.gameObject.tag);
 			// Debug.Log("collision with untagged");
+		Debug.Log(gameObject.tag);
         if (collision.gameObject.tag == "Player")
         // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
         {

@@ -165,6 +165,7 @@ public class MeleeController : MonoBehaviour
     {
 		// Debug.Log(collision.gameObject.tag);
 			// Debug.Log("collision with untagged");
+		Debug.Log(gameObject.tag);
         if (collision.gameObject.tag == "OpponentSword")
         // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
         {
