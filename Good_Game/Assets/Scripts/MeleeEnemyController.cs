@@ -81,6 +81,29 @@ public class MeleeEnemyController : MonoBehaviour
         // meleeAnimator.SetTrigger("takeDamage");
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+		// Debug.Log(collision.gameObject.tag);
+			// Debug.Log("collision with untagged");
+        if (collision.gameObject.tag == "OpponentSword")
+        // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
+        {
+			int damage = 26;
+			TakeDamage(damage);
+			Debug.Log("collision with Players Sword");
+            // Debug.Log(damage);
+        }
+        if (collision.gameObject.tag == "mySword") {
+			Debug.Log("collision with mySword");
+			OpponentHealth.OpponentTakeDamage(34);
+		}
+        if (collision.gameObject.tag == "getHealth") {
+			Debug.Log("if(true) => getting max health");
+			currentEnemyHealth = maxHealth;
+        	enemyHealthBar.SetNewHealth(currentEnemyHealth);
+		}
+    }
+
     void FaceTarget () {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
