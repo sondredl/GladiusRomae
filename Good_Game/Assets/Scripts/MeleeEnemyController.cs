@@ -59,39 +59,22 @@ public class MeleeEnemyController : MonoBehaviour
                 // face the target
                 // Debug.Log("enemy-player distance: " + distance);
                 FaceTarget();
-                enemyAnimator.Play("Attack");
+                // enemyAnimator.Play("Attack");
             }
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        currentEnemyHealth -= damage;
-        enemyHealthBar.SetNewHealth(currentEnemyHealth);
-        if (currentEnemyHealth <= 0)
-        {
-            Debug.Log("(smeleeController) player died");
-            isAlive = false;
-			// pause_menu.Pause();
-       	 	// meleeAnimator.SetTrigger("Die");
-       	 	// meleeAnimator.Play("PlayerDeath");
-        }
-        // Debug.Log("(meleeController) TakeDamage() " + currentHealth);
-        enemyAnimator.Play("TakeDamage");
-        // meleeAnimator.SetTrigger("takeDamage");
-    }
-
     void OnCollisionEnter(Collision collision)
     {
+		Debug.Log("meleeEnemyController.onCollision() with: " + collision.gameObject.tag);
 		// Debug.Log(collision.gameObject.tag);
 			// Debug.Log("collision with untagged");
-        if (collision.gameObject.tag == "OpponentSword")
+        if (collision.gameObject.tag == "Player")
         // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
         {
+			Debug.Log("collision with mySword");
 			int damage = 26;
-			TakeDamage(damage);
-			Debug.Log("collision with Players Sword");
-            // Debug.Log(damage);
+			OpponentTakeDamage(damage);
         }
         if (collision.gameObject.tag == "mySword") {
 			Debug.Log("collision with mySword");
@@ -102,6 +85,23 @@ public class MeleeEnemyController : MonoBehaviour
 			currentEnemyHealth = maxHealth;
         	enemyHealthBar.SetNewHealth(currentEnemyHealth);
 		}
+    }
+
+    public void OpponentTakeDamage(int damage)
+    {
+        Debug.Log("EnemyMeleeController.OpponentTakeDamage() " + damage);
+        enemyAnimator.Play("TakeDamage");
+        currentEnemyHealth -= damage;
+        enemyHealthBar.SetNewHealth(currentEnemyHealth);
+        if (currentEnemyHealth <= 0)
+        {
+            isAlive = false;
+			// pause_menu.Pause();
+       	 	// meleeAnimator.SetTrigger("Die");
+       	 	enemyAnimator.Play("Die");
+        }
+        // Debug.Log("(meleeController) TakeDamage() " + currentHealth);
+        // meleeAnimator.SetTrigger("takeDamage");
     }
 
     void FaceTarget () {
