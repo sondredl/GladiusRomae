@@ -3731,7 +3731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09805385497ac84f8eefdfee6ba942b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 2
+  lookRadius: 5
   maxHealth: 100
   enemyHealthBar: {fileID: 529966978}
 --- !u!136 &1651681606

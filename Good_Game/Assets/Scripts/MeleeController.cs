@@ -170,7 +170,7 @@ public class MeleeController : MonoBehaviour
         {
 			int damage = 6;
 			TakeDamage(damage);
-			Debug.Log("collision with OpponentSword");
+			// Debug.Log("collision with OpponentSword");
             // Debug.Log(damage);
         }
         if (collision.gameObject.tag == "mySword") {

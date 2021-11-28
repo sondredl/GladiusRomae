@@ -52,23 +52,33 @@ public class MeleeEnemyController : MonoBehaviour
     void Update()
     {
         float distance  = Vector3.Distance(target.position, transform.position);
+        _animationBlend = agent.speed;
+        float currentSpeed;
 
         if (distance <= lookRadius) {
-            // Debug.Log("update() target: " + target);
-            // Debug.Log("update()  agent: " + agent);
-            // Debug.Log("meleeEnemyController.update() if() target: " + target);
-            // Debug.Log("MeleeEnemyController.update() if ()");
+            if (distance >= agent.stoppingDistance) {
+                agent.speed = 2;
+                _animationBlend = agent.speed;
+                Debug.Log("animationBlend" + _animationBlend);
+                // Debug.Log("update() target: " + target);
+                // Debug.Log("update()  agent: " + agent);
+                // Debug.Log("meleeEnemyController.update() if() target: " + target);
+                // Debug.Log("MeleeEnemyController.update() if ()");
 
-            agent.SetDestination(target.position);
-            // Debug.Log("target position: " + target.position);
-            FaceTarget();
-            Move();
+                agent.SetDestination(target.position);
+                // Debug.Log("target position: " + target.position);
+                FaceTarget();
+                Move();
+            }
 
             if (distance <= agent.stoppingDistance) {
                 // attack the target
                 // face the target
                 // Debug.Log("enemy-player distance: " + distance);
+                agent.speed = 0;
+                Debug.Log("agent.speed: " + agent.speed);           
                 FaceTarget();
+                Move();
                 // enemyAnimator.Play("Attack");
             }
         }
@@ -76,22 +86,22 @@ public class MeleeEnemyController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-		Debug.Log("meleeEnemyController.onCollision() with: " + collision.gameObject.tag);
+		// Debug.Log("meleeEnemyController.onCollision() with: " + collision.gameObject.tag);
 		// Debug.Log(collision.gameObject.tag);
 			// Debug.Log("collision with untagged");
         if (collision.gameObject.tag == "Player")
         // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
         {
-			Debug.Log("collision with mySword");
+			// Debug.Log("collision with mySword");
 			int damage = 26;
 			OpponentTakeDamage(damage);
         }
         if (collision.gameObject.tag == "mySword") {
-			Debug.Log("collision with mySword");
+			// Debug.Log("collision with mySword");
 			OpponentHealth.OpponentTakeDamage(34);
 		}
         if (collision.gameObject.tag == "getHealth") {
-			Debug.Log("if(true) => getting max health");
+			// Debug.Log("if(true) => getting max health");
 			currentEnemyHealth = maxHealth;
         	enemyHealthBar.SetNewHealth(currentEnemyHealth);
 		}
@@ -99,7 +109,7 @@ public class MeleeEnemyController : MonoBehaviour
 
     public void OpponentTakeDamage(int damage)
     {
-        Debug.Log("EnemyMeleeController.OpponentTakeDamage() " + damage);
+        // Debug.Log("EnemyMeleeController.OpponentTakeDamage() " + damage);
         enemyAnimator.Play("TakeDamage");
         currentEnemyHealth -= damage;
         enemyHealthBar.SetNewHealth(currentEnemyHealth);
@@ -128,21 +138,21 @@ public class MeleeEnemyController : MonoBehaviour
 	private void Move()
 	{
 		float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
-        // Debug.Log("horizontal speed: " + currentHorizontalSpeed);
+        // Debug.Log("currentHorizontal speed: " + currentHorizontalSpeed);
 		float speedOffset = 9f;
         
         // _speed = agent.speed;
-        _animationBlend = agent.speed;
-        Debug.Log("navMesh speed: " + _animationBlend);
+        // _animationBlend = agent.speed;
+        // Debug.Log("_animationBlend speed: " + _animationBlend);
 
         if (agent.speed > 1) {
-            // Debug.Log("_animationBlend if: " + _animationBlend);
+            Debug.Log("_animationBlend if: " + _animationBlend);
 			enemyAnimator.SetFloat("Speed", _animationBlend);
         }
         else {
             Debug.Log("_animationBlend else: " + _animationBlend);
-			// enemyAnimator.SetFloat("Speed", _animationBlend);
-            enemyAnimator.Play("motion");
+			enemyAnimator.SetFloat("Speed", _animationBlend);
+            // enemyAnimator.Play("motion");
         }
 
 		// float speedOffset = 1f;
