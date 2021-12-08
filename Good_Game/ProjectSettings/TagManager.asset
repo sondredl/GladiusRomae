@@ -9,8 +9,8 @@ TagManager:
   - CinemachineTarget
   - Opponent
   - OpponentSword
-  - MySward
   - getHealth
+  - mySword
   layers:
   - Default
   - TransparentFX

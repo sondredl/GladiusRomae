@@ -61,7 +61,7 @@ public class Sword : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Opponent")
         {
             Debug.Log("Sword.OnCollisionEnter() sward collision with player");
             // PlayerHealth.TakeDamage(damage);
