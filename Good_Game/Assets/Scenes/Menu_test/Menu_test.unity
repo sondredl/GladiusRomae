@@ -922,7 +922,7 @@ GameObject:
   - component: {fileID: 511849077}
   - component: {fileID: 511849076}
   m_Layer: 5
-  m_Name: ResumeButton
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2573,7 +2573,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RESUME
+  m_text: PLAY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -3293,7 +3293,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: aedce70e1598d04409efbb0da24ab42f,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: c4d8928c75c21af43998193f0f038429, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 74547fb283ae4fb4396c0ed973b6d719, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

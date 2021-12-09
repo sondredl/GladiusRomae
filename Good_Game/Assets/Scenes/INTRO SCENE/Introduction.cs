@@ -7,7 +7,7 @@ public class Introduction : MonoBehaviour
 {
     void OnEnable()
     {
-        // SceneManager.LoadScene("PettersMap", LoadSceneMode.Single);
+        //SceneManager.LoadScene("PettersMap", LoadSceneMode.Single);
 
         // laster neste scene i build indexen
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
