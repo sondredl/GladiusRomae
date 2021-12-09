@@ -23,4 +23,5 @@ public class GameMang : MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex
 			);
     }
+
 }
