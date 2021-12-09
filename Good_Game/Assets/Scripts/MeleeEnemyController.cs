@@ -77,9 +77,9 @@ public class MeleeEnemyController : MonoBehaviour
                 // Debug.Log("enemy-player distance: " + distance);
                 agent.speed = 0;
                 Debug.Log("agent.speed: " + agent.speed);           
-                FaceTarget();
-                Move();
-                // enemyAnimator.Play("Attack");
+                // FaceTarget();
+                // Move();
+                enemyAnimator.Play("Attack");
             }
         }
     }
