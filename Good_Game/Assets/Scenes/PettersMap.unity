@@ -33493,9 +33493,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6640796744235222002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 473b9770f395d434fa838ca84a6228b5, type: 3}
+  m_Script: {fileID: 11500000, guid: de79a3fe82b7cca4ba0cdbd3d268bfed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 528895707}
 --- !u!224 &6640796744388991956
 RectTransform:
   m_ObjectHideFlags: 0
