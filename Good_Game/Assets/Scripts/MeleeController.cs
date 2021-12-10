@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 // #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 // using UnityEngine.InputSystem;
 // #endif
@@ -203,7 +204,11 @@ public class MeleeController : MonoBehaviour
 			currentHealth = maxHealth;
         	meleeHealthBar.SetNewHealth(currentHealth);
 		}
-    }
+		if (collision.gameObject.tag == "nextScene")
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		}
+	}
 
 	private void animationAction()
 	{
