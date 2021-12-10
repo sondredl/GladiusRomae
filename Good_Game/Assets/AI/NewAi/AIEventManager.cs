@@ -26,7 +26,7 @@ public class AIEventManager : MonoBehaviour
             if(sqDistance> maxDistance * maxDistance)
             {
                 agent.destination = playerTransform.position;
-                animator.SetTrigger("Attack");
+                
             }
             timer = maxTime;
         }
