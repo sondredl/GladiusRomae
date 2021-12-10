@@ -18,7 +18,17 @@ public class NextScene : MonoBehaviour
         {
 
             Debug.Log("pause_menu you died! in");
-            LoadNextLevel();
+            //LoadActiveScene();
+            LoadActiveScene();
+            //LoadNextLevel();
+
+        }
+
+        if(OpponentController.isAlive == false)
+        {
+
+
+           //LoadNextLevel();
 
         }
         // if (PlayerHealth.isAlive == false)
@@ -28,11 +38,11 @@ public class NextScene : MonoBehaviour
         //     Pause();
         // }
        
-        if (Input.GetKeyDown(KeyCode.Escape))
+        /*if (Input.GetKeyDown(KeyCode.Escape))
         {
             LoadNextLevel();
         }
-
+        */
 
     }
 
@@ -45,14 +55,19 @@ public class NextScene : MonoBehaviour
          StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
         
     }
-
+    
+    public void LoadActiveScene()
+    {
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+    }
+    
     IEnumerator LoadLevel(int levelIndex)
     {
         // play animation
 
         //wait
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
 
 
         SceneManager.LoadScene(levelIndex);
