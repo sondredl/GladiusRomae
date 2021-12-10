@@ -11,6 +11,9 @@ TagManager:
   - OpponentSword
   - getHealth
   - mySword
+  - Fire
+  - MySward
+  - nextScene
   layers:
   - Default
   - TransparentFX
