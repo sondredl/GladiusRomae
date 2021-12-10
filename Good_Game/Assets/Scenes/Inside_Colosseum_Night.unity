@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.015
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -4394,7 +4394,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.8962264, g: 0.7606377, b: 0.5030705, a: 1}
   m_Intensity: 1
-  m_Range: 40
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -5070,7 +5070,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.8962264, g: 0.7606377, b: 0.5030705, a: 1}
   m_Intensity: 1
-  m_Range: 40
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -9491,7 +9491,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.8962264, g: 0.7606377, b: 0.5030705, a: 1}
   m_Intensity: 1
-  m_Range: 40
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -10453,7 +10453,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.8962264, g: 0.7606377, b: 0.5030705, a: 1}
   m_Intensity: 1
-  m_Range: 40
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -11196,7 +11196,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.8962264, g: 0.7606377, b: 0.5030705, a: 1}
   m_Intensity: 1
-  m_Range: 40
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -12430,7 +12430,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.8962264, g: 0.7606377, b: 0.5030705, a: 1}
   m_Intensity: 1
-  m_Range: 40
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -12587,7 +12587,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.8962264, g: 0.7606377, b: 0.5030705, a: 1}
   m_Intensity: 1
-  m_Range: 40
+  m_Range: 50
   m_SpotAngle: 179
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -15460,7 +15460,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.8962264, g: 0.7606377, b: 0.5030705, a: 1}
   m_Intensity: 1
-  m_Range: 40
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
