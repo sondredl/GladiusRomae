@@ -59,7 +59,7 @@ public class MeleeEnemyController : MonoBehaviour
             if (distance >= agent.stoppingDistance) {
                 agent.speed = 2;
                 _animationBlend = agent.speed;
-                Debug.Log("animationBlend" + _animationBlend);
+                // Debug.Log("animationBlend" + _animationBlend);
                 // Debug.Log("update() target: " + target);
                 // Debug.Log("update()  agent: " + agent);
                 // Debug.Log("meleeEnemyController.update() if() target: " + target);
@@ -76,7 +76,7 @@ public class MeleeEnemyController : MonoBehaviour
                 // face the target
                 // Debug.Log("enemy-player distance: " + distance);
                 agent.speed = 0;
-                Debug.Log("agent.speed: " + agent.speed);           
+                // Debug.Log("agent.speed: " + agent.speed);           
                 FaceTarget();
                 Move();
                 enemyAnimator.Play("Attack");
@@ -89,7 +89,7 @@ public class MeleeEnemyController : MonoBehaviour
 		// Debug.Log("meleeEnemyController.onCollision() with: " + collision.gameObject.tag);
 		// Debug.Log(collision.gameObject.tag);
 			// Debug.Log("collision with untagged");
-		Debug.Log(gameObject.tag);
+		// Debug.Log(gameObject.tag);
         if (collision.gameObject.tag == "Player")
         // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
         {
@@ -147,11 +147,11 @@ public class MeleeEnemyController : MonoBehaviour
         // Debug.Log("_animationBlend speed: " + _animationBlend);
 
         if (agent.speed > 1) {
-            Debug.Log("_animationBlend if: " + _animationBlend);
+            // Debug.Log("_animationBlend if: " + _animationBlend);
 			enemyAnimator.SetFloat("Speed", _animationBlend);
         }
         else {
-            Debug.Log("_animationBlend else: " + _animationBlend);
+            // Debug.Log("_animationBlend else: " + _animationBlend);
 			enemyAnimator.SetFloat("Speed", _animationBlend);
             // enemyAnimator.Play("motion");
         }

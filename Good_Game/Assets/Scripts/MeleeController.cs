@@ -101,6 +101,9 @@ public class MeleeController : MonoBehaviour
 	private const float threshold = 0.01f;
 	private bool hasAnimator;
 
+	// stats and items
+	private bool hasSword = true;
+
 	private void Awake()
 	{
 		// get a reference to our main camera
@@ -124,19 +127,36 @@ public class MeleeController : MonoBehaviour
 		// reset our timeouts on start
 		_attackTimeOutDelta = AttackTimeOut;
 		_jumpTimeoutDelta = JumpTimeout;
+
+	 	hasSword = true;
+		meleeAnimator.Play("2handSwordBlendTree");
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		hasAnimator = TryGetComponent(out meleeAnimator);
-		JumpAndGravity();
 		input = GetComponent<NewInput>();
-		animationAction();
+		if (hasSword == true){
+			playerEquipment();
+		}
+		else {
+			animationAction();
+			JumpAndGravity();
+		}
+
 		Move();
 
         // meleeHealthBar.SetNewHealth(currentHealth);
 		// healthBar.slider;
+		playerEquipment();
+	}
+
+	private void playerEquipment(){
+		// Debug.Log("meleeController/playerEquiplent hasSword:" + hasSword);
+		// meleeAnimator.Play("2handSwordBlendTree");
+		twoHandSwordAction();
+		TwoHandSwordJumpAndGravity();
 	}
 
 	private void LateUpdate()
@@ -165,7 +185,7 @@ public class MeleeController : MonoBehaviour
     {
 		// Debug.Log(collision.gameObject.tag);
 			// Debug.Log("collision with untagged");
-		Debug.Log(gameObject.tag);
+		// Debug.Log(gameObject.tag);
         if (collision.gameObject.tag == "OpponentSword")
         // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
         {
@@ -212,6 +232,48 @@ public class MeleeController : MonoBehaviour
 			if (input.jump)
 			{
 				// meleeAnimator.SetTrigger("Jump");
+				input.jump = false;
+			}
+		}
+		else
+		{
+			_attackTimeOutDelta -= Time.deltaTime;
+			input.attack = false;
+		}
+		if (_attackTimeOutDelta <= 0)
+		{
+			_attackTimeOutDelta = AttackTimeOut;
+			attacking = false;
+		}
+	}
+	private void twoHandSwordAction()
+	{
+		if (!attacking)
+		{
+			if (input.attack)
+			{
+				// meleeAnimator.SetTrigger("Attack");
+				meleeAnimator.Play("2Hand-Sword-Attack1");
+				// Debug.Log("meleeController => input.attack");
+				input.attack = false;
+			}
+		}
+		if (!blocking)
+		{
+			if (input.block)
+			{
+				// meleeAnimator.SetTrigger("Block");
+				meleeAnimator.Play("2Hand-Sword-Attack2");
+				// Debug.Log("meleeController => input.block");
+				input.block = false;
+			}
+		}
+		if (!jump)
+		{
+			if (input.jump)
+			{
+				// meleeAnimator.SetTrigger("Jump");
+				meleeAnimator.Play("2Hand-Sword-Attack2");
 				input.jump = false;
 			}
 		}
@@ -375,6 +437,73 @@ public class MeleeController : MonoBehaviour
 		}
 	}
 
+	private void TwoHandSwordJumpAndGravity()
+	{
+		if (Grounded)
+		{
+			// Debug.Log("is grounded");
+			// reset the fall timeout timer
+			_fallTimeoutDelta = FallTimeout;
+
+			// update animator if using character
+			/*
+			if (hasAnimator)
+			{
+				animator.SetBool(animIDJump, false);
+				_animator.SetBool(_animIDFreeFall, false);
+			}
+			*/
+
+			// stop our velocity dropping infinitely when grounded
+			if (_verticalVelocity < 0.0f)
+			{
+				_verticalVelocity = -9f;
+			}
+
+			// Jump
+			if (input.jump && _jumpTimeoutDelta <= 0.0f)
+			{
+				// the square root of H * -2 * G = how much velocity needed to reach desired height
+				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+				Debug.Log("input jump");
+				// meleeAnimator.SetTrigger("Jump");
+				// meleeAnimator.Play("Jump");
+				meleeAnimator.Play("2Hand-Sword-Jump");
+				// TakeDamage(24);
+				input.jump = false;
+			}
+				// meleeAnimator.Play("motion");
+
+			// jump timeout
+			if (_jumpTimeoutDelta >= 0.0f)
+			{
+				// Debug.Log("jump timeout delta");
+				_jumpTimeoutDelta -= Time.deltaTime;
+			}
+		}
+
+		else
+		{
+			// reset the jump timeout timer
+			_jumpTimeoutDelta = JumpTimeout;
+
+			// fall timeout
+			if (_fallTimeoutDelta >= 0.0f)
+			{
+				// Debug.Log("is not grounded");
+				_fallTimeoutDelta -= Time.deltaTime;
+			}
+	
+			// if we are not grounded, do not jump
+			input.jump = false;
+		}
+
+		// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+		if (_verticalVelocity < _terminalVelocity)
+		{
+			_verticalVelocity += Gravity * Time.deltaTime;
+		}
+	}
 
 	private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 	{
