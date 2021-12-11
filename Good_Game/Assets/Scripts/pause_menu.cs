@@ -52,7 +52,7 @@ public class
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         GameIsPaused = true;
     }
 
@@ -60,7 +60,8 @@ public class
     {
         Debug.Log("LoadMenu");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("menu_main");
+        SceneManager.LoadScene("Menu_testV2");
+        pauseMenuUI.SetActive(false);
     }
 
     public void QuitGame()
