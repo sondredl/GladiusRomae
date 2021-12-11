@@ -109,6 +109,9 @@ public class MeleeController : MonoBehaviour
 	public Interactable focus;
 	// PlayerMotor motor;
 
+	private _LevelSystem _levelsystem;
+
+
 	private void Awake()
 	{
 		// get a reference to our main camera
@@ -172,6 +175,11 @@ public class MeleeController : MonoBehaviour
 		playerEquipment();
 	}
 
+	public void _SetLevelSystem(_LevelSystem _levelsystem)
+    {
+		this._levelsystem = _levelsystem;
+
+    }
 	private void playerEquipment(){
 		// Debug.Log("meleeController/playerEquiplent hasSword:" + hasSword);
 		// meleeAnimator.Play("2handSwordBlendTree");
