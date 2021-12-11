@@ -169,6 +169,7 @@ public class PlayerController : MonoBehaviour
 		TwoHandSwordJumpAndGravity();
 	}
 
+
 	private void LateUpdate() {
 		CameraRotation();
 	}
@@ -209,8 +210,20 @@ public class PlayerController : MonoBehaviour
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
 		if (collision.gameObject.tag == "item") {
+
+			// collision.gameObject.GetComponent<PickUps>().AddScore(score);
+			itemController.Add(collision.gameObject);
 			Debug.Log("playerController.onCollisionEnter() with: " + collision.gameObject.tag);
         	Destroy(collision.gameObject);
+			Debug.Log("gameobject destroyed");
+			playerAnimator.Play("2handSwordBlendTree");
+
+
+			// Debug.Log("gameObject.gameObject: " + collision.gameObject.gameObject.tag);
+			// if (gameObject.gameObject.tag == "MySward") {
+
+			// 	hasSword = true;
+			// }
 		}
 	}
 
