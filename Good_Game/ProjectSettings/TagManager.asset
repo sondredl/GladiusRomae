@@ -14,7 +14,7 @@ TagManager:
   - Fire
   - MySward
   - nextScene
-  - item
+  - StartBox
   layers:
   - Default
   - TransparentFX
