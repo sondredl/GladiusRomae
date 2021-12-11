@@ -6,8 +6,21 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
 
-    public void TriggerDialogue()
+    public void OnTriggerStay(Collider other)
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);    
-            }
+        if(other.tag == "Player" && Input.GetKeyDown(KeyCode.F))
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        }
+    }
+
+    /*public void TriggerDialogue(Collider other)
+    {
+        if (other.tag == "Player" && Input.GetKeyDown(KeyCode.F))
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        }
+        //FindObjectOfType<DialogueManager>().StartDialogue(dialogue);    
+            }*/
 }
+    
