@@ -11,9 +11,11 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController))]
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 
+
 [RequireComponent(typeof(PlayerInput))]
 #endif
 //[RequireComponent(typeof(Rigidbody))]
+// [RequireComponent(typeof(PlayerMotor))]
 public class MeleeController : MonoBehaviour
 {
 	[Header("Player")]
@@ -104,6 +106,8 @@ public class MeleeController : MonoBehaviour
 
 	// stats and items
 	private bool hasSword = true;
+	public Interactable focus;
+	// PlayerMotor motor;
 
 	private void Awake()
 	{
@@ -120,6 +124,7 @@ public class MeleeController : MonoBehaviour
 		hasAnimator = TryGetComponent(out meleeAnimator);
 		controller = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
+
 		//playerHealth
         currentHealth = maxHealth;
         isAlive = true;
@@ -129,6 +134,9 @@ public class MeleeController : MonoBehaviour
 		_attackTimeOutDelta = AttackTimeOut;
 		_jumpTimeoutDelta = JumpTimeout;
 
+		// motor = GetComponent<PlayerMotor>();
+
+		// dummy declarations
 	 	hasSword = true;
 		meleeAnimator.Play("2handSwordBlendTree");
 	}
@@ -214,29 +222,52 @@ public class MeleeController : MonoBehaviour
 	{
 		if (!attacking)
 		{
+			// input.getMouseButtonDown(1)
 			if (input.attack)
 			{
-				// meleeAnimator.SetTrigger("Attack");
 				meleeAnimator.Play("Attack");
-				// Debug.Log("meleeController => input.attack");
 				input.attack = false;
+
+				// Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+				// RaycastHit hit;
+
+				// if (Physics.Raycast(ray, out hit, 100)) {
+				// 	Interactable interactable = hit.collider.GetComponent<Interactable>;
+				// 	if (interactable != null) {
+				// 		SetFocus(interactable);
+				// 	}
+				// }
+
 			}
 		}
+
 		if (!blocking)
 		{
+			// input.getMouseButtonDown(right mouse button)
 			if (input.block)
 			{
-				// meleeAnimator.SetTrigger("Block");
 				meleeAnimator.Play("Attack2");
-				// Debug.Log("meleeController => input.block");
 				input.block = false;
+
+				// Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+				// RaycastHit hit;
+
+				// if (Physics.Raycast(ray, out hit, 100)) {
+				// 	motor.MoveToPoint(hit.point);
+
+				// 	RemoveFocus();
+					// Interactable interactable = hit.collider.GetComponent<Interactable>
+					// if (interactable != null) {
+					// 	SetFocus(interactable);
+					// }
+				}
 			}
-		}
+
 		if (!jump)
 		{
 			if (input.jump)
 			{
-				// meleeAnimator.SetTrigger("Jump");
+				meleeAnimator.SetTrigger("Jump");
 				input.jump = false;
 			}
 		}
@@ -251,6 +282,15 @@ public class MeleeController : MonoBehaviour
 			attacking = false;
 		}
 	}
+
+	void SetFocus (Interactable newFocus) {
+		focus = newFocus;
+	}
+
+	void RemoveFocus() {
+		focus = null;
+	}
+
 	private void twoHandSwordAction()
 	{
 		if (!attacking)
@@ -355,7 +395,6 @@ public class MeleeController : MonoBehaviour
 			// animator.SetFloat("MoveSpeed",animIDMotionSpeed, inputMagnitude);
 		}
 	}
-
 
 	private void CameraRotation()
 	{

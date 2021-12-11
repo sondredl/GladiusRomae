@@ -24,7 +24,7 @@ public class DialogueManager : MonoBehaviour
 
         animator.SetBool("isOpen", true);
 
-        Debug.Log("starting conversation");
+      
 
         nameText.text = dialogue.name;
 
