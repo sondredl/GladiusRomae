@@ -19657,11 +19657,11 @@ CapsuleCollider:
   m_GameObject: {fileID: 1203396374}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.14558984
   m_Height: 1.3027449
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!54 &1203396377
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19678,6 +19678,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1203396378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203396374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d813629f3ad0444a0969341fd61ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+  item: {fileID: 0}
 --- !u!1 &1207774909
 GameObject:
   m_ObjectHideFlags: 0
@@ -24586,6 +24600,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1897628578}
+--- !u!1 &1549339887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 319f1d32cbddc7d48a711c009e583764,
+    type: 3}
+  m_PrefabInstance: {fileID: 90884480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1549339888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549339887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d813629f3ad0444a0969341fd61ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+  item: {fileID: 0}
 --- !u!1 &1551092591
 GameObject:
   m_ObjectHideFlags: 0
@@ -32942,6 +32976,7 @@ GameObject:
   - component: {fileID: 2071097008}
   - component: {fileID: 2071097007}
   - component: {fileID: 2071097006}
+  - component: {fileID: 2071097005}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: MySward
@@ -32963,6 +32998,20 @@ Transform:
   m_Father: {fileID: 543658332}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2071097005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071097003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d813629f3ad0444a0969341fd61ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+  item: {fileID: 0}
 --- !u!135 &2071097006
 SphereCollider:
   m_ObjectHideFlags: 0
