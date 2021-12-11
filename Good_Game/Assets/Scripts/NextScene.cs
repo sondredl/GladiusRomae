@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class NextScene : MonoBehaviour
 {
+
     public static bool GameIsPaused = false;
 
     //public GameObject pauseMenuUI;
@@ -19,7 +20,6 @@ public class NextScene : MonoBehaviour
 
             Debug.Log("pause_menu you died! in");
             //LoadActiveScene();
-            DontDestroyOnLoad(gameObject);
             LoadActiveScene();
             //LoadNextLevel();
 

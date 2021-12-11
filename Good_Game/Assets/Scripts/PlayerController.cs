@@ -16,7 +16,7 @@ using UnityEngine.SceneManagement;
 #endif
 //[RequireComponent(typeof(Rigidbody))]
 // [RequireComponent(typeof(PlayerMotor))]
-public class MeleeController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 	[Header("Player")]
 	[Tooltip("Move speed of the character in m/s")]
@@ -97,7 +97,7 @@ public class MeleeController : MonoBehaviour
     public static int currentHealth;
     public MeleeHealthBar meleeHealthBar;
 
-	private static Animator meleeAnimator;
+	private static Animator playerAnimator;
 	private CharacterController controller;
 	private NewInput input;
 	private GameObject mainCamera;
@@ -105,7 +105,8 @@ public class MeleeController : MonoBehaviour
 	private bool hasAnimator;
 
 	// stats and items
-	private bool hasSword = true;
+	// private bool hasSword = true;
+	private bool hasSword = false;
 	public Interactable focus;
 	// PlayerMotor motor;
 
@@ -116,23 +117,12 @@ public class MeleeController : MonoBehaviour
 		{
 			mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 		}
-
-        //Make the player stay the same through scenes
-
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
-
-		if (objs.Length < 1)
-		{
-
-			Destroy(this.gameObject);
-		}
-		DontDestroyOnLoad(this.gameObject);
 	}
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		hasAnimator = TryGetComponent(out meleeAnimator);
+		hasAnimator = TryGetComponent(out playerAnimator);
 		controller = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
 
@@ -148,14 +138,14 @@ public class MeleeController : MonoBehaviour
 		// motor = GetComponent<PlayerMotor>();
 
 		// dummy declarations
-	 	hasSword = true;
-		meleeAnimator.Play("2handSwordBlendTree");
+	 	// hasSword = true;
+		// playerAnimator.Play("2handSwordBlendTree");
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		hasAnimator = TryGetComponent(out meleeAnimator);
+		hasAnimator = TryGetComponent(out playerAnimator);
 		input = GetComponent<NewInput>();
 		if (hasSword == true){
 			playerEquipment();
@@ -179,13 +169,11 @@ public class MeleeController : MonoBehaviour
 		TwoHandSwordJumpAndGravity();
 	}
 
-	private void LateUpdate()
-	{
+	private void LateUpdate() {
 		CameraRotation();
 	}
 
-    public void TakeDamage(int damage)
-    {
+    public void TakeDamage(int damage) {
         currentHealth -= damage;
         meleeHealthBar.SetNewHealth(currentHealth);
         if (currentHealth <= 0)
@@ -193,26 +181,19 @@ public class MeleeController : MonoBehaviour
             Debug.Log("(smeleeController) player died");
             isAlive = false;
 			// pause_menu.Pause();
-       	 	meleeAnimator.SetTrigger("Die");
-       	 	meleeAnimator.Play("PlayerDeath");
+       	 	playerAnimator.SetTrigger("Die");
+       	 	playerAnimator.Play("PlayerDeath");
         }
         // Debug.Log("(meleeController) TakeDamage() " + currentHealth);
-        meleeAnimator.Play("TakeDamage");
+        playerAnimator.Play("TakeDamage");
         // meleeAnimator.SetTrigger("takeDamage");
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-		// Debug.Log(collision.gameObject.tag);
-			// Debug.Log("collision with untagged");
-		// Debug.Log(gameObject.tag);
+    void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "OpponentSword")
-        // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
         {
 			int damage = 6;
 			TakeDamage(damage);
-			// Debug.Log("collision with OpponentSword");
-            // Debug.Log(damage);
         }
         if (collision.gameObject.tag == "mySword") {
 			Debug.Log("collision with mySword");
@@ -227,16 +208,19 @@ public class MeleeController : MonoBehaviour
 		{
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
+		if (collision.gameObject.tag == "item") {
+			Debug.Log("playerController.onCollisionEnter() with: " + collision.gameObject.tag);
+        	Destroy(collision.gameObject);
+		}
 	}
 
-	private void animationAction()
-	{
+	private void animationAction() {
 		if (!attacking)
 		{
 			// input.getMouseButtonDown(1)
 			if (input.attack)
 			{
-				meleeAnimator.Play("Attack");
+				playerAnimator.Play("Attack");
 				input.attack = false;
 
 				// Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -257,7 +241,7 @@ public class MeleeController : MonoBehaviour
 			// input.getMouseButtonDown(right mouse button)
 			if (input.block)
 			{
-				meleeAnimator.Play("Attack2");
+				playerAnimator.Play("Attack2");
 				input.block = false;
 
 				// Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -278,7 +262,7 @@ public class MeleeController : MonoBehaviour
 		{
 			if (input.jump)
 			{
-				meleeAnimator.SetTrigger("Jump");
+				playerAnimator.SetTrigger("Jump");
 				input.jump = false;
 			}
 		}
@@ -302,14 +286,13 @@ public class MeleeController : MonoBehaviour
 		focus = null;
 	}
 
-	private void twoHandSwordAction()
-	{
+	private void twoHandSwordAction() {
 		if (!attacking)
 		{
 			if (input.attack)
 			{
 				// meleeAnimator.SetTrigger("Attack");
-				meleeAnimator.Play("2Hand-Sword-Attack1");
+				playerAnimator.Play("2Hand-Sword-Attack1");
 				// Debug.Log("meleeController => input.attack");
 				input.attack = false;
 			}
@@ -319,7 +302,7 @@ public class MeleeController : MonoBehaviour
 			if (input.block)
 			{
 				// meleeAnimator.SetTrigger("Block");
-				meleeAnimator.Play("2Hand-Sword-Attack2");
+				playerAnimator.Play("2Hand-Sword-Attack2");
 				// Debug.Log("meleeController => input.block");
 				input.block = false;
 			}
@@ -329,7 +312,7 @@ public class MeleeController : MonoBehaviour
 			if (input.jump)
 			{
 				// meleeAnimator.SetTrigger("Jump");
-				meleeAnimator.Play("2Hand-Sword-Attack2");
+				playerAnimator.Play("2Hand-Sword-Attack2");
 				input.jump = false;
 			}
 		}
@@ -345,8 +328,7 @@ public class MeleeController : MonoBehaviour
 		}
 	}
 
-	private void Move()
-	{
+	private void Move() {
 		// set target speed based on move speed, sprint speed and if sprint is pressed
 		float targetSpeed = input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -354,7 +336,9 @@ public class MeleeController : MonoBehaviour
 
 		// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 		// if there is no input, set the target speed to 0
-		if (input.move == Vector2.zero) targetSpeed = 0.0f;
+		if (input.move == Vector2.zero){
+			targetSpeed = 0.0f;
+		} 
 
 		// a reference to the players current horizontal velocity
 		float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
@@ -399,16 +383,17 @@ public class MeleeController : MonoBehaviour
 		// move the player
 		controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
+			// Debug.Log("speed: " + _speed);
+
 		// update animator if using character
 		if (hasAnimator)
 		{
-			meleeAnimator.SetFloat("Speed", _animationBlend);
+			playerAnimator.SetFloat("Speed", _animationBlend);
 			// animator.SetFloat("MoveSpeed",animIDMotionSpeed, inputMagnitude);
 		}
 	}
 
-	private void CameraRotation()
-	{
+	private void CameraRotation() {
 		// if there is an input and camera position is not fixed
 		if (input.look.sqrMagnitude >= threshold && !LockCameraPosition)
 		{
@@ -424,8 +409,7 @@ public class MeleeController : MonoBehaviour
 		CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
 	}
 
-	private void JumpAndGravity()
-	{
+	private void JumpAndGravity() {
 		if (Grounded)
 		{
 			// Debug.Log("is grounded");
@@ -455,7 +439,7 @@ public class MeleeController : MonoBehaviour
 				Debug.Log("input jump");
 				// meleeAnimator.SetTrigger("Jump");
 				// meleeAnimator.Play("Jump");
-				meleeAnimator.Play("Jump1");
+				playerAnimator.Play("Jump1");
 				// TakeDamage(24);
 				input.jump = false;
 			}
@@ -492,8 +476,7 @@ public class MeleeController : MonoBehaviour
 		}
 	}
 
-	private void TwoHandSwordJumpAndGravity()
-	{
+	private void TwoHandSwordJumpAndGravity() {
 		if (Grounded)
 		{
 			// Debug.Log("is grounded");
@@ -523,7 +506,7 @@ public class MeleeController : MonoBehaviour
 				Debug.Log("input jump");
 				// meleeAnimator.SetTrigger("Jump");
 				// meleeAnimator.Play("Jump");
-				meleeAnimator.Play("2Hand-Sword-Jump");
+				playerAnimator.Play("2Hand-Sword-Jump");
 				// TakeDamage(24);
 				input.jump = false;
 			}
@@ -560,8 +543,7 @@ public class MeleeController : MonoBehaviour
 		}
 	}
 
-	private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
-	{
+	private static float ClampAngle(float lfAngle, float lfMin, float lfMax) {
 		if (lfAngle < -360f) lfAngle += 360f;
 		if (lfAngle > 360f) lfAngle -= 360f;
 		return Mathf.Clamp(lfAngle, lfMin, lfMax);
