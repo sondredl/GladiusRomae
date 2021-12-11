@@ -11,9 +11,11 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController))]
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 
+
 [RequireComponent(typeof(PlayerInput))]
 #endif
 //[RequireComponent(typeof(Rigidbody))]
+// [RequireComponent(typeof(PlayerMotor))]
 public class MeleeController : MonoBehaviour
 {
 	[Header("Player")]
@@ -105,7 +107,7 @@ public class MeleeController : MonoBehaviour
 	// stats and items
 	private bool hasSword = true;
 	public Interactable focus;
-	PlayerMotor motor;
+	// PlayerMotor motor;
 
 	private void Awake()
 	{
@@ -132,7 +134,7 @@ public class MeleeController : MonoBehaviour
 		_attackTimeOutDelta = AttackTimeOut;
 		_jumpTimeoutDelta = JumpTimeout;
 
-		motor = GetComponent<PlayerMotor>();
+		// motor = GetComponent<PlayerMotor>();
 
 		// dummy declarations
 	 	hasSword = true;
