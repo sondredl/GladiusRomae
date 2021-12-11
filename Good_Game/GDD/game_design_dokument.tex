@@ -1,0 +1,619 @@
+\documentclass{article}
+
+\title{Gladius Romae}
+
+\author{ Group 6
+Julie Håndlykken, Sondre Lindkjølen, Rikard Wirkola Rasmussen, Petter Tveit, Jon Jahren
+}
+
+\begin{document}
+\begin{titlepage}
+
+\tableofcontents
+
+
+
+
+%Contents
+%I GAME CONCEPT    4
+%1 Introduction    4
+%2 Story    4
+%3 Target Audience    4
+%4 Key Features    4
+%4.1 Movement    5
+%4.2 Weapons and armor    5
+%4.3 Currency    5
+%4.4 Attacks    5
+%5 Genre and Platform    6
+%II FUNCTIONAL SPECIFICATION    6
+%6 The Character    6
+%6.1 Clothes and Armour    8
+%6.2 Character Progression    9
+%7 Controllers    11
+%7.1 Keyboard Inputs    11
+%7.2 Movement Input    11
+%7.3 Space    12
+%7.4 Shift    13
+%7.5 Configuration/Menu    13
+%7.6 Mouse Layout    15
+%7.7 User Interface    18
+%8 Game Mechanics    19
+%8.1 Physics    19
+%8.2 Ground movement    19
+%8.3 Air movement-time    20
+%8.4 Collision with objects    20
+%8.5 Progression    21
+%8.6 Internal Economy    21
+%8.7 Inventory items    22
+%Table 4: Table showing characters accessories and resources    22
+%8.8 Mechanics    23
+%8.9 Game Flow    23
+%8.10 Gameplay Elements    23
+%8.11 Balancing calculations    23
+%9 Enemies    23
+%10 Art and Video    24
+%10.1 Sound and Music    24
+%10.2 Designs (concept arts, sketches, moodboards, storyboards, UI designs)    24
+%10.3 Art style examples    25
+%10.4 Inspired Examples    26
+%10.5 Environment    28
+%10.6 Level Design    28
+%11 Asset lists    29
+%III Development    29
+%12 Systems designs    29
+%12.1 Project plan    29
+%13 SWOT Analysis    30
+%References    31
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{
+I GAME CONCEPT
+}
+\subsection{ 1 Introduction }
+Gladius Romae is a single player game set in ancient Rome. It is an action adventure game that combines exploration, tasks and gladiator combat. The main character is a slave forced to be a gladiator where the purpose of the game is to win back their freedom. This is achieved by winning gladiator fights increasing in difficulty and receiving a wooden sword from the fearsome emperor Augustus.
+
+\subsection{ 2 Story }
+The story is set in Ancient Rome ca 200 bc. The main character has been sold away as a gladiator, where they have to fight against their peers and other large animals, or pay with their life. The sitting emperor, emperor Augustus is a great supporter of the gladiator fights, and will  see more than 10 000 gladiators fight to their death during his dominion. The emperor rewards particularily skilled and entertaining gladiators with freedom from slavery, by giving them a  wooden sword. Help the character win back their freedom and return to their family.
+
+\subsection{ 3 Target Audience }
+Target audience: Age 16-36, men and women. We try to target males and females by enabling the player to choose between both genders when developing a character. This gives the player a chance to identify with their character. We also target the more adult crowd by making the game “photo-realistic”, where fighting scenes and explicit details are a main focus. The level of strategic problem solving also makes the game less suitable for children.
+
+\subsection{ 4 Key Features }
+This game requires that the player controls a character that defeats enemies in order to progress through the gladiator’s arena in a colosseum. The physics in the game is realistic and based on real world physics with some artistic license applied. The enemies presented will vary in difficulty and mechanics, requiring the player to adapt to different styles with armor and weapons that have different attributes. Because we opt for the more realistic art style it will also be realistic with regards to how weapons and attacks work and look.
+
+\subsection{ 4.1 Movement }
+The player character will move the character around freely with a third person view, inside a circular area within the colosseum, where they can perform different types of offensive and defensive actions to defeat the opponent. It’s also possible to please the crowd with more difficult or intricate attacks. Progress is through defeating opponents, but it is possible to avoid death if you’ve successfully appeased the audience.
+
+\subsection{ 4.2 Weapons and armor }
+The armory will contain a variety of different weapons and the physics will have to apply to these as well. Warhammers or spears for instance will behave differently than a sword would, and will therefore require dissimilar mechanics. 
+
+\subsection{ 4.3 Currency }
+As you are moving up through the difficulty it will be necessary to purchase different weapons and armor to be used situationally depending on the opponent. There will be an in-game currency that you will acquire for this purpose and depending on how you spend it you can affect the difficulty as well. A trader will occasionally be available between levels, making it possible to trade in old equipment for something more valuable.
+Your actions and attacks will have a cost associated with them, so that you can not run indefinitely or attack relentlessly without consideration for your character's health. 
+Weapons will also gradually wear and you can maintain them, so that they will e.g keep their sharpness or keep defensive properties. However, they will not break, only lose some damage.
+
+\subsection{ 4.4 Attacks }
+Since we are focusing on doing a more realistic art style, there will be a need for attacks to be more grounded and to keep to the realism implied in the art style. Still, if things are too realistic this may get boring, so we are focusing on combinational attacks and more complicated maneuvers to add more options for skill-based combat. This will also allow for more crowd appeasement and give players some sense of alternatives to just outright killing the enemies.
+
+\subsection{ 5 Genre and Platform }
+We envision this game occupying a space in the action-adventure genre, but we acknowledge that it will need to fit into a more specific sub-category. Platform-adventure seems like a more fitting area which opens some interesting avenues for story and progress.
+We are targeting pc as the primary platform.
+
+
+\subsection{ II FUNCTIONAL SPECIFICATION }
+\subsection{ 6 The Character }
+The game has one playable character, where the player can choose to be either a man or a woman. The chosen character is the gladiator the player will be controlling during the game. It is not possible to change character once chosen. 
+
+Sketches of the player character
+
+
+
+2                    3
+
+
+4                5            
+
+
+2-5: Character sketches to visualize art-style and the physique of the characters.
+
+
+
+
+\subsection{ 6.1 Clothes and Armour }
+To resemble the slaves sold away to be gladiators, the character will start with simple pieces of fabric as clothing. Cloth-looking pieces are used to tie around their waist and to cover their chest. Throughout the game, the player will be able to buy more clothes and armour for their character as they progress. The player can pay for new equipment by paying with money or by doing trades.
+ 
+
+
+
+
+
+
+
+
+
+
+\subsection{ 7. One of the basic armor types we would create }
+
+
+
+
+
+
+
+
+
+
+\subsection{ 6. Example of the armor and art style to implement }
+
+
+
+
+\subsection{ 8. Armor example                                          }
+         
+ 
+
+
+\subsection{}
+Figures 11-15: These are examples of weapons to be included in the game
+
+\subsection{ 7 Controllers }
+
+\subsection{ 7.1 Keyboard Inputs }
+
+
+16. Image showing the keyboard controls
+
+The blue buttons on the keyboard represent the movement of the character in the game, the green is menu settings. Where the game is paused and the player can edit settings. 
+
+\subsection{ 7.2 Movement Input }
+These are the buttons that will control the movement of the character by the player when the game is running: WASD is what direction the player wants the character to move. The movement input from the keyboard is a vector 3 that is calculated in the XZ-plane direction based on the input through the keyboard. Space button jumps in the Y-axis. If the player holds Shift + any other movement input buttons that will just increase the running speed factor that is a constant number based on the real-time physics. 
+
+\subsection{ 7.3 Space }
+
+
+    [2],[3],[4]17: Source code example for jump
+\subsection{ 7.4 Shift }
+
+[2][3][4]18: Source code example for run
+\subsection{ 7.5 Configuration/Menu }
+
+[5]19: Configuration menu example
+
+
+[6]20: Image showing pause menu
+
+
+
+
+public class PauseMenu : MonoBehaviour
+{
+    public static bool GameIsPaused = false;
+
+    public GameObject pauseMenuUI;
+
+    void Update ()
+    {
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                    Debug.Log("escape is pressed");
+
+                    if(GameIsPaused)
+                    {
+                        Resume();
+                        Debug.Log("game is not paused");
+                    } else {
+                    Pause();
+                    Debug.Log("game is paused");
+                }
+        }
+}
+ public void Resume ()
+{
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+}
+    
+void Pause ()
+{
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+}
+
+public void LoadMenu()
+{
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("menu_main");
+        Debug.Log("Loading menu...");
+}
+[5],[6]
+
+
+
+The green button key ESC allows the player to go into the menu and change the mouse sensitivity, sound effects, and music volume and the gameplay is set on pause. 
+
+\subsection{ 7.6 Mouse Layout }
+Mouse 0 button is one of the action buttons. And the player can force the character to block. So everytime the player is pushing button 0 the character will block  and it’s delayed by 1.1 second. 
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            block();
+        }
+    private void block()
+    {
+        anim.SetTrigger("block");
+    }
+    private IEnumerator block ()
+    {
+        anim.SetLayerWeight(anim.GetLayerIndex("block Layer"), 2);
+        anim.SetTrigger("block");
+        yield return new WaitForSeconds(1.1f);
+    }
+[2],[3],[4]
+
+21: Mouse with attack buttons
+
+Mouse 1 button is one of the action buttons. And the player can force the character to attack. So everytime the player is pushing button 1 the character will attack the aimed target, and it’s delayed by 1 second. 
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            attack();
+        }
+    private void attack()
+    {
+        anim.SetTrigger("Attack");
+    }
+    private IEnumerator Attack()
+    {
+        anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), 1);
+        anim.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.9f);
+    }
+[2],[3],[4]
+
+22: Animation controller example for the character
+\subsection{ 7.7 User Interface }
+
+
+23-24: HUD examples
+
+HUD: The heads-up display (HUD) of our game will include three separate features distributed towards the corners of the player’s display. It will provide the player with information in a manner that’s effective while also soothing to the eyes. The three primary features of the HUD will include: 
+A display in the top left corner which provides information about the in-game character’s current level, health points and experience points. 
+A radar in the bottom left which gives the player information about surrounding enemies’ positions. 
+A weapon select where the weapon in use is highlighted in front of the weapons not currently in use. 
+
+26: Another HUD example
+
+
+
+
+
+\subsection{ 8 Game Mechanics }
+Gladius Romae will include the game mechanics: physics, progression and internal economy. 
+
+\subsection{ 8.1 Physics }
+One of the core mechanics in the game is Newtonian physics, this affects character movement, gravity and mass. This includes how it will affect the characters and all the objects that are part of the game.The player character is affected by gravity as in real life, which we will mimic for realistic effect, e.g when the player performs a jump.
+8.2 Ground movement 
+Ground movement is based on the vector force and what direction the input key is from the player. When the character is still on the ground the vector force is zero(0,0,0). The player can decide what direction the character should move in and how great the force from the direction vector should affect the character in the XZ-plane. 
+
+
+
+27: Illustration of movement vectors
+
+\subsection{ 8.3 Air movement-time }
+If the player decides to press the jump button the character will jump up against the Y-Axis and the gravity should decrease the jump height so he can fall back to the ground. 
+
+\subsection{ 8.4 Collision with objects }
+Weapons will collide with either armor, the opponents  weapons or shields. In the event of a mirroring attack, i.e the npc character using the same ability as the player character, the weapons will collide, causing adverse effects on the weapons. This causes no damage to either character. Defensive weapons will also have different physics depending on the style. Collision and damage with the player or npc character will also cause varying damage depending on area of connection, armor and type of attack.
+
+\subsection{ 8.5 Game progression }
+The game consists of multiple game levels. The player will have to win gladiator battles and complete obligatory or optional tasks to advance to the next level. The levels will be fairly similar in terms of map and content, as levels increase the AI of the opposing gladiators will increase and make it harder to progress.
+
+If the game development progresses to the point where we implement multiplayer the maps will just be maps, not levels. In this case each player has a score of points that is used to rank the players
+
+\subsection{ 8.6 Character Progression }
+There are several ways for the character to progress in the game, amongst these is the chance to gain strength and become more muscular as a result, making it easier to fight off opponents. The character can also gain charisma points by being a “crowd pleaser” and winning the hearts of the people.
+
+\subsection{ 8.7 Internal Economy }
+Sources 
+Level
+Current xp
+Xp needed
+1
+0
+200
+2
+200
+340
+3
+540
+450
+4
+990
+-
+
+Table 1:  table of current experience and experience needed to advance to next level
+lvl
+Strength
+Defense
+Stamina
+Xp
+Hp
+1
+-
+-
+-
+-
+ 
+2
+-
+-
+-
+-
+ 
+3
+-
+-
+-
+-
+ 
+4
+-
+-
+-
+-
+ 
+
+Table 2: Table showing current character stats
+ 
+Weapon + strength
+Shield + def
+Helm + def
+Armor west + def
+Ax1 +3
+Sh1 +2
+He +1
+AW + 5
+Ax2 +10
+Sh2 +4
+He +  3
+AW + 8
+Ax3 +15
+Sh3 +9
+He + 5
+AW + 12
+Ax4 +20
+Sh4 +12
+He + 6
+AW + 15
+
+Table 3: Table showing effect of all possible accessories
+8.8 Inventory items
+Resources
+Armor
+Weapons
+Gold
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+
+Table 4: Table showing characters accessories and resources
+
+\subsection{ 8.9 Mechanics }
+Melee-attacking character using time-appropriate weapons, though slightly stylized. Including special attacks, normal block/jab attacks, shield and armour for defensive stats. As it is set in Colosseum an audience-favor bar could be implemented, giving alternatives to losing or dying should you get enough favor with the crowd they will give you a thumbs up. Should you fail to impress the audience, you will receive a thumbs down.
+
+\subsection{ 8.10 Game Flow }
+The primary way to advance in the game is to win gladiator fights. The player can sometimes choose when to go to a gladiator fight,if not they will be forced to go by their owner. As the player advances in the game, the fights and the tasks will get increasingly harder. The emperor awards points to the gladiator that wins a fight. 
+
+\subsection{ 9 Enemies }
+As the player advances through the stages, the enemies intelligence and difficulty will increase. The type of enemy will also vary, with someone being big, strong and slow, while others are nimble and fast. These enemies will behave in different ways, use the arena to their advantage and appeal to the audience in different manners. The player will also have to deal with animal enemies, which can behave in very unpredictable manners. The AI will make sure that the difficulty curve follows the progression, and be used to introduce new mechanics as necessary. 
+
+Enemies will also chase the player if they attempt to run away or avoid combat. They will monitor the character's behaviour and attack according to the character's movements. If the player is prone to using a specific attack AI will block and use that against the character, forcing the player to adapt and not rely on a single tactic.
+
+
+
+
+
+\subsection{ 10 Art and Video }
+The game will start with a short intro movie to set the scene and storyline. There may be short cutscenes when a new feature is unlocked or when entering a gladiator fight.
+
+Intro video before fights will consist of an image becoming brighter as the player enters the arena. Sound of feet walking on sand, crowd cheering and clapping. Text appears “Get ready to fight”.
+
+For the mood in our game we have, amongst others, used the movie Gladiator(2000) as an inspiration.
+10.1 Sound and Music
+The game will have a realistic sound where the player can hear footsteps, the sound of running through tall grass or swimming in water etc. There will be an optional setting to add very gentle instrumental music, as well as the option to adjust the volume on both music and movement sounds. Crowd sound effects such as cheering, gasping, clapping will be played during fights.
+
+\subsection{ 10.2 Designs }
+
+
+28: Mood example showing the real life Colosseum
+
+\subsection{ 10.3 Art style examples }
+
+29: Art style example
+
+10.4 Inspired Examples
+
+30-31: Inspirational pictures from the motion picture Gladiator
+
+32: The movie Gladiator (2000) has been an inspiration for the mood we want to set for our game.
+
+
+
+33: Swords and Sandals has been an inspiration with parts of their story-telling and internal economy. 
+
+\subsection{ 10.5 Environment and Level Design }
+The game will take place in a fixed size map mimicking the Colosseum arena at the time. The map will include fighting arenas where the gladiator fights will take place, farm areas and forest areas. The initial release will contain only the Colosseum as a playable arena. Figure 34 shows a birds-eye view of the arena, where there will be an audience surrounding the combat area in the middle. The combat area has two entrances, one from the north and one from the south. Inside the sand-filled arena there are three hatches where wild animals will be released from, for the gladiators to fight. If the player is popular with the crowd they can approach the crowd to receive helpful items, glory and fame.
+
+34: Level design show in a birds-eye view
+
+
+\subsection{ 11 Asset lists }
+The player  will start as a game character with good health, but with few assets such as tools, weapons and armor. At the start of the game, the only asset they have is a large knife.  As the player levels up in the game, more assets will be made available for him, that will all help gain an advantage in the game. Assets may include tools, gladiator weapons and gladiator armor. The different assets will have different levels of effect, and may have an impact on movement speed/tiredness.
+
+\subsection{ III Development }
+\subsection{ 12 Systems designs }
+\subsection{ 12.1 Project plan }
+
+Task
+Subtask 
+Assigned developer
+Sprint time
+Build game map
+Forest area
+farm/town area
+Gladiator arena
+
+
+-Start-time
+-end-time
+Build menu
+Start menu
+Settings menu
+Pause menu
+SL
+--//--
+Build main player
+Visually
+Movement physics
+Stats
+Health
+Exp
+weapons
+RW
+
+
+Build opponents
+Visually
+Physics
+Stats
+Health
+Difficulty
+weapons
+
+
+
+
+Make player interactions work
+Enable player to harm opponents
+Enable opponents to harm player
+
+
+
+
+Build save-option to save current game state
+Enable player to save game state, and ropen from same game state
+SL
+
+
+Make online
+Put game on interweb
+Make scoreboard to compare players
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Unexpected task
+debug
+Group member
+Before deadline
+Play game
+Verify functioning game and have a good time
+All
+2-12-2021
+Make multiplayer
+Enable multiplayer on LAN
+Enable multiplayer on interweb
+SL
+
+
+Unexpected task
+debug
+Group member
+Before deadline
+Dominate game industry
+Deliver assignment
+Publish game
+All
+6-12-2021
+
+Table 5: Displays partially current development plan with tasks broken into subtasks. Table 5 will continuously be updated as sprint time gets set and tasks get assigned to team members
+13 SWOT Analysis
+
+Strengths:
+Easy and intuitive to play the game
+Multiple ways of advancing in the game
+Constantly changing gameplay
+Weaknesses:
+Difficulty being seen as a small game development
+Large game concept may be difficult to implement well enough to keep the users attention over time
+Developing the game to be online multiplayer will be very demanding
+Opportunities:
+Be part of the fast growing e-sport scene
+Auto-generate levels
+Make project open source to allow others to contribute if they like
+World domination
+Threats:
+Hard competition
+Difficult to stand out among other successful games in the same genre
+Potentially difficult to adapt the game to different consoles
+
+Table 6: SWOT analysis
+
+
+\subsection{ References }
+[1]Game Mechanics, Advanced Game Design
+[2]https://docs.unity3d.com/ScriptReference/ 
+[3]https://www.youtube.com/watch?v=qc0xU2Ph86Q 
+[4]https://www.youtube.com/watch?v=qc0xU2Ph86Q 
+[5] brackeys game main menu - https://www.youtube.com/watch?v=zc8ac_qUXQY&t=532s
+[6] brackeys game pause menu - https://www.youtube.com/watch?v=JivuXdrIHK0
+GDB-Deflat.pdf
+
+
+
+
+\end{document}
+
