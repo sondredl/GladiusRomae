@@ -17579,7 +17579,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19591,7 +19591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1497204762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19870,8 +19870,10 @@ GameObject:
   - component: {fileID: 1530695335}
   - component: {fileID: 1530695334}
   - component: {fileID: 1530695333}
+  - component: {fileID: 1530695340}
   - component: {fileID: 1530695332}
   - component: {fileID: 1530695331}
+  - component: {fileID: 1530695339}
   m_Layer: 0
   m_Name: medievalTwoHandSword
   m_TagString: Player
@@ -19939,7 +19941,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530695330}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ed9da9e0182a7745aec939187bc77ed, type: 3}
   m_Name: 
@@ -20058,6 +20060,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1530695339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530695330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e2b99130857454b9cfa4bec17e661b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1530695340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530695330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1807939b029681146ab6feca15448d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 6
+  SprintSpeed: 6
+  RotationSmoothTime: 0.12
+  SpeedChangeRate: 10
+  JumpHeight: 1.2
+  Gravity: -15
+  JumpTimeout: 0.5
+  FallTimeout: 0.15
+  Grounded: 1
+  GroundedOffset: -0.14
+  GroundedRadius: 0.28
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  AttackTimeOut: 1
+  CinemachineCameraTarget: {fileID: 0}
+  TopClamp: 70
+  BottomClamp: -30
+  CameraAngleOverride: 0
+  LockCameraPosition: 0
+  blocking: 0
+  attacking: 0
+  jump: 0
+  maxHealth: 100
+  meleeHealthBar: {fileID: 0}
+  focus: {fileID: 0}
 --- !u!1 &1535792551
 GameObject:
   m_ObjectHideFlags: 0
@@ -22010,8 +22062,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6130616f1de615a4da7e084e583830d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
-  interactionTransform: {fileID: 0}
+  items: []
+  item: {fileID: 0}
 --- !u!1 &1700177063
 GameObject:
   m_ObjectHideFlags: 0
@@ -27586,8 +27638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6130616f1de615a4da7e084e583830d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
-  interactionTransform: {fileID: 2071097004}
+  items: []
+  item: {fileID: 0}
 --- !u!1 &2088828897
 GameObject:
   m_ObjectHideFlags: 0
