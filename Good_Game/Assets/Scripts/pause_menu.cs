@@ -28,6 +28,8 @@ public class
         // }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Cursor.visible = true;
+
             if (GameIsPaused)
             {
                 Resume();
@@ -45,11 +47,12 @@ public class
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        Cursor.visible = false;
     }
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
         GameIsPaused = true;
     }
 

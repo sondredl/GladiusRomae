@@ -2,23 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrosshairTest : MonoBehaviour
+/*public class SelectionManager : MonoBehaviour
 {
-
-
-    public Transform crosshair;
+    [SerializeField] private Material highlightMaterial;
     public Camera cam;
-    public Transform muzzle;
+    public Transform crosshair;
 
-    void Update()
+   private void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(muzzle.transform.position, muzzle.transform.forward, out hit))
+        if (Physics.Raycast(crosshair, out hit))
         {
             if (hit.collider)
             {
-                crosshair.transform.position = cam.WorldToScreenPoint(hit.point);
+                var selection = hit.transform;
+                var selectionRenderer = selection.GetComponent<Renderer>();
+                if (selectionRenderer != null)
+                {
+                    selectionRenderer.material = highlightMaterial;
+                }
             }
         }
+
     }
 }
+*/
