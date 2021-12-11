@@ -4,8 +4,47 @@ using UnityEngine;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-public class BaseStat : MonoBehaviour
+public class BaseStat 
 {
+    public List<StatBonus> BaseAdditives { get; set; }
+    //start off with empty values baseValue
+    public int BaseValue { get; set; }
+    //Display characters sheets
+    public string StatName { get; set; } 
+    public string StatDescription { get; set; }
+
+    public int FinalValue { get; set; }
+
+
+    public BaseStat(int baseValue, string statName, string statDescription)
+    {
+        this.BaseAdditives = new List<StatBonus>();
+        this.BaseValue = baseValue;
+        this.StatName = statName;
+        this.StatDescription = statDescription; 
+
+    }
+
+    public void AddStatBonus(StatBonus statBonus)
+    {
+        this.BaseAdditives.Add(statBonus);
+    }
+
+    public void RemoveStatBonus(StatBonus statBonus)
+    {
+        this.BaseAdditives.Remove(statBonus);
+    }
+
+    public int GetCalculatedStatValue()
+    {
+        this.BaseAdditives.ForEach(x => this.FinalValue += x.BonusValue );
+        FinalValue += BaseValue;
+        return FinalValue;
+    }
+
+
+
+    /*
     public enum BaseStatType{ Damage, Health }
     public List<StatBonus> BaseAdditives { get; set; }
     [JsonConverter(typeof(StringEnumConverter))]
@@ -49,4 +88,5 @@ public class BaseStat : MonoBehaviour
 
         return this.FinalValue;
     }
+    */
 }
