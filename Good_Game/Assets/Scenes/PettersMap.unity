@@ -33810,6 +33810,7 @@ MonoBehaviour:
   dialogueText: {fileID: 1001214951}
   animator: {fileID: 905085443}
   gameObj: {fileID: 0}
+  gameObj2: {fileID: 0}
 --- !u!1001 &1851710827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42769,6 +42770,7 @@ MonoBehaviour:
   dialogueText: {fileID: 6640796744233643206}
   animator: {fileID: 6640796744538751958}
   gameObj: {fileID: 6640796744235222002}
+  gameObj2: {fileID: 6640796744538751978}
 --- !u!4 &6640796742997854941
 Transform:
   m_ObjectHideFlags: 0
@@ -43863,7 +43865,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6640796744538751978}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6640796744929682899}
@@ -43875,7 +43877,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -34.69998}
+  m_AnchoredPosition: {x: 0, y: -1000}
   m_SizeDelta: {x: 520, y: 210}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6640796744793164193

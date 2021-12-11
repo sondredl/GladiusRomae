@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
 
     public GameObject gameObj;
+    public GameObject gameObj2;
 
     // Start is called before the first frame update
     void Start()
