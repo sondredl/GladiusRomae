@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class pause_menu : MonoBehaviour
+public class 
+    pause_menu : MonoBehaviour
 {
 
     public static bool GameIsPaused = false;
