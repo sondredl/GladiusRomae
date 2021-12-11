@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class pause_menu : MonoBehaviour
+public class 
+    pause_menu : MonoBehaviour
 {
 
     public static bool GameIsPaused = false;
@@ -27,6 +28,8 @@ public class pause_menu : MonoBehaviour
         // }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Cursor.visible = true;
+
             if (GameIsPaused)
             {
                 Resume();
@@ -44,6 +47,7 @@ public class pause_menu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        Cursor.visible = false;
     }
     public void Pause()
     {
