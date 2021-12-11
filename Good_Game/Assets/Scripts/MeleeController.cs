@@ -225,48 +225,49 @@ public class MeleeController : MonoBehaviour
 			// input.getMouseButtonDown(1)
 			if (input.attack)
 			{
-				// meleeAnimator.Play("Attack");
-				// input.attack = false;
+				meleeAnimator.Play("Attack");
+				input.attack = false;
 
-				Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-				RaycastHit hit;
+				// Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+				// RaycastHit hit;
 
-				if (Physics.Raycast(ray, out hit, 100)) {
-					Interactable interactable = hit.collider.GetComponent<Interactable>;
-					if (interactable != null) {
-						SetFocus(interactable);
-					}
-				}
+				// if (Physics.Raycast(ray, out hit, 100)) {
+				// 	Interactable interactable = hit.collider.GetComponent<Interactable>;
+				// 	if (interactable != null) {
+				// 		SetFocus(interactable);
+				// 	}
+				// }
 
 			}
 		}
+
 		if (!blocking)
 		{
 			// input.getMouseButtonDown(right mouse button)
 			if (input.block)
 			{
-				// meleeAnimator.Play("Attack2");
-				// input.block = false;
+				meleeAnimator.Play("Attack2");
+				input.block = false;
 
-				Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-				RaycastHit hit;
+				// Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+				// RaycastHit hit;
 
-				if (Physics.Raycast(ray, out hit, 100)) {
-					motor.MoveToPoint(hit.point);
+				// if (Physics.Raycast(ray, out hit, 100)) {
+				// 	motor.MoveToPoint(hit.point);
 
-					RemoveFocus();
+				// 	RemoveFocus();
 					// Interactable interactable = hit.collider.GetComponent<Interactable>
 					// if (interactable != null) {
 					// 	SetFocus(interactable);
 					// }
 				}
 			}
-		}
+
 		if (!jump)
 		{
 			if (input.jump)
 			{
-				// meleeAnimator.SetTrigger("Jump");
+				meleeAnimator.SetTrigger("Jump");
 				input.jump = false;
 			}
 		}
