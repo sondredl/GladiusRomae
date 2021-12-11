@@ -120,6 +120,15 @@ public class MeleeEnemyController : MonoBehaviour
 			// pause_menu.Pause();
        	 	// meleeAnimator.SetTrigger("Die");
        	 	enemyAnimator.Play("Die");
+
+            if(isAlive == false)
+            {
+                Debug.Log("Enemy diead");
+                enemyAnimator.SetTrigger("Die");
+
+                Destroy(gameObject,5);
+            }
+
         }
         // Debug.Log("(meleeController) TakeDamage() " + currentHealth);
         // meleeAnimator.SetTrigger("takeDamage");
