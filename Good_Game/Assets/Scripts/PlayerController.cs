@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
     public static int currentHealth;
     public MeleeHealthBar meleeHealthBar;
 
-	private static Animator meleeAnimator;
+	private static Animator playerAnimator;
 	private CharacterController controller;
 	private NewInput input;
 	private GameObject mainCamera;
@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		hasAnimator = TryGetComponent(out meleeAnimator);
+		hasAnimator = TryGetComponent(out playerAnimator);
 		controller = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
 
@@ -138,13 +138,13 @@ public class PlayerController : MonoBehaviour
 
 		// dummy declarations
 	 	hasSword = true;
-		meleeAnimator.Play("2handSwordBlendTree");
+		playerAnimator.Play("2handSwordBlendTree");
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		hasAnimator = TryGetComponent(out meleeAnimator);
+		hasAnimator = TryGetComponent(out playerAnimator);
 		input = GetComponent<NewInput>();
 		if (hasSword == true){
 			playerEquipment();
@@ -182,11 +182,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("(smeleeController) player died");
             isAlive = false;
 			// pause_menu.Pause();
-       	 	meleeAnimator.SetTrigger("Die");
-       	 	meleeAnimator.Play("PlayerDeath");
+       	 	playerAnimator.SetTrigger("Die");
+       	 	playerAnimator.Play("PlayerDeath");
         }
         // Debug.Log("(meleeController) TakeDamage() " + currentHealth);
-        meleeAnimator.Play("TakeDamage");
+        playerAnimator.Play("TakeDamage");
         // meleeAnimator.SetTrigger("takeDamage");
     }
 
@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
 			// input.getMouseButtonDown(1)
 			if (input.attack)
 			{
-				meleeAnimator.Play("Attack");
+				playerAnimator.Play("Attack");
 				input.attack = false;
 
 				// Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -246,7 +246,7 @@ public class PlayerController : MonoBehaviour
 			// input.getMouseButtonDown(right mouse button)
 			if (input.block)
 			{
-				meleeAnimator.Play("Attack2");
+				playerAnimator.Play("Attack2");
 				input.block = false;
 
 				// Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -267,7 +267,7 @@ public class PlayerController : MonoBehaviour
 		{
 			if (input.jump)
 			{
-				meleeAnimator.SetTrigger("Jump");
+				playerAnimator.SetTrigger("Jump");
 				input.jump = false;
 			}
 		}
@@ -298,7 +298,7 @@ public class PlayerController : MonoBehaviour
 			if (input.attack)
 			{
 				// meleeAnimator.SetTrigger("Attack");
-				meleeAnimator.Play("2Hand-Sword-Attack1");
+				playerAnimator.Play("2Hand-Sword-Attack1");
 				// Debug.Log("meleeController => input.attack");
 				input.attack = false;
 			}
@@ -308,7 +308,7 @@ public class PlayerController : MonoBehaviour
 			if (input.block)
 			{
 				// meleeAnimator.SetTrigger("Block");
-				meleeAnimator.Play("2Hand-Sword-Attack2");
+				playerAnimator.Play("2Hand-Sword-Attack2");
 				// Debug.Log("meleeController => input.block");
 				input.block = false;
 			}
@@ -318,7 +318,7 @@ public class PlayerController : MonoBehaviour
 			if (input.jump)
 			{
 				// meleeAnimator.SetTrigger("Jump");
-				meleeAnimator.Play("2Hand-Sword-Attack2");
+				playerAnimator.Play("2Hand-Sword-Attack2");
 				input.jump = false;
 			}
 		}
@@ -343,7 +343,9 @@ public class PlayerController : MonoBehaviour
 
 		// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 		// if there is no input, set the target speed to 0
-		if (input.move == Vector2.zero) targetSpeed = 0.0f;
+		if (input.move == Vector2.zero){
+			targetSpeed = 0.0f;
+		} 
 
 		// a reference to the players current horizontal velocity
 		float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
@@ -388,10 +390,12 @@ public class PlayerController : MonoBehaviour
 		// move the player
 		controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
+			Debug.Log("speed: " + _speed);
+
 		// update animator if using character
 		if (hasAnimator)
 		{
-			meleeAnimator.SetFloat("Speed", _animationBlend);
+			playerAnimator.SetFloat("Speed", _animationBlend);
 			// animator.SetFloat("MoveSpeed",animIDMotionSpeed, inputMagnitude);
 		}
 	}
@@ -444,7 +448,7 @@ public class PlayerController : MonoBehaviour
 				Debug.Log("input jump");
 				// meleeAnimator.SetTrigger("Jump");
 				// meleeAnimator.Play("Jump");
-				meleeAnimator.Play("Jump1");
+				playerAnimator.Play("Jump1");
 				// TakeDamage(24);
 				input.jump = false;
 			}
@@ -512,7 +516,7 @@ public class PlayerController : MonoBehaviour
 				Debug.Log("input jump");
 				// meleeAnimator.SetTrigger("Jump");
 				// meleeAnimator.Play("Jump");
-				meleeAnimator.Play("2Hand-Sword-Jump");
+				playerAnimator.Play("2Hand-Sword-Jump");
 				// TakeDamage(24);
 				input.jump = false;
 			}

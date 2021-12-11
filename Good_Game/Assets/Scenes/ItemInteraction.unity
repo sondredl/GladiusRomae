@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3c737758955cbca4685a14f589078cb3, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: dea55adb4a58193478a406fa32e8a646, type: 2}
 --- !u!1001 &1878960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20014,7 +20014,7 @@ Animator:
   m_GameObject: {fileID: 1530695330}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f293cd003cf71d6409af1c1025485f47, type: 3}
-  m_Controller: {fileID: 9100000, guid: 47d70498a8b69464ca6484a2d552e844, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0bd665b3e9d93444f92fa5c68f8c008c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
