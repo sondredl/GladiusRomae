@@ -25,7 +25,8 @@ public class Interactable : MonoBehaviour
     {
         if (isFocus)
         {
-        Debug.Log("interactable update() if  " + transform.name);
+            Debug.Log("interactable update() if  " + transform.name);
+
             float distance = Vector3.Distance(player.position, interactionTransform.position);
             if(!hasInteracted && distance <= radius)
             {
@@ -38,22 +39,27 @@ public class Interactable : MonoBehaviour
     public void OnFocused(Transform playerTransform)
     {
         Debug.Log("interactable.onFocus");
+
         isFocus = true;
-        hasInteracted = false;
         player = playerTransform;
+        hasInteracted = false;
     }
 
-    public void OnDeFocused()
-    {
+    public void OnDeFocused() {
+
+        Debug.Log("interactable.DeFocus");
+
         isFocus = false;
-        hasInteracted=false;
         player = null;
+        hasInteracted=false;
 
     }
 
     void OnDrawGizmosSelected()
     {
             Debug.Log("interactable.onDrawGizmosSelected()");
+            Debug.Log("interactionTransform: " + interactionTransform.name);
+
         if (interactionTransform == null) {
             Debug.Log("interactable.onDrawGizmosSelected() if ");
             interactionTransform = transform;

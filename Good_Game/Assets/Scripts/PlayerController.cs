@@ -105,7 +105,8 @@ public class PlayerController : MonoBehaviour
 	private bool hasAnimator;
 
 	// stats and items
-	private bool hasSword = true;
+	// private bool hasSword = true;
+	private bool hasSword = false;
 	public Interactable focus;
 	// PlayerMotor motor;
 
@@ -137,7 +138,7 @@ public class PlayerController : MonoBehaviour
 		// motor = GetComponent<PlayerMotor>();
 
 		// dummy declarations
-	 	hasSword = true;
+	 	// hasSword = true;
 		playerAnimator.Play("2handSwordBlendTree");
 	}
 
@@ -390,7 +391,7 @@ public class PlayerController : MonoBehaviour
 		// move the player
 		controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
-			Debug.Log("speed: " + _speed);
+			// Debug.Log("speed: " + _speed);
 
 		// update animator if using character
 		if (hasAnimator)
