@@ -1433,6 +1433,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 90884480}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &93462957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93462956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d813629f3ad0444a0969341fd61ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+  item: {fileID: 0}
 --- !u!136 &93462959
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13148,7 +13162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1211416891
 Transform:
   m_ObjectHideFlags: 0
