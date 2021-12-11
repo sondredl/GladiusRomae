@@ -14,7 +14,6 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject gameObj;
     public GameObject gameObj2;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -25,25 +24,21 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        gameObj2.SetActive(true);
-        if (gameObj2 == true)
+
+        animator.SetBool("isOpen", true);
+        Cursor.visible = true;
+        gameObj.SetActive(false);
+
+
+        nameText.text = dialogue.name;
+
+        sentences.Clear();
+
+        foreach(string sentence in dialogue.sentences)
         {
-
-            animator.SetBool("isOpen", true);
-            Cursor.visible = true;
-            gameObj.SetActive(false);
-
-
-            nameText.text = dialogue.name;
-
-            sentences.Clear();
-
-            foreach (string sentence in dialogue.sentences)
-            {
-                sentences.Enqueue(sentence);
-            }
-            DisplayNextSentence();
+            sentences.Enqueue(sentence);
         }
+        DisplayNextSentence();
     }
     public void DisplayNextSentence()
     {
@@ -71,7 +66,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
-        gameObj2.SetActive(false);
+
 
     }
     }
