@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class NextScene : MonoBehaviour
 {
+
     public static bool GameIsPaused = false;
 
     //public GameObject pauseMenuUI;
