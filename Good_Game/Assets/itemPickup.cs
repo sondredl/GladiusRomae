@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class itemPickup : Interactable
+public class itemPickup : Inventory
 {
+    public Item item;
+
     public override void Interact() {
         base.Interact();
         Debug.Log("itemPickup.Interact()");
@@ -11,6 +13,7 @@ public class itemPickup : Interactable
 
     void PickUp() {
         Debug.Log("itemPickup.PickUp()");
+        Inventory.instance.Add(item);
         
         Destroy(gameObject);
     }
