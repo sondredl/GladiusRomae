@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
 		// dummy declarations
 	 	// hasSword = true;
-		playerAnimator.Play("2handSwordBlendTree");
+		// playerAnimator.Play("2handSwordBlendTree");
 	}
 
 	// Update is called once per frame
