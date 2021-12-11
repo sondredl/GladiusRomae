@@ -19,7 +19,6 @@ public class NextScene : MonoBehaviour
 
             Debug.Log("pause_menu you died! in");
             //LoadActiveScene();
-            DontDestroyOnLoad(gameObject);
             LoadActiveScene();
             //LoadNextLevel();
 
