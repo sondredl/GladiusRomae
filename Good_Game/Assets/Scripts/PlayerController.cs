@@ -169,13 +169,11 @@ public class PlayerController : MonoBehaviour
 		TwoHandSwordJumpAndGravity();
 	}
 
-	private void LateUpdate()
-	{
+	private void LateUpdate() {
 		CameraRotation();
 	}
 
-    public void TakeDamage(int damage)
-    {
+    public void TakeDamage(int damage) {
         currentHealth -= damage;
         meleeHealthBar.SetNewHealth(currentHealth);
         if (currentHealth <= 0)
@@ -191,18 +189,11 @@ public class PlayerController : MonoBehaviour
         // meleeAnimator.SetTrigger("takeDamage");
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-		// Debug.Log(collision.gameObject.tag);
-			// Debug.Log("collision with untagged");
-		// Debug.Log(gameObject.tag);
+    void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "OpponentSword")
-        // if (collision.gameObject.tag == "Untagged" || collision.gameObject.tag == "Damage_10")
         {
 			int damage = 6;
 			TakeDamage(damage);
-			// Debug.Log("collision with OpponentSword");
-            // Debug.Log(damage);
         }
         if (collision.gameObject.tag == "mySword") {
 			Debug.Log("collision with mySword");
@@ -217,10 +208,13 @@ public class PlayerController : MonoBehaviour
 		{
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
+		if (collision.gameObject.tag == "item") {
+			Debug.Log("playerController.onCollisionEnter() with: " + collision.gameObject.tag);
+        	Destroy(collision.gameObject);
+		}
 	}
 
-	private void animationAction()
-	{
+	private void animationAction() {
 		if (!attacking)
 		{
 			// input.getMouseButtonDown(1)
@@ -292,8 +286,7 @@ public class PlayerController : MonoBehaviour
 		focus = null;
 	}
 
-	private void twoHandSwordAction()
-	{
+	private void twoHandSwordAction() {
 		if (!attacking)
 		{
 			if (input.attack)
@@ -335,8 +328,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private void Move()
-	{
+	private void Move() {
 		// set target speed based on move speed, sprint speed and if sprint is pressed
 		float targetSpeed = input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -401,8 +393,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private void CameraRotation()
-	{
+	private void CameraRotation() {
 		// if there is an input and camera position is not fixed
 		if (input.look.sqrMagnitude >= threshold && !LockCameraPosition)
 		{
@@ -418,8 +409,7 @@ public class PlayerController : MonoBehaviour
 		CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
 	}
 
-	private void JumpAndGravity()
-	{
+	private void JumpAndGravity() {
 		if (Grounded)
 		{
 			// Debug.Log("is grounded");
@@ -486,8 +476,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private void TwoHandSwordJumpAndGravity()
-	{
+	private void TwoHandSwordJumpAndGravity() {
 		if (Grounded)
 		{
 			// Debug.Log("is grounded");
@@ -554,8 +543,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
-	{
+	private static float ClampAngle(float lfAngle, float lfMin, float lfMax) {
 		if (lfAngle < -360f) lfAngle += 360f;
 		if (lfAngle > 360f) lfAngle -= 360f;
 		return Mathf.Clamp(lfAngle, lfMin, lfMax);

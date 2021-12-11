@@ -57,8 +57,8 @@ public class Interactable : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-            Debug.Log("interactable.onDrawGizmosSelected()");
-            Debug.Log("interactionTransform: " + interactionTransform.name);
+            // Debug.Log("interactable.onDrawGizmosSelected()");
+            // Debug.Log("interactionTransform: " + interactionTransform.name);
 
         if (interactionTransform == null) {
             Debug.Log("interactable.onDrawGizmosSelected() if ");
