@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class _testing : MonoBehaviour
 {
-    [SerializeField] private _LevelSystem levelWindow;
+    //[SerializeField] private _LevelWindow _levelWindow;
+
+    [SerializeField] private LevelWindow levelWindow;
 
     private void Awake()
     {
-        _LevelSystem _levelsystem = new _LevelSystem();
-        Debug.Log(_levelsystem._GetLevelNumber());
+        LevelSystem levelSystem = new LevelSystem();
+        Debug.Log(levelSystem.GetLevelNumber());
+        levelSystem.AddExperience(50);
+        Debug.Log(levelSystem.GetLevelNumber());
+        levelSystem.AddExperience(500);
+        Debug.Log(levelSystem.GetLevelNumber());
+
+        levelWindow.SetLevelSystem(levelSystem);
+
+
+    }
+    /*
+
+    _LevelSystem _levelsystem = new _LevelSystem();
+    Debug.Log(_levelsystem._GetLevelNumber());
         _levelsystem._AddExperience(50);
         Debug.Log(_levelsystem._GetLevelNumber());
-        _levelsystem._AddExperience(60);
+        _levelsystem._AddExperience(1000);
         Debug.Log(_levelsystem._GetLevelNumber());
-    }
+
+
+        _levelWindow._SetLevelSystem(_levelsystem);
+    */
 }

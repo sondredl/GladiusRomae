@@ -33,4 +33,9 @@ public class _LevelSystem : MonoBehaviour
     {
         return level;
     }
+
+    public float _GetExperienceNormalized()
+    {
+        return (float) experience / experienceToNextLevel;
+    }
 }

@@ -42,6 +42,9 @@ public class LevelWindow : MonoBehaviour {
 
     public void SetLevelSystem(LevelSystem levelSystem) {
         this.levelSystem = levelSystem;
+        SetLevelNumber(levelSystem.GetLevelNumber());
+
+        SetExperienceBarSize(levelSystem.GetExperienceNormalized());
     }
 
     public void SetLevelSystemAnimated(LevelSystemAnimated levelSystemAnimated) {
