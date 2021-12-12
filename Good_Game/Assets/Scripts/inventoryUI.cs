@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class inventoryUI : MonoBehaviour
 {
+    /*
     public Transform itemsParent;
     public GameObject inventoryUI;
 
@@ -35,4 +36,5 @@ public class inventoryUI : MonoBehaviour
             }
         }
     }
+    */
 }

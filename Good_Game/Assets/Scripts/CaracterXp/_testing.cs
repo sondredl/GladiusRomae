@@ -7,6 +7,8 @@ public class _testing : MonoBehaviour
     //[SerializeField] private _LevelWindow _levelWindow;
 
     [SerializeField] private LevelWindow levelWindow;
+    [SerializeField] private MeleeController player;
+    [SerializeField] private MeleeEnemyController Enemy;
 
     private void Awake()
     {
@@ -19,8 +21,23 @@ public class _testing : MonoBehaviour
 
         levelWindow.SetLevelSystem(levelSystem);
 
+        // refrence to the Level (levelSystem) with the same values
 
+        player.SetLevelSystem(levelSystem);
     }
+    /*
+    public void AddExperience()
+    {
+
+        if (MeleeEnemyController.isAlive == true)
+        {
+            levelSystem.AddExperience(5000);
+            Debug.Log(levelSystem.GetLevelNumber());
+            levelWindow.SetLevelSystem(levelSystem);
+            player.SetLevelSystem(levelSystem);
+        }
+    }
+    */
     /*
 
     _LevelSystem _levelsystem = new _LevelSystem();
