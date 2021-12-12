@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3788,11 +3788,11 @@ GameObject:
   - component: {fileID: 189559220}
   m_Layer: 0
   m_Name: noWeapon
-  m_TagString: Untagged
+  m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &189559220
 Transform:
   m_ObjectHideFlags: 0
@@ -15048,32 +15048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1807939b029681146ab6feca15448d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 6
-  SprintSpeed: 3
-  RotationSmoothTime: 0.12
-  SpeedChangeRate: 10
-  JumpHeight: 1.2
-  Gravity: -15
-  JumpTimeout: 0.5
-  FallTimeout: 0.15
-  Grounded: 1
-  GroundedOffset: -0.14
-  GroundedRadius: 0.28
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  AttackTimeOut: 1
-  CinemachineCameraTarget: {fileID: 1629731637}
-  TopClamp: 70
-  BottomClamp: -30
-  CameraAngleOverride: 0
-  LockCameraPosition: 0
-  blocking: 0
-  attacking: 0
-  jump: 0
-  maxHealth: 100
-  meleeHealthBar: {fileID: 466023414}
-  focus: {fileID: 0}
 --- !u!95 &637904353
 Animator:
   serializedVersion: 3
@@ -22937,7 +22911,6 @@ GameObject:
   - component: {fileID: 978760865}
   - component: {fileID: 978760857}
   - component: {fileID: 978760856}
-  - component: {fileID: 978760864}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -23008,7 +22981,7 @@ Animator:
   m_GameObject: {fileID: 978760855}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f293cd003cf71d6409af1c1025485f47, type: 3}
-  m_Controller: {fileID: 9100000, guid: 0bd665b3e9d93444f92fa5c68f8c008c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4f549411db3852d4b8efd4fd965d2f0b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -23090,18 +23063,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &978760864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978760855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e2b99130857454b9cfa4bec17e661b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &978760865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23111,11 +23072,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 978760855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1807939b029681146ab6feca15448d63, type: 3}
+  m_Script: {fileID: 11500000, guid: 26f38d9d68000334b89361bc40eb2e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 6
-  SprintSpeed: 3
+  SprintSpeed: 6
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
   JumpHeight: 1.2
@@ -46046,9 +46007,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2017793998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8fbc245f82bf95408729fe2fe093ef9, type: 3}
+  m_Script: {fileID: 11500000, guid: 809f64105820b9342bcca2e048385862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedItem: 0
 --- !u!1 &2019486122
 GameObject:
   m_ObjectHideFlags: 0
