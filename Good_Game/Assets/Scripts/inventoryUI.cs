@@ -3,6 +3,7 @@ using UnityEngine;
 public class inventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
+    public GameObject inventoryUI;
 
     Inventory inventory;
 
@@ -19,7 +20,11 @@ public class inventoryUI : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        if (Input.GetButtonDown("Inventory")) {
+            inventoryUI.SetActive(!inventoryUI.activeSelf);
+        }
     }
+
     void UpdateUI () {
         Debug.Log("updating ui");
         for (int i = 0; i < slots.Length: i++) {
