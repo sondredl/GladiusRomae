@@ -426,8 +426,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
-  maxHealth: 100
-  enemyHealthBar: {fileID: 0}
 --- !u!195 &37240618
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4084,8 +4082,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
-  maxHealth: 100
-  enemyHealthBar: {fileID: 0}
 --- !u!114 &364590476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5003,7 +4999,6 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 638473865}
-  focus: {fileID: 0}
 --- !u!95 &470332942
 Animator:
   serializedVersion: 3
@@ -9674,8 +9669,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
-  maxHealth: 100
-  enemyHealthBar: {fileID: 0}
 --- !u!136 &876708323
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13145,8 +13138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
-  maxHealth: 100
-  enemyHealthBar: {fileID: 0}
 --- !u!1 &1211416890
 GameObject:
   m_ObjectHideFlags: 0
@@ -13840,6 +13831,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6130616f1de615a4da7e084e583830d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
+  item: {fileID: 0}
 --- !u!1 &1306330582
 GameObject:
   m_ObjectHideFlags: 0
@@ -14997,7 +14990,6 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 1785998941}
-  focus: {fileID: 0}
 --- !u!95 &1384754712
 Animator:
   serializedVersion: 3
@@ -15784,8 +15776,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 5
-  maxHealth: 100
-  enemyHealthBar: {fileID: 753910825}
 --- !u!136 &1479642321
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17740,6 +17730,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6130616f1de615a4da7e084e583830d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
+  item: {fileID: 0}
 --- !u!136 &1690572708
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -18152,7 +18144,6 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 92422679}
-  focus: {fileID: 0}
 --- !u!95 &1726063498
 Animator:
   serializedVersion: 3
@@ -19935,8 +19926,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
-  maxHealth: 100
-  enemyHealthBar: {fileID: 0}
 --- !u!136 &1872920730
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20234,7 +20223,6 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 571119115}
-  focus: {fileID: 0}
 --- !u!95 &1897628583
 Animator:
   serializedVersion: 3
@@ -21989,6 +21977,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6130616f1de615a4da7e084e583830d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
+  item: {fileID: 0}
 --- !u!1 &2088828897
 GameObject:
   m_ObjectHideFlags: 0
@@ -22584,8 +22574,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
-  maxHealth: 100
-  enemyHealthBar: {fileID: 0}
 --- !u!54 &2124393103
 Rigidbody:
   m_ObjectHideFlags: 0

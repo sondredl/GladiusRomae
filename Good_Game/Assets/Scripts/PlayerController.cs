@@ -17,6 +17,7 @@ using UnityEngine.SceneManagement;
 #endif
 //[RequireComponent(typeof(Rigidbody))]
 // [RequireComponent(typeof(PlayerMotor))]
+
 public class PlayerController : MonoBehaviour
 {
 	[Header("Player")]
