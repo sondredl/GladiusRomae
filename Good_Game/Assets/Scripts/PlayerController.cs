@@ -260,7 +260,7 @@ public class PlayerController : MonoBehaviour
 			// input.getMouseButtonDown(right mouse button)
 			if (input.block)
 			{
-				playerAnimator.Play("Attack2");
+				playerAnimator.Play("Unarmed-DiveRoll-Forward1");
 				input.block = false;
 
 				// Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -321,7 +321,7 @@ public class PlayerController : MonoBehaviour
 			if (input.block)
 			{
 				// meleeAnimator.SetTrigger("Block");
-				playerAnimator.Play("2Hand-Sword-Attack2");
+				playerAnimator.Play("Unarmed-DiveRoll-Forward1");
 				// Debug.Log("meleeController => input.block");
 				input.block = false;
 			}
