@@ -3405,7 +3405,7 @@ GameObject:
   - component: {fileID: 1518256539}
   - component: {fileID: 1518256538}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: DialogCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3712,11 +3712,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Mark
+    name: Slavemaster
     sentences:
-    - Hello, I hear you're out looking for some advice
-    - I think I can help you..
-    - If you catch us some food for tonight, I'll tell you what I know
+    - Oh, you unlucky soul.. I'll give you a few tips to get going
+    - tip #1
+    - tip #2
+    - Good luck!
 --- !u!114 &1734512428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3822,7 +3823,7 @@ GameObject:
   - component: {fileID: 1782883795}
   - component: {fileID: 1782883796}
   m_Layer: 0
-  m_Name: PT_Medieval_Male_Peasant_01
+  m_Name: Person
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4306,7 +4307,7 @@ GameObject:
   - component: {fileID: 2080953698}
   - component: {fileID: 2080953697}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ButtonCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4344,7 +4345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac05660483fea5948a060b4f72b7ce97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 284874067}
 --- !u!114 &2080953698
 MonoBehaviour:
   m_ObjectHideFlags: 0
