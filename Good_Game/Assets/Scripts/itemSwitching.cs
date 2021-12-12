@@ -11,15 +11,17 @@ public class itemSwitching : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("itemSwitching.update()");
         // if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
         if (Input.GetKeyDown(KeyCode.R)) {
             Debug.Log("itemSwitching.update() keykode: R");
+                // selectedItem++;
+                // SelectWeapon();
             if (selectedItem >= transform.childCount - 1) {
                 Debug.Log("itemSwitching.update() if --> if ");
                 selectedItem = 0;
                 // SelectWeapon();
             } else {
+                Debug.Log("itemSwitching.update() if --> else ");
                 selectedItem++;
                 SelectWeapon();
             }
@@ -40,6 +42,7 @@ public class itemSwitching : MonoBehaviour
         foreach (Transform item in transform) {
             if (i == selectedItem) {
                 item.gameObject.SetActive(true);
+                Debug.Log("item.gameobject active: " + item.gameObject.name);
             } else {
                 item.gameObject.SetActive(false);
             }
