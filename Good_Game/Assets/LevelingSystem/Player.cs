@@ -54,7 +54,7 @@ public class Player : MonoBehaviour {
         levelSystemAnimated.OnLevelChanged += LevelSystem_OnLevelChanged;
     }
 
-    private void LevelSystem_OnLevelChanged(object sender, EventArgs e) {
+    public void LevelSystem_OnLevelChanged(object sender, EventArgs e) {
         PlayVictoryAnim();
         SpawnParticleEffect();
         Flash(new Color(1, 1, 1, 1));

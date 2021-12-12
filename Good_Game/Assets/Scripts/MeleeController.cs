@@ -104,12 +104,15 @@ public class MeleeController : MonoBehaviour
 	private const float threshold = 0.01f;
 	private bool hasAnimator;
 
+	public Sword sword;
+	public static int currentDamage;
+
 	// stats and items
 	private bool hasSword = true;
 	public Interactable focus;
 	// PlayerMotor motor;
 
-	private _LevelSystem _levelsystem;
+	private LevelSystem levelSystem;
 
 
 	private void Awake()
@@ -138,6 +141,9 @@ public class MeleeController : MonoBehaviour
 		hasAnimator = TryGetComponent(out meleeAnimator);
 		controller = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
+
+		//added damage
+		
 
 		//playerHealth
         currentHealth = maxHealth;
@@ -175,11 +181,43 @@ public class MeleeController : MonoBehaviour
 		playerEquipment();
 	}
 
-	public void _SetLevelSystem(_LevelSystem _levelsystem)
+	public void SetLevelSystem(LevelSystem levelSystem)
     {
-		this._levelsystem = _levelsystem;
+		this.levelSystem = levelSystem;
 
+		levelSystem.OnLevelChanged += LevelSystem_OnLevelChanged;
+
+	}
+
+	private void LevelSystem_OnLevelChanged(object sender,EventArgs e )
+    {
+		
+		setHealthBar( 1 + levelSystem.GetLevelNumber() * 2);
+		setDamage(1 + levelSystem.GetLevelNumber() * 2);
+
+		Debug.Log(levelSystem.GetLevelNumber());
+		
+		//Debug.Log(e.ToString());
+		//throw new NotImplementedException();
     }
+
+	private void setHealthBar(int health)
+    {
+		maxHealth +=health;
+		meleeHealthBar.SetNewHealth(maxHealth);
+		//transform.localScale = new Vector3(healthSize, healthSize, healthSize);	
+		//meleeHealthBar.SetNewHealth(healthSize);
+
+
+	}
+
+	private void setDamage(int damage)
+    {
+		currentDamage += damage;
+		sword.addDamage(damage);
+    }
+
+
 	private void playerEquipment(){
 		// Debug.Log("meleeController/playerEquiplent hasSword:" + hasSword);
 		// meleeAnimator.Play("2handSwordBlendTree");

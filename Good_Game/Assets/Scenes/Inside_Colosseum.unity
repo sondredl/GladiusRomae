@@ -4436,6 +4436,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 1787277525}
+  sword: {fileID: 0}
   focus: {fileID: 0}
 --- !u!95 &342387790
 Animator:
@@ -7469,6 +7470,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 112784295}
+  sword: {fileID: 0}
   focus: {fileID: 0}
 --- !u!95 &611426852
 Animator:
@@ -10895,6 +10897,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6077190764434910810, guid: 73f26144f8a9a0245b7a05f3327868ff,
+        type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73f26144f8a9a0245b7a05f3327868ff, type: 3}
 --- !u!1 &904367357
@@ -13469,7 +13476,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 778d6283e92558045842f6444c001b0a, type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -14229,7 +14236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 5
-  maxHealth: 100
+  maxHealth: 4
   enemyHealthBar: {fileID: 881469788}
 --- !u!136 &1148359436
 CapsuleCollider:
@@ -16589,6 +16596,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 1785998941}
+  sword: {fileID: 0}
   focus: {fileID: 0}
 --- !u!95 &1384754712
 Animator:
@@ -23170,7 +23178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedcaf04fdb7be245859e0526b87c88a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelWindow: {fileID: 0}
+  levelWindow: {fileID: 1048262970}
+  player: {fileID: 342387789}
+  enemy: {fileID: 1148359435}
+  killXP: 500
 --- !u!1 &1931511317
 GameObject:
   m_ObjectHideFlags: 0
