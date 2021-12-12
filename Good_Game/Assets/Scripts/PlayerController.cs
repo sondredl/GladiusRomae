@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 // #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 // using UnityEngine.InputSystem;
@@ -156,6 +157,9 @@ public class PlayerController : MonoBehaviour
 		}
 
 		Move();
+
+		// if (EventSystem.current.IsPointerOverGameObject())
+		// 	return;
 
         // meleeHealthBar.SetNewHealth(currentHealth);
 		// healthBar.slider;
