@@ -19,6 +19,11 @@ public class Inventory : MonoBehaviour
 
     #endregion
 
+    public delegate void OnItemChange();
+    public OnItemChange onItemChangeCallback;
+
+    public int space = 20; // number of items slots
+
     public List<Item> items = new List<Item>();
 
     public bool Add (Item item) {
