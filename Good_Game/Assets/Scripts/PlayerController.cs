@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
     public static int currentHealth;
     public MeleeHealthBar meleeHealthBar;
 
-	private static Animator playerAnimator;
+	public static Animator playerAnimator;
 	private CharacterController controller;
 	private NewInput input;
 	private GameObject mainCamera;
@@ -108,8 +108,7 @@ public class PlayerController : MonoBehaviour
 	private bool hasAnimator;
 
 	// stats and items
-	// private bool hasSword = true;
-	private bool hasSword = false;
+	public static bool hasSword;
 	public Interactable focus;
 	// PlayerMotor motor;
 
@@ -141,6 +140,7 @@ public class PlayerController : MonoBehaviour
 		// motor = GetComponent<PlayerMotor>();
 
 		// dummy declarations
+		hasSword = false;
 	 	// hasSword = true;
 		// playerAnimator.Play("2handSwordBlendTree");
 	}
@@ -159,13 +159,13 @@ public class PlayerController : MonoBehaviour
 		}
 
 		Move();
+		playerEquipment();
 
 		// if (EventSystem.current.IsPointerOverGameObject())
 		// 	return;
 
         // meleeHealthBar.SetNewHealth(currentHealth);
 		// healthBar.slider;
-		playerEquipment();
 	}
 
 	private void playerEquipment(){

@@ -24,10 +24,14 @@ public class itemSwitching : MonoBehaviour
             if (selectedItem >= transform.childCount - 1) {
                 Debug.Log("itemSwitching.update() if --> if ");
                 selectedItem = 0;
+                PlayerController.playerAnimator.Play("motion");
+                PlayerController.hasSword = false;
                 SelectWeapon();
             } else {
                 Debug.Log("itemSwitching.update() if --> else ");
                 selectedItem++;
+                PlayerController.playerAnimator.Play("2handSwordBlendTree");
+                PlayerController.hasSword = true;
                 SelectWeapon();
             }
         }
