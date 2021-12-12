@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -621,6 +621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
+  maxHealth: 100
+  enemyHealthBar: {fileID: 0}
 --- !u!195 &37240618
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6857,6 +6859,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
+  maxHealth: 100
+  enemyHealthBar: {fileID: 0}
 --- !u!114 &364590476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7074,6 +7078,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
+  maxHealth: 100
+  enemyHealthBar: {fileID: 0}
 --- !u!136 &367146854
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8536,6 +8542,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 638473865}
+  focus: {fileID: 0}
 --- !u!95 &470332942
 Animator:
   serializedVersion: 3
@@ -15414,6 +15421,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
+  maxHealth: 100
+  enemyHealthBar: {fileID: 0}
 --- !u!136 &876708323
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16731,7 +16740,7 @@ GameObject:
   - component: {fileID: 978760858}
   - component: {fileID: 978760857}
   - component: {fileID: 978760856}
-  - component: {fileID: 978760865}
+  - component: {fileID: 978760864}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -16829,6 +16838,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 93600876}
+  focus: {fileID: 0}
 --- !u!95 &978760859
 Animator:
   serializedVersion: 3
@@ -16921,7 +16931,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &978760865
+--- !u!114 &978760864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16930,9 +16940,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 978760855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 1807939b029681146ab6feca15448d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveSpeed: 0
+  SprintSpeed: 6
+  RotationSmoothTime: 0.12
+  SpeedChangeRate: 10
+  JumpHeight: 1.2
+  Gravity: -15
+  JumpTimeout: 0.5
+  FallTimeout: 0.15
+  Grounded: 1
+  GroundedOffset: -0.14
+  GroundedRadius: 0.28
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  AttackTimeOut: 1
+  CinemachineCameraTarget: {fileID: 0}
+  TopClamp: 70
+  BottomClamp: -30
+  CameraAngleOverride: 0
+  LockCameraPosition: 0
+  blocking: 0
+  attacking: 0
+  jump: 0
+  maxHealth: 100
+  meleeHealthBar: {fileID: 0}
+  focus: {fileID: 0}
 --- !u!1 &981802994
 GameObject:
   m_ObjectHideFlags: 0
@@ -20979,6 +21015,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
+  maxHealth: 100
+  enemyHealthBar: {fileID: 0}
 --- !u!1 &1215000737
 GameObject:
   m_ObjectHideFlags: 0
@@ -23577,6 +23615,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 1785998941}
+  focus: {fileID: 0}
 --- !u!95 &1384754712
 Animator:
   serializedVersion: 3
@@ -24746,6 +24785,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 5
+  maxHealth: 100
+  enemyHealthBar: {fileID: 0}
 --- !u!136 &1479642321
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -25579,6 +25620,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 345255116}
+  focus: {fileID: 0}
 --- !u!95 &1530695334
 Animator:
   serializedVersion: 3
@@ -28795,6 +28837,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 92422679}
+  focus: {fileID: 0}
 --- !u!95 &1726063498
 Animator:
   serializedVersion: 3
@@ -31755,6 +31798,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
+  maxHealth: 100
+  enemyHealthBar: {fileID: 0}
 --- !u!136 &1872920730
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -32221,6 +32266,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 571119115}
+  focus: {fileID: 0}
 --- !u!95 &1897628583
 Animator:
   serializedVersion: 3
@@ -35621,6 +35667,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
+  maxHealth: 100
+  enemyHealthBar: {fileID: 0}
 --- !u!54 &2124393103
 Rigidbody:
   m_ObjectHideFlags: 0
