@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class itemSlot : MonoBehaviour
-{/*
+{
+    /*
     public Image icon;
     public Button removeButton;
     Item item;
@@ -23,12 +24,14 @@ public class itemSlot : MonoBehaviour
     }
 
     public void OnRemoveButton() {
-        // Inventory.instance.Remove();
+        Inventory.instance.Remove();
     }
 
     public void UseItem() {
         if (item != null) {
             item.Use();
         }
-    }*/
+    }
+    */
+
 }

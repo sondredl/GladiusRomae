@@ -92,10 +92,10 @@ public class MeleeController : MonoBehaviour
 	[Tooltip("player is jumping")] public bool jump = false;
 
 	// playerHealth
-    public static bool isAlive;
-    public int maxHealth = 100;
-    public static int currentHealth;
-    public MeleeHealthBar meleeHealthBar;
+	public static bool isAlive;
+	public int maxHealth = 100;
+	public static int currentHealth;
+	public MeleeHealthBar meleeHealthBar;
 
 	private static Animator meleeAnimator;
 	private CharacterController controller;
@@ -109,7 +109,7 @@ public class MeleeController : MonoBehaviour
 	public Interactable focus;
 	// PlayerMotor motor;
 
-	private _LevelSystem _levelsystem;
+	private LevelSystem levelsystem;
 
 
 	private void Awake()
@@ -120,9 +120,9 @@ public class MeleeController : MonoBehaviour
 			mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 		}
 
-        //Make the player stay the same through scenes
+		//Make the player stay the same through scenes
 
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
+		GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
 
 		if (objs.Length < 1)
 		{
@@ -140,9 +140,9 @@ public class MeleeController : MonoBehaviour
 		input = GetComponent<NewInput>();
 
 		//playerHealth
-        currentHealth = maxHealth;
-        isAlive = true;
-        meleeHealthBar.SetNewMaxHealth(currentHealth);
+		currentHealth = maxHealth;
+		isAlive = true;
+		meleeHealthBar.SetNewMaxHealth(currentHealth);
 
 		// reset our timeouts on start
 		_attackTimeOutDelta = AttackTimeOut;
@@ -151,7 +151,7 @@ public class MeleeController : MonoBehaviour
 		// motor = GetComponent<PlayerMotor>();
 
 		// dummy declarations
-	 	hasSword = true;
+		hasSword = true;
 		meleeAnimator.Play("2handSwordBlendTree");
 	}
 
@@ -160,7 +160,7 @@ public class MeleeController : MonoBehaviour
 	{
 		hasAnimator = TryGetComponent(out meleeAnimator);
 		input = GetComponent<NewInput>();
-		if (hasSword == true){
+		if (hasSword == true) {
 			playerEquipment();
 		}
 		else {
@@ -170,17 +170,28 @@ public class MeleeController : MonoBehaviour
 
 		Move();
 
-        // meleeHealthBar.SetNewHealth(currentHealth);
+		// meleeHealthBar.SetNewHealth(currentHealth);
 		// healthBar.slider;
 		playerEquipment();
 	}
 
-	public void _SetLevelSystem(_LevelSystem _levelsystem)
-    {
-		this._levelsystem = _levelsystem;
+	public void SetLevelSystem(LevelSystem levelsystem)
+	{
+		this.levelsystem = levelsystem;
+		levelsystem.OnLevelChanged += Levelsystem_OnLevelChanged;
+	}
 
-    }
-	private void playerEquipment(){
+	private void Levelsystem_OnLevelChanged(object sender, EventArgs e)
+	{
+		Debug.Log("You have leveled up");
+		meleeAnimator.Play("Jump");
+
+	}
+
+	public void AddExperience ()
+		{
+		}
+    private void playerEquipment(){
 		// Debug.Log("meleeController/playerEquiplent hasSword:" + hasSword);
 		// meleeAnimator.Play("2handSwordBlendTree");
 		twoHandSwordAction();

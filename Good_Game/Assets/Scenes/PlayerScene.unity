@@ -16737,6 +16737,7 @@ GameObject:
   - component: {fileID: 978760861}
   - component: {fileID: 978760860}
   - component: {fileID: 978760859}
+  - component: {fileID: 978760865}
   - component: {fileID: 978760858}
   - component: {fileID: 978760857}
   - component: {fileID: 978760856}
@@ -16849,7 +16850,7 @@ Animator:
   m_GameObject: {fileID: 978760855}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f293cd003cf71d6409af1c1025485f47, type: 3}
-  m_Controller: {fileID: 9100000, guid: 47d70498a8b69464ca6484a2d552e844, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0bd665b3e9d93444f92fa5c68f8c008c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -16940,6 +16941,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 978760855}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e2b99130857454b9cfa4bec17e661b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &978760865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978760855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1807939b029681146ab6feca15448d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -16967,7 +16980,7 @@ MonoBehaviour:
   attacking: 0
   jump: 0
   maxHealth: 100
-  meleeHealthBar: {fileID: 0}
+  meleeHealthBar: {fileID: 93600876}
   focus: {fileID: 0}
 --- !u!1 &981802994
 GameObject:
@@ -24786,7 +24799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 5
   maxHealth: 100
-  enemyHealthBar: {fileID: 0}
+  enemyHealthBar: {fileID: 753910825}
 --- !u!136 &1479642321
 CapsuleCollider:
   m_ObjectHideFlags: 0

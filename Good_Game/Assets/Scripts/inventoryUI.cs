@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class inventoryUI : MonoBehaviour
 {
-   /* public Transform itemsParent;
+    /*
+    public Transform itemsParent;
     public GameObject inventoryUI;
 
     Inventory inventory;
@@ -34,5 +35,6 @@ public class inventoryUI : MonoBehaviour
                 slots[i].ClearSlot();
             }
         }
-    } */
+    }
+    */
 }
