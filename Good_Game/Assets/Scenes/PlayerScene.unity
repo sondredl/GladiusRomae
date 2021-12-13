@@ -23061,7 +23061,7 @@ Transform:
   - {fileID: 1180703104}
   - {fileID: 1844201337}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &978760865
 MonoBehaviour:
@@ -24711,7 +24711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1034597382
 Transform:
   m_ObjectHideFlags: 0
@@ -24727,7 +24727,7 @@ Transform:
   - {fileID: 873214388}
   - {fileID: 619549982}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1043489379
 GameObject:
@@ -43578,7 +43578,7 @@ Transform:
   - {fileID: 1536959218}
   - {fileID: 574283468}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895440913
 GameObject:
