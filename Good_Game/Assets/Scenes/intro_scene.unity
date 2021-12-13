@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1684,7 +1684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1445918223798424, guid: c1325fa2bd1c15245a71ba8ebc3659f3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4204235804998678, guid: c1325fa2bd1c15245a71ba8ebc3659f3, type: 3}
       propertyPath: m_RootOrder
@@ -2964,7 +2964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 809f64105820b9342bcca2e048385862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedItem: 0
 --- !u!1 &614872361
 GameObject:
   m_ObjectHideFlags: 0
@@ -4558,7 +4557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &861400385
 Transform:
   m_ObjectHideFlags: 0
@@ -5629,7 +5628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074510935149524, guid: 543ba2233306d00479ef5713d436c12e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4184716620995200, guid: 543ba2233306d00479ef5713d436c12e, type: 3}
       propertyPath: m_RootOrder
@@ -6027,7 +6026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1923790167498302, guid: e446aaed2aee3634a83e77a74023cdbe, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4416139510584210, guid: e446aaed2aee3634a83e77a74023cdbe, type: 3}
       propertyPath: m_RootOrder
@@ -6710,32 +6709,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26f38d9d68000334b89361bc40eb2e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 6
-  SprintSpeed: 6
-  RotationSmoothTime: 0.12
-  SpeedChangeRate: 10
-  JumpHeight: 1.2
-  Gravity: -15
-  JumpTimeout: 0.5
-  FallTimeout: 0.15
-  Grounded: 1
-  GroundedOffset: -0.14
-  GroundedRadius: 0.28
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  AttackTimeOut: 1
-  CinemachineCameraTarget: {fileID: 1145760872}
-  TopClamp: 70
-  BottomClamp: -30
-  CameraAngleOverride: 0
-  LockCameraPosition: 0
-  blocking: 0
-  attacking: 0
-  jump: 0
-  maxHealth: 100
-  meleeHealthBar: {fileID: 1328606254}
-  focus: {fileID: 0}
 --- !u!95 &1274271460
 Animator:
   serializedVersion: 3
@@ -8560,11 +8533,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Mark
+    name: Master
     sentences:
-    - Hello, I hear you're out looking for some advice
-    - I think I can help you..
-    - If you catch us some food for tonight, I'll tell you what I know
+    - So, you're new huh?
+    - Well, let me give you some advice..
+    - tip #1
+    - tip #2
+    - tip #3
 --- !u!114 &1734512428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9680,7 +9655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1445918223798424, guid: c1325fa2bd1c15245a71ba8ebc3659f3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4204235804998678, guid: c1325fa2bd1c15245a71ba8ebc3659f3, type: 3}
       propertyPath: m_RootOrder
@@ -10011,6 +9986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac05660483fea5948a060b4f72b7ce97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1184241076}
 --- !u!114 &2080953698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10085,7 +10061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1690271416505104, guid: 6c482e625e2add940a53e04912d07ae7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4042669713053730, guid: 6c482e625e2add940a53e04912d07ae7, type: 3}
       propertyPath: m_RootOrder
