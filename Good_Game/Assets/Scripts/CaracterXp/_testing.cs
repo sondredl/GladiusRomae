@@ -12,7 +12,7 @@ public class _testing : MonoBehaviour
 
     LevelSystem levelSystem = new LevelSystem();
 
-    public int killXP = 100;
+    public int killXP = 1;
 
 
     private void Update()

@@ -30,6 +30,7 @@ public class LevelWindow : MonoBehaviour {
         transform.Find("experience5Btn").GetComponent<Button_UI>().ClickFunc = () => levelSystem.AddExperience(5);
         transform.Find("experience50Btn").GetComponent<Button_UI>().ClickFunc = () => levelSystem.AddExperience(50);
         transform.Find("experience500Btn").GetComponent<Button_UI>().ClickFunc = () => levelSystem.AddExperience(500);
+        
     }
 
     private void SetExperienceBarSize(float experienceNormalized) {
