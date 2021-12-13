@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
 
 	private void playerEquipment(){
 		// Debug.Log("meleeController/playerEquiplent hasSword:" + hasSword);
-		// meleeAnimator.Play("2handSwordBlendTree");
+		// playerAnimator.Play("2handSwordBlendTree");
 		twoHandSwordAction();
 		TwoHandSwordJumpAndGravity();
 	}
@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour
         }
         // Debug.Log("(meleeController) TakeDamage() " + currentHealth);
         playerAnimator.Play("TakeDamage");
-        // meleeAnimator.SetTrigger("takeDamage");
+        // playerAnimator.SetTrigger("takeDamage");
     }
 
     void OnCollisionEnter(Collision collision) {
@@ -314,7 +314,7 @@ public class PlayerController : MonoBehaviour
 		{
 			if (input.attack)
 			{
-				// meleeAnimator.SetTrigger("Attack");
+				// playerAnimator.SetTrigger("Attack");
 				playerAnimator.Play("2Hand-Sword-Attack1");
 				// Debug.Log("meleeController => input.attack");
 				input.attack = false;
@@ -324,7 +324,7 @@ public class PlayerController : MonoBehaviour
 		{
 			if (input.block)
 			{
-				// meleeAnimator.SetTrigger("Block");
+				// playerAnimator.SetTrigger("Block");
 				playerAnimator.Play("Unarmed-DiveRoll-Forward1");
 				// Debug.Log("meleeController => input.block");
 				input.block = false;
@@ -334,7 +334,7 @@ public class PlayerController : MonoBehaviour
 		{
 			if (input.jump)
 			{
-				// meleeAnimator.SetTrigger("Jump");
+				// playerAnimator.SetTrigger("Jump");
 				playerAnimator.Play("2Hand-Sword-Attack2");
 				input.jump = false;
 			}
@@ -460,13 +460,13 @@ public class PlayerController : MonoBehaviour
 				// the square root of H * -2 * G = how much velocity needed to reach desired height
 				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 				Debug.Log("input jump");
-				// meleeAnimator.SetTrigger("Jump");
-				// meleeAnimator.Play("Jump");
+				// playerAnimator.SetTrigger("Jump");
+				// playerAnimator.Play("Jump");
 				playerAnimator.Play("Jump1");
 				// TakeDamage(24);
 				input.jump = false;
 			}
-				// meleeAnimator.Play("motion");
+				// playerAnimator.Play("motion");
 
 			// jump timeout
 			if (_jumpTimeoutDelta >= 0.0f)
@@ -527,13 +527,13 @@ public class PlayerController : MonoBehaviour
 				// the square root of H * -2 * G = how much velocity needed to reach desired height
 				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 				Debug.Log("input jump");
-				// meleeAnimator.SetTrigger("Jump");
-				// meleeAnimator.Play("Jump");
+				// playerAnimator.SetTrigger("Jump");
+				// playerAnimator.Play("Jump");
 				playerAnimator.Play("2Hand-Sword-Jump");
 				// TakeDamage(24);
 				input.jump = false;
 			}
-				// meleeAnimator.Play("motion");
+				// playerAnimator.Play("motion");
 
 			// jump timeout
 			if (_jumpTimeoutDelta >= 0.0f)

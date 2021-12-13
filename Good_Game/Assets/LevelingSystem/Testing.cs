@@ -18,12 +18,12 @@ public class Testing : MonoBehaviour {
 
     [SerializeField] private LevelWindow levelWindow;
     [SerializeField] private Player player;
-    [SerializeField] private EquipWindow equipWindow;
+    
     
     private void Awake() {
         LevelSystem levelSystem = new LevelSystem();
         levelWindow.SetLevelSystem(levelSystem);
-        equipWindow.SetLevelSystem(levelSystem);
+       
 
         LevelSystemAnimated levelSystemAnimated = new LevelSystemAnimated(levelSystem);
         levelWindow.SetLevelSystemAnimated(levelSystemAnimated);
