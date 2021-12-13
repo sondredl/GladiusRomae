@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+// using UnityEngine.SceneManager;
 
 // #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 // using UnityEngine.InputSystem;
@@ -124,6 +125,9 @@ public class PlayerController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+       SceneManager.LoadScene("intro_scene", LoadSceneMode.Additive);
+    //    SceneManager.LoadScene("intro_scene", LoadSceneMode.Additive);
+
 		hasAnimator = TryGetComponent(out playerAnimator);
 		controller = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
@@ -567,6 +571,14 @@ public class PlayerController : MonoBehaviour
 		if (lfAngle > 360f) lfAngle -= 360f;
 		return Mathf.Clamp(lfAngle, lfMin, lfMax);
 	}
+
+    // public void LoadIntroScene()
+    // {
+     
+    //      StartCoroutine(LoadLevel(SceneManager.LoadScene: "intro_scene"));
+    //     //  StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        
+    // }
 
 }
 
