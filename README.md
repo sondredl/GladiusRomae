@@ -1,7 +1,4 @@
 # new-game
+Learning about push, pull and merging 
 
-Basic Game Development project: Gladius Romae
-
-Group 6
-
-Sondre Lindkjølen, Rikard Wirkola, Petter Wang Tveit and Julie Håndlykken
+Commiting first time 
