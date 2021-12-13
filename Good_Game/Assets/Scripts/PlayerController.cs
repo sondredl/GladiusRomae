@@ -113,6 +113,8 @@ public class PlayerController : MonoBehaviour
 	public Interactable focus;
 	// PlayerMotor motor;
 
+	private LevelSystem levelSystem;
+
 	private void Awake()
 	{
 		// get a reference to our main camera
@@ -121,6 +123,8 @@ public class PlayerController : MonoBehaviour
 			mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 		}
 	}
+
+
 
 	// Start is called before the first frame update
 	void Start()
@@ -170,6 +174,36 @@ public class PlayerController : MonoBehaviour
 
         // meleeHealthBar.SetNewHealth(currentHealth);
 		// healthBar.slider;
+	}
+
+	public void SetLevelSystem(LevelSystem levelSystem)
+	{
+		this.levelSystem = levelSystem;
+
+		levelSystem.OnLevelChanged += LevelSystem_OnLevelChanged;
+
+	}
+
+	private void LevelSystem_OnLevelChanged(object sender, EventArgs e)
+	{
+
+		setHealthBar(1 + levelSystem.GetLevelNumber() * 2);
+
+
+		Debug.Log(levelSystem.GetLevelNumber());
+
+		//Debug.Log(e.ToString());
+		//throw new NotImplementedException();
+	}
+
+	private void setHealthBar(int health)
+	{
+		maxHealth += health;
+		meleeHealthBar.SetNewHealth(maxHealth);
+		//transform.localScale = new Vector3(healthSize, healthSize, healthSize);	
+		//meleeHealthBar.SetNewHealth(healthSize);
+
+
 	}
 
 	private void playerEquipment(){

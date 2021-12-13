@@ -15,7 +15,7 @@ public class
     // Update is called once per frame
     void Update()
     {
-        if (MeleeController.isAlive == false)
+        if (PlayerController.isAlive == false)
         {
             Debug.Log("pause_menu you died! in");
             Pause();
