@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+// using UnityEngine.SceneManager;
 
 // #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 // using UnityEngine.InputSystem;
@@ -100,7 +101,7 @@ public class PlayerController : MonoBehaviour
     public static int currentHealth;
     public MeleeHealthBar meleeHealthBar;
 
-	private static Animator playerAnimator;
+	public static Animator playerAnimator;
 	private CharacterController controller;
 	private NewInput input;
 	private GameObject mainCamera;
@@ -108,8 +109,7 @@ public class PlayerController : MonoBehaviour
 	private bool hasAnimator;
 
 	// stats and items
-	// private bool hasSword = true;
-	private bool hasSword = false;
+	public static bool hasSword;
 	public Interactable focus;
 	// PlayerMotor motor;
 
@@ -125,6 +125,9 @@ public class PlayerController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+       SceneManager.LoadScene("intro_scene", LoadSceneMode.Additive);
+    //    SceneManager.LoadScene("intro_scene", LoadSceneMode.Additive);
+
 		hasAnimator = TryGetComponent(out playerAnimator);
 		controller = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
@@ -141,6 +144,7 @@ public class PlayerController : MonoBehaviour
 		// motor = GetComponent<PlayerMotor>();
 
 		// dummy declarations
+		hasSword = false;
 	 	// hasSword = true;
 		// playerAnimator.Play("2handSwordBlendTree");
 	}
@@ -159,13 +163,13 @@ public class PlayerController : MonoBehaviour
 		}
 
 		Move();
+		playerEquipment();
 
 		// if (EventSystem.current.IsPointerOverGameObject())
 		// 	return;
 
         // meleeHealthBar.SetNewHealth(currentHealth);
 		// healthBar.slider;
-		playerEquipment();
 	}
 
 	private void playerEquipment(){
@@ -260,7 +264,7 @@ public class PlayerController : MonoBehaviour
 			// input.getMouseButtonDown(right mouse button)
 			if (input.block)
 			{
-				playerAnimator.Play("Attack2");
+				playerAnimator.Play("Unarmed-DiveRoll-Forward1");
 				input.block = false;
 
 				// Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -321,7 +325,7 @@ public class PlayerController : MonoBehaviour
 			if (input.block)
 			{
 				// meleeAnimator.SetTrigger("Block");
-				playerAnimator.Play("2Hand-Sword-Attack2");
+				playerAnimator.Play("Unarmed-DiveRoll-Forward1");
 				// Debug.Log("meleeController => input.block");
 				input.block = false;
 			}
@@ -567,6 +571,14 @@ public class PlayerController : MonoBehaviour
 		if (lfAngle > 360f) lfAngle -= 360f;
 		return Mathf.Clamp(lfAngle, lfMin, lfMax);
 	}
+
+    // public void LoadIntroScene()
+    // {
+     
+    //      StartCoroutine(LoadLevel(SceneManager.LoadScene: "intro_scene"));
+    //     //  StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        
+    // }
 
 }
 
