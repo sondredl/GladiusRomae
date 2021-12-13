@@ -53,37 +53,43 @@ public class MeleeEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance  = Vector3.Distance(target.position, transform.position);
-        _animationBlend = agent.speed;
-        float currentSpeed;
+        if (isAlive) {
+            float distance = Vector3.Distance(target.position, transform.position);
+            _animationBlend = agent.speed;
+            float currentSpeed;
 
-        if (distance <= lookRadius) {
-            if (distance >= agent.stoppingDistance) {
-                agent.speed = 2;
-                _animationBlend = agent.speed;
-                // Debug.Log("animationBlend" + _animationBlend);
-                // Debug.Log("update() target: " + target);
-                // Debug.Log("update()  agent: " + agent);
-                // Debug.Log("meleeEnemyController.update() if() target: " + target);
-                // Debug.Log("MeleeEnemyController.update() if ()");
+            if (distance <= lookRadius)
+            {
+                if (distance >= agent.stoppingDistance)
+                {
+                    agent.speed = 2;
+                    _animationBlend = agent.speed;
+                    // Debug.Log("animationBlend" + _animationBlend);
+                    // Debug.Log("update() target: " + target);
+                    // Debug.Log("update()  agent: " + agent);
+                    // Debug.Log("meleeEnemyController.update() if() target: " + target);
+                    // Debug.Log("MeleeEnemyController.update() if ()");
 
-                agent.SetDestination(target.position);
-                // Debug.Log("target position: " + target.position);
-                FaceTarget();
-                Move();
-            }
+                    agent.SetDestination(target.position);
+                    // Debug.Log("target position: " + target.position);
+                    FaceTarget();
+                    Move();
+                }
 
-            if (distance <= agent.stoppingDistance) {
-                // attack the target
-                // face the target
-                // Debug.Log("enemy-player distance: " + distance);
-                agent.speed = 0;
-                // Debug.Log("agent.speed: " + agent.speed);           
-                FaceTarget();
-                Move();
-                enemyAnimator.Play("Attack");
+                if (distance <= agent.stoppingDistance)
+                {
+                    // attack the target
+                    // face the target
+                    // Debug.Log("enemy-player distance: " + distance);
+                    agent.speed = 0;
+                    // Debug.Log("agent.speed: " + agent.speed);           
+                    FaceTarget();
+                    Move();
+                    enemyAnimator.Play("Attack");
+                }
             }
         }
+        
     }
 
     void OnCollisionEnter(Collision collision)

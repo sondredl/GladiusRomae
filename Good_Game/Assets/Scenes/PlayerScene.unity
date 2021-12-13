@@ -35851,7 +35851,7 @@ MonoBehaviour:
   attacking: 0
   jump: 0
   maxHealth: 100
-  meleeHealthBar: {fileID: 93600876}
+  meleeHealthBar: {fileID: 975428992}
   focus: {fileID: 0}
 --- !u!1 &981802994
 GameObject:
