@@ -5,15 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Menu_test/Menu_testV2.unity
-    guid: 3fd90dd98df8e1e46b653765f29bff57
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/INTRO SCENE/Introduction.unity
     guid: d5d8b7fe115765d44a3d6247aba44796
-  - enabled: 1
-    path: Assets/Scenes/PettersMapV2.unity
-    guid: 59d959d8251b72943bed1644800a0ef0
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Inside_Colosseum_Night.unity
     guid: 2dbe9cd436d6bd044a62eb5ba19a5602
