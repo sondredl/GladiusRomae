@@ -5595,6 +5595,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 1354693446}
+  sword: {fileID: 0}
   focus: {fileID: 0}
 --- !u!95 &479147395
 Animator:
