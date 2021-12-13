@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+
 // #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 // using UnityEngine.InputSystem;
 // #endif
@@ -108,7 +109,7 @@ public class MeleeController : MonoBehaviour
 	public static int currentDamage;
 
 	// stats and items
-	private bool hasSword = true;
+	private bool hasSword;
 	public Interactable focus;
 	// PlayerMotor motor;
 
@@ -138,6 +139,9 @@ public class MeleeController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		//lagt til ********************************************************
+		SceneManager.LoadScene("intro_scene", LoadSceneMode.Additive);
+
 		hasAnimator = TryGetComponent(out meleeAnimator);
 		controller = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
@@ -157,7 +161,7 @@ public class MeleeController : MonoBehaviour
 		// motor = GetComponent<PlayerMotor>();
 
 		// dummy declarations
-	 	hasSword = true;
+	 	hasSword = false;
 		meleeAnimator.Play("2handSwordBlendTree");
 	}
 
@@ -200,14 +204,12 @@ public class MeleeController : MonoBehaviour
 		//Debug.Log(e.ToString());
 		//throw new NotImplementedException();
     }
-
 	private void setHealthBar(int health)
     {
 		maxHealth +=health;
 		meleeHealthBar.SetNewHealth(maxHealth);
 		//transform.localScale = new Vector3(healthSize, healthSize, healthSize);	
 		//meleeHealthBar.SetNewHealth(healthSize);
-
 
 	}
 
