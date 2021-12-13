@@ -10277,6 +10277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda6387ac1a5d7f4592768d1ebd4d8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skyOne: {fileID: 2100000, guid: 8185c62f5ccafe247bd3d1a04315857d, type: 2}
 --- !u!1 &224371927
 GameObject:
   m_ObjectHideFlags: 0

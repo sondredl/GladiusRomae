@@ -14,8 +14,19 @@ public class LoadLevel2 : MonoBehaviour
     // // Update is called once per frame
     // void Update()
     // {
-    Material[] skyboxes;
+    [SerializeField]
+    //Material[] skyboxes;
+    //public static Material skybox;
+    //var otherSkybox  Material;
+
+    public Material skyOne;
+
     // }
+
+    //public static void UpdateEnvironment()
+    //{
+    //    RenderSettings.skybox = mat2;
+    //}
 
     void OnCollisionEnter(Collision collision)
     {
@@ -26,7 +37,9 @@ public class LoadLevel2 : MonoBehaviour
             Debug.Log("unloadScene intro_scene");
 
             SceneManager.LoadScene("Inside_Colosseum_Night", LoadSceneMode.Additive);
-            RenderSettings.skybox = skyboxes[5];
+            //RenderSettings.skybox = skyboxes[1];
+            //UpdateEnvironment();
+            RenderSettings.skybox = skyOne;
             Debug.Log("loadScene pettersMap");
         }
     }
