@@ -230,7 +230,7 @@ public class PlayerController : MonoBehaviour
        	 	playerAnimator.Play("PlayerDeath");
         }
         // Debug.Log("(meleeController) TakeDamage() " + currentHealth);
-        playerAnimator.Play("TakeDamage");
+        //playerAnimator.Play("TakeDamage");
         // playerAnimator.SetTrigger("takeDamage");
     }
 
