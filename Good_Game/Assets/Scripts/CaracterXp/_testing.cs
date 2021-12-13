@@ -8,7 +8,7 @@ public class _testing : MonoBehaviour
 
     [SerializeField] private LevelWindow levelWindow;
     [SerializeField] private MeleeController player;
-    [SerializeField] private MeleeEnemyController enemy;
+    
 
     LevelSystem levelSystem = new LevelSystem();
 
