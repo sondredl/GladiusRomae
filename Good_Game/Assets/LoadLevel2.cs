@@ -41,8 +41,8 @@ public class LoadLevel2 : MonoBehaviour
             //RenderSettings.skybox = skyboxes[1];
             //UpdateEnvironment();
             RenderSettings.skybox = skyOne;
-            RenderSettings.fog = true;
-            RenderSettings.fogDensity = 0.015f;
+            //RenderSettings.fog = true;
+            //RenderSettings.fogDensity = 0.015f;
             Debug.Log("loadScene pettersMap");
         }
     }
