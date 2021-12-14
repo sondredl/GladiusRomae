@@ -298,7 +298,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'The story of ___ starts in a small city with the name of ___. '
+  m_Text: 'The story of Maximus starts in a small city with the name of Altius. '
 --- !u!222 &204125825
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -759,7 +759,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "____ is looking to enter the league, and this is where his story begins\u2026\r\n"
+  m_Text: "Maximus is looking to enter the league, and this is where his story begins\u2026\r\n"
 --- !u!222 &1556085167
 CanvasRenderer:
   m_ObjectHideFlags: 0
