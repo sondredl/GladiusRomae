@@ -17133,7 +17133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09805385497ac84f8eefdfee6ba942b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 20
+  lookRadius: 15
   maxHealth: 100
   enemyHealthBar: {fileID: 1422914828}
 --- !u!136 &286341792
@@ -17160,7 +17160,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
