@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
 	[Space(10)]
 	[Tooltip("The height the player can jump")]
-	public float JumpHeight = 1.2f;
+	public float JumpHeight = 6f;
 	[Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
 	public float Gravity = -15.0f;
 
@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
 		hasAnimator = TryGetComponent(out playerAnimator);
 		input = GetComponent<NewInput>();
 		if (hasSword == true){
-			playerEquipment();
+			//playerEquipment();
 		}
 		else {
 			animationAction();
@@ -167,7 +167,9 @@ public class PlayerController : MonoBehaviour
 		}
 
 		Move();
+		animationAction();
 		playerEquipment();
+
 
 		// if (EventSystem.current.IsPointerOverGameObject())
 		// 	return;
@@ -277,6 +279,7 @@ public class PlayerController : MonoBehaviour
 			// input.getMouseButtonDown(1)
 			if (input.attack)
 			{
+				//Debug.Log("attack");
 				playerAnimator.Play("Attack");
 				input.attack = false;
 
@@ -295,10 +298,20 @@ public class PlayerController : MonoBehaviour
 
 		if (!blocking)
 		{
-			// input.getMouseButtonDown(right mouse button)
+
+			if (input.block)
+            {
+				Debug.Log("blocking triggred");
+				input.block = false;
+
+
+			}
 			if (input.block)
 			{
+				Debug.Log("animationAction !blocking");
 				playerAnimator.Play("Unarmed-DiveRoll-Forward1");
+				playerAnimator.Play("Unarmed-Revive1");
+
 				input.block = false;
 
 				// Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -317,9 +330,13 @@ public class PlayerController : MonoBehaviour
 
 		if (!jump)
 		{
+	
 			if (input.jump)
 			{
-				playerAnimator.SetTrigger("Jump");
+				Debug.Log("controller jump input");
+				//playerAnimator.SetTrigger("Jump");
+				JumpAndGravity();
+				playerAnimator.Play("JumpStart");
 				input.jump = false;
 			}
 		}
@@ -368,8 +385,10 @@ public class PlayerController : MonoBehaviour
 		{
 			if (input.jump)
 			{
-				// playerAnimator.SetTrigger("Jump");
-				playerAnimator.Play("2Hand-Sword-Attack2");
+				Debug.Log("controller jump input");
+				//playerAnimator.SetTrigger("Jump");
+				JumpAndGravity();
+				playerAnimator.Play("2Hand-Sword-Jump");
 				input.jump = false;
 			}
 		}
@@ -563,7 +582,7 @@ public class PlayerController : MonoBehaviour
 				Debug.Log("input jump");
 				// playerAnimator.SetTrigger("Jump");
 				// playerAnimator.Play("Jump");
-				playerAnimator.Play("2Hand-Sword-Jump");
+				playerAnimator.Play("2Hand-Sword-Jump 0");
 				// TakeDamage(24);
 				input.jump = false;
 			}
