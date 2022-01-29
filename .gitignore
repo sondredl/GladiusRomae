@@ -60,3 +60,5 @@ crashlytics-build.properties
 
 #*.meta
 Good_Game/UserSettings/EditorUserSettings.asset
+**/*lock.json
+**/*Settings.asset
